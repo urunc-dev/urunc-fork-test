@@ -1,0 +1,590 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Measuring `urunc` execution">
+      
+      
+      
+      <link rel="icon" href="../img/urunc-img-logo.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.8">
+    
+    
+      
+        <title>Performance - urunc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.815d1a91.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#measuring-urunc-execution" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="urunc" class="md-header__button md-logo" aria-label="urunc" data-md-component="logo">
+      
+  <img src="../img/urunc-logo-full.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            urunc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Performance
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="urunc" class="md-nav__button md-logo" aria-label="urunc" data-md-component="logo">
+      
+  <img src="../img/urunc-logo-full.svg" alt="logo">
+
+    </a>
+    urunc
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/index.md" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/Installation.md" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#adding-timestamps" class="md-nav__link">
+    Adding timestamps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timestamping-logging-method" class="md-nav__link">
+    Timestamping logging method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-enable-timestamping" class="md-nav__link">
+    How to enable timestamping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-gather-timestamps" class="md-nav__link">
+    How to gather timestamps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-python-utilities" class="md-nav__link">
+    Using the Python utilities
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Python utilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#measure-single-container-execution" class="md-nav__link">
+    Measure single container execution
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatically-measure-multiple-containers" class="md-nav__link">
+    Automatically measure multiple containers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="measuring-urunc-execution">Measuring urunc execution</h1>
+<h2 id="adding-timestamps">Adding timestamps</h2>
+<p>To facilitate performance measurements, a few timestamps have been added to the code base to provide a clear view of the time spent on each part of the execution flow.</p>
+<p>The timestamps currently depicting each unikernel container execution are the following:</p>
+<table>
+<thead>
+<tr>
+<th>Timestamp ID</th>
+<th>Process</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TS00</td>
+<td>create</td>
+<td><code>urunc create</code> was invoked</td>
+</tr>
+<tr>
+<td>TS01</td>
+<td>create</td>
+<td>unikontainer struct created for spec</td>
+</tr>
+<tr>
+<td>TS02</td>
+<td>create</td>
+<td>initial setup completed</td>
+</tr>
+<tr>
+<td>TS03</td>
+<td>create</td>
+<td>start reexec process (with or without pty)</td>
+</tr>
+<tr>
+<td>TS04</td>
+<td>reexec</td>
+<td><code>urunc create --reexec</code> was invoked</td>
+</tr>
+<tr>
+<td>TS05</td>
+<td>reexec</td>
+<td>unikontainer struct created for spec</td>
+</tr>
+<tr>
+<td>TS06</td>
+<td>reexec</td>
+<td>sent <code>BOOTED</code> IPC message to <code>create</code> process</td>
+</tr>
+<tr>
+<td>TS07</td>
+<td>create</td>
+<td>received <code>BOOTED</code> message from <code>reexec</code></td>
+</tr>
+<tr>
+<td>TS08</td>
+<td>create</td>
+<td>executed <code>CreateRuntime</code> hooks</td>
+</tr>
+<tr>
+<td>TS09</td>
+<td>create</td>
+<td>sent <code>ACK</code> IPC message to <code>reexec</code> process</td>
+</tr>
+<tr>
+<td>TS10</td>
+<td>reexec</td>
+<td>received <code>ACK</code> message from <code>create</code></td>
+</tr>
+<tr>
+<td>TS11</td>
+<td>create</td>
+<td><code>urunc create</code> terminated</td>
+</tr>
+<tr>
+<td>TS12</td>
+<td>start</td>
+<td><code>urunc start</code> was invoked</td>
+</tr>
+<tr>
+<td>TS13</td>
+<td>start</td>
+<td>unikontainer struct created for spec</td>
+</tr>
+<tr>
+<td>TS14</td>
+<td>start</td>
+<td>sent <code>START</code> IPC message to <code>reexec</code></td>
+</tr>
+<tr>
+<td>TS15</td>
+<td>reexec</td>
+<td>received <code>START</code> message from <code>start</code></td>
+</tr>
+<tr>
+<td>TS16</td>
+<td>reexec</td>
+<td>joined sandbox network namespace</td>
+</tr>
+<tr>
+<td>TS17</td>
+<td>reexec</td>
+<td>network setup completed</td>
+</tr>
+<tr>
+<td>TS18</td>
+<td>reexec</td>
+<td>disk setup completed</td>
+</tr>
+<tr>
+<td>TS19</td>
+<td>reexec</td>
+<td><code>execve</code> the hypervisor process</td>
+</tr>
+</tbody>
+</table>
+<p>In addition to these timestamps, two more are added to measure the delay caused by the <code>handleNonBimaContainer</code> function that is run every time <code>urunc</code> is invoked:</p>
+<table>
+<thead>
+<tr>
+<th>Timestamp ID</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cTS00</td>
+<td>before invoking  <code>handleNonBimaContainer</code></td>
+</tr>
+<tr>
+<td>cTS01</td>
+<td>after invoking  <code>handleNonBimaContainer</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="timestamping-logging-method">Timestamping logging method</h2>
+<p>To log the timestamps with minimal overhead, we opted to use the <a href="https://github.com/rs/zerolog">zerolog</a> package. We were able to keep the delay caused by the timestamp logging in a low level, around 38351ns for the 20 timestamps required. In comparison, when using <a href="https://github.com/sirupsen/logrus">logrus</a> the overhead was measured at around 71589ns.</p>
+<p>To run the benchmarks for the currently supported logging methods:</p>
+<pre><code class="language-bash">URUNC_TIMESTAMPS=1 GOFLAGS=&quot;-count=1&quot; go test ./tests/benchmarks -bench=. -count 5 -v
+</code></pre>
+<h2 id="how-to-enable-timestamping">How to enable timestamping</h2>
+<p>In order to capture the timestamps, a separate <code>containerd-shim</code> and container runtime must be configured in your system.</p>
+<p>To create the "timestamping" version of <code>containerd-shim-urunc-v2</code>:</p>
+<pre><code class="language-bash">sudo tee -a /usr/local/bin/containerd-shim-uruncts-v2 &gt; /dev/null &lt;&lt; 'EOT'
+#!/bin/bash
+URUNC_TIMESTAMPS=1 /usr/local/bin/containerd-shim-urunc-v2 $@
+EOT
+
+sudo chmod +x /usr/local/bin/containerd-shim-uruncts-v2
+</code></pre>
+<p>To add the "timestamping" urunc to containerd config:</p>
+<pre><code class="language-bash">sudo tee -a /etc/containerd/config.toml &gt; /dev/null &lt;&lt; 'EOT'
+# timestamping urunc
+[plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd.runtimes.uruncts]
+    runtime_type = &quot;io.containerd.uruncts.v2&quot;
+    container_annotations = [&quot;com.urunc.unikernel.*&quot;]
+    pod_annotations = [&quot;com.urunc.unikernel.*&quot;]
+    snapshotter = &quot;devmapper&quot;
+EOT
+sudo systemctl restart containerd.service
+</code></pre>
+<h2 id="how-to-gather-timestamps">How to gather timestamps</h2>
+<p>Now we need to run a unikernel using the new container runtime <code>uruncts</code>:</p>
+<pre><code class="language-bash">sudo nerdctl run --rm --snapshotter devmapper --runtime io.containerd.uruncts.v2 \
+    harbor.nbfc.io/nubificus/urunc/hello-hvt-rump:latest
+</code></pre>
+<p>The timestamp logs are located at <code>/tmp/urunc.zlog</code>:</p>
+<pre><code class="language-bash">cat /tmp/urunc.zlog | grep TS
+{&quot;containerID&quot;:&quot;faaf830245ffab0df81927cebd7f11065e70c7703121fbc1b11d4bca49bab461&quot;,&quot;timestampID&quot;:&quot;cTS00&quot;,&quot;time&quot;:1703676366849599657}
+{&quot;containerID&quot;:&quot;faaf830245ffab0df81927cebd7f11065e70c7703121fbc1b11d4bca49bab461&quot;,&quot;timestampID&quot;:&quot;cTS01&quot;,&quot;time&quot;:1703676366853466038}
+{&quot;containerID&quot;:&quot;faaf830245ffab0df81927cebd7f11065e70c7703121fbc1b11d4bca49bab461&quot;,&quot;timestampID&quot;:&quot;TS00&quot;,&quot;time&quot;:1703676366853478852}
+{&quot;containerID&quot;:&quot;faaf830245ffab0df81927cebd7f11065e70c7703121fbc1b11d4bca49bab461&quot;,&quot;timestampID&quot;:&quot;TS01&quot;,&quot;time&quot;:1703676366854590287}
+{&quot;containerID&quot;:&quot;faaf830245ffab0df81927cebd7f11065e70c7703121fbc1b11d4bca49bab461&quot;,&quot;timestampID&quot;:&quot;TS02&quot;,&quot;time&quot;:1703676366854709857}
+# ... (rest of the output)
+</code></pre>
+<blockquote>
+<p>Note: the timestamp destination (<code>/tmp/urunc.zlog</code>) is hardcoded for the time being.</p>
+</blockquote>
+<h2 id="using-the-python-utilities">Using the Python utilities</h2>
+<p>There are 3 Python utilites inside the <code>script/performance</code> directory to help gather the timestamps.</p>
+<h3 id="measure-single-container-execution">Measure single container execution</h3>
+<p>To gather the timestamps produced by a single unikernel container execution, you can use the <code>measure_single.py</code> script, passing the desired container id.</p>
+<pre><code class="language-bash">cd urunc/script/performance
+python3 measure_single.py 15c769b9be14c59174626521f7964a8ae06e75c48c5cfd91e2829317c15d455b
+</code></pre>
+<p>If no container ID is specified, it will return an error:</p>
+<pre><code class="language-bash">$ python3 measure_single.py 
+Error: Container ID not specified!
+
+Usage:
+        measure_single.py &lt;CONTAINER_ID&gt;
+</code></pre>
+<p>Sample output:</p>
+<pre><code>$ python3 measure_single.py 1bd50216c1709b854f78d50ec36cbbc55e0d4bc2e1509344082b51edc974af6d
+TS00 -&gt; TS01:   1086512 ns
+TS01 -&gt; TS02:   97936 ns
+TS02 -&gt; TS03:   119786 ns
+# ... (rest of the output)
+</code></pre>
+<h3 id="automatically-measure-multiple-containers">Automatically measure multiple containers</h3>
+<p>To automatically gather the timestamps produced by multiple unikernel container executions you can use the <code>measure.py</code> script, passing the desired iterations amount. Make sure to use <code>sudo</code> or execute this script as root, as it relies on <code>nerdctl</code> for spawning the unikernel containers.</p>
+<pre><code class="language-bash">cd urunc/script/performance
+sudo python3 measure.py 5
+</code></pre>
+<p>If the amount of iterations is not specified, it will return an error:</p>
+<pre><code class="language-bash">$ sudo python3 measure.py 
+Error: Iterations not specified!
+
+Usage:
+        measure.py &lt;ITERATIONS&gt;
+</code></pre>
+<p>Sample output:</p>
+<pre><code>$ sudo python3 measure.py 2
+{'TS00 -&gt; TS01': {'average': '11544405 ns',
+                  'maximum': '22292698 ns',
+                  'minimum': '796112 ns'},
+ 'TS01 -&gt; TS02': {'average': '127228 ns',
+                  'maximum': '157051 ns',
+                  'minimum': '97405 ns'},
+ 'TS02 -&gt; TS03': {'average': '120198 ns',
+                  'maximum': '162634 ns',
+                  'minimum': '77763 ns'},
+# ... (rest of the output)
+</code></pre>
+<p>The same functionality is provided by <code>measure_to_json.py</code>, but instead of <code>stdout</code> the results are saved in a .json file:</p>
+<pre><code class="language-bash">sudo python3 measure_to_json.py 5 ts.json
+cat ts.json | jq
+{
+  &quot;TS00 -&gt; TS01&quot;: {
+    &quot;maximum&quot;: &quot;989525 ns&quot;,
+    &quot;minimum&quot;: &quot;474103 ns&quot;,
+    &quot;average&quot;: &quot;719644 ns&quot;
+  },
+  &quot;TS01 -&gt; TS02&quot;: {
+    &quot;maximum&quot;: &quot;212337 ns&quot;,
+    &quot;minimum&quot;: &quot;76951 ns&quot;,
+    &quot;average&quot;: &quot;122868 ns&quot;
+# ... (rest of the output)
+</code></pre>
+<p>If the amount of iterations or output file are not specified, it will return an error:</p>
+<pre><code class="language-bash">$ sudo python3 measure_to_json.py 5 
+Error: Iterations or output file not specified!
+
+Usage:
+        measure_to_json.py &lt;ITERATIONS&gt; &lt;OUTPUT&gt;
+</code></pre>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2018 - 2024 Nubificus LTD
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+    
+  </body>
+</html>
