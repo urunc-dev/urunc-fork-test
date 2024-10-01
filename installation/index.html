@@ -8,24 +8,33 @@
       
       
       
-      <link rel="icon" href="../img/urunc-img-logo.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.8">
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../hypervisor-support/">
+      
+      
+      <link rel="icon" href="../img/urunc-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
-        <title>Build from source - urunc Documentation</title>
+        <title>Installation - urunc Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.20d9efc8.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.815d1a91.min.css">
-        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
+
     
+    
+      
     
     
       
@@ -39,7 +48,7 @@
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -59,9 +68,6 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
   
     
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -80,15 +86,18 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="urunc Documentation" class="md-header__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
       
-  <img src="../img/urunc-logo-full.svg" alt="logo">
+  <img src="../img/urunc-logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -100,34 +109,41 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Build from source
+              Installation
             
           </span>
         </div>
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
-          
-          
-          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
-          
-            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
-            </label>
-          
-        
-          
-          
-          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0Z"/></svg>
-            </label>
-          
-        
-      </form>
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -154,11 +170,12 @@
                     
 
 
+
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="urunc Documentation" class="md-nav__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
       
-  <img src="../img/urunc-logo-full.svg" alt="logo">
+  <img src="../img/urunc-logo.png" alt="logo">
 
     </a>
     urunc Documentation
@@ -168,14 +185,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href=".." class="md-nav__link">
-        Home
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
       </a>
     </li>
   
@@ -183,14 +205,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="../quickstart.md" class="md-nav__link">
-        Quickstart
+        
+  
+  <span class="md-ellipsis">
+    Quickstart
+  </span>
+  
+
       </a>
     </li>
   
@@ -198,54 +225,37 @@
     
       
       
-      
-
   
   
     
   
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3">
-          Installation
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Installation" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
-          Installation
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-    
   
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Build from source
+          
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Build from source
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
       </a>
       
         
@@ -263,7 +273,9 @@
       
         <li class="md-nav__item">
   <a href="#install-urunc" class="md-nav__link">
-    Install urunc
+    <span class="md-ellipsis">
+      Install urunc
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Install urunc">
@@ -271,70 +283,90 @@
         
           <li class="md-nav__item">
   <a href="#install-required-dependencies-through-package-management" class="md-nav__link">
-    Install required dependencies (through package management)
+    <span class="md-ellipsis">
+      Install required dependencies (through package management)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#install-go" class="md-nav__link">
-    Install Go
+    <span class="md-ellipsis">
+      Install Go
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#install-runc" class="md-nav__link">
-    Install runc
+    <span class="md-ellipsis">
+      Install runc
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#install-containerd" class="md-nav__link">
-    Install containerd
+    <span class="md-ellipsis">
+      Install containerd
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#install-containerd-service" class="md-nav__link">
-    Install containerd service
+    <span class="md-ellipsis">
+      Install containerd service
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#configure-containerd" class="md-nav__link">
-    Configure containerd
+    <span class="md-ellipsis">
+      Configure containerd
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#install-cni-plugins" class="md-nav__link">
-    Install CNI plugins
+    <span class="md-ellipsis">
+      Install CNI plugins
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#install-nerdctl" class="md-nav__link">
-    Install nerdctl
+    <span class="md-ellipsis">
+      Install nerdctl
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#setup-thinpool-devmapper" class="md-nav__link">
-    Setup thinpool devmapper
+    <span class="md-ellipsis">
+      Setup thinpool devmapper
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#configure-containerd-for-devmapper" class="md-nav__link">
-    Configure containerd for devmapper
+    <span class="md-ellipsis">
+      Configure containerd for devmapper
+    </span>
   </a>
   
 </li>
@@ -346,22 +378,52 @@
       
         <li class="md-nav__item">
   <a href="#initialize-devmapper" class="md-nav__link">
-    Initialize devmapper
+    <span class="md-ellipsis">
+      Initialize devmapper
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Initialize devmapper">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#option-1-build-from-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 1: Build from source
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option 1: Build from source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#build-and-install-urunc" class="md-nav__link">
-    Build and install urunc
+    <span class="md-ellipsis">
+      Build and install urunc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-install-from-binaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 2: Install from binaries
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#add-urunc-runtime-to-containerd" class="md-nav__link">
-    Add urunc runtime to containerd
+    <span class="md-ellipsis">
+      Add urunc runtime to containerd
+    </span>
   </a>
   
 </li>
@@ -373,7 +435,9 @@
       
         <li class="md-nav__item">
   <a href="#run-an-example-unikernel" class="md-nav__link">
-    Run an example unikernel
+    <span class="md-ellipsis">
+      Run an example unikernel
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Run an example unikernel">
@@ -381,14 +445,18 @@
         
           <li class="md-nav__item">
   <a href="#install-solo5" class="md-nav__link">
-    Install solo5
+    <span class="md-ellipsis">
+      Install solo5
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#run-a-redis-rumprun-unikernel-over-solo5" class="md-nav__link">
-    Run a redis rumprun unikernel over solo5
+    <span class="md-ellipsis">
+      Run a redis rumprun unikernel over solo5
+    </span>
   </a>
   
 </li>
@@ -405,38 +473,22 @@
     </li>
   
 
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation-binaries.md" class="md-nav__link">
-        Download binaries
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
-      <a href="../hypervisor-support.md" class="md-nav__link">
-        Hypervisor Support
+      <a href="../hypervisor-support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hypervisor Support
+  </span>
+  
+
       </a>
     </li>
   
@@ -444,14 +496,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="../unikernel-support.md" class="md-nav__link">
-        Unikernel Support
+        
+  
+  <span class="md-ellipsis">
+    Unikernel Support
+  </span>
+  
+
       </a>
     </li>
   
@@ -459,14 +516,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="../image-building/" class="md-nav__link">
-        Container image building
+        
+  
+  <span class="md-ellipsis">
+    Container image building
+  </span>
+  
+
       </a>
     </li>
   
@@ -474,106 +536,276 @@
     
       
       
-      
-
   
   
   
-    <li class="md-nav__item">
-      <a href="../development-guide.md" class="md-nav__link">
-        Development Guide
-      </a>
-    </li>
   
-
     
-      
-      
-      
-
-  
-  
-  
+    
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_8">
-          Tutorials
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
-          <span class="md-nav__icon md-icon"></span>
-          Tutorials
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
           
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../design/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Design
+  </span>
+  
+
+            </a>
             
               
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
   
   
   
     <li class="md-nav__item">
-      <a href="../tutorial-k8s.md" class="md-nav__link">
-        Install on K8s
+      <a href="../design/architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
-            
               
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tutorial-k3s.md" class="md-nav__link">
-        Install on K3s
-      </a>
-    </li>
-  
-
             
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tutorial-knative.md" class="md-nav__link">
-        Knative Integration
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
       
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../developer-guide/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Developer Guide
+  </span>
+  
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
   
   
   
     <li class="md-nav__item">
-      <a href="../api.md" class="md-nav__link">
-        API Reference
+      <a href="../developer-guide/contribute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer-guide/development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup a Build environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer-guide/timestamps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Execution time breakdown
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://pkg.go.dev/github.com/nubificus/urunc@v0.3.0/pkg/unikontainers" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../tutorials/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/How-to-urunc-on-k8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to use urunc with k8s
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -604,7 +836,9 @@
       
         <li class="md-nav__item">
   <a href="#install-urunc" class="md-nav__link">
-    Install urunc
+    <span class="md-ellipsis">
+      Install urunc
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Install urunc">
@@ -612,70 +846,90 @@
         
           <li class="md-nav__item">
   <a href="#install-required-dependencies-through-package-management" class="md-nav__link">
-    Install required dependencies (through package management)
+    <span class="md-ellipsis">
+      Install required dependencies (through package management)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#install-go" class="md-nav__link">
-    Install Go
+    <span class="md-ellipsis">
+      Install Go
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#install-runc" class="md-nav__link">
-    Install runc
+    <span class="md-ellipsis">
+      Install runc
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#install-containerd" class="md-nav__link">
-    Install containerd
+    <span class="md-ellipsis">
+      Install containerd
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#install-containerd-service" class="md-nav__link">
-    Install containerd service
+    <span class="md-ellipsis">
+      Install containerd service
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#configure-containerd" class="md-nav__link">
-    Configure containerd
+    <span class="md-ellipsis">
+      Configure containerd
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#install-cni-plugins" class="md-nav__link">
-    Install CNI plugins
+    <span class="md-ellipsis">
+      Install CNI plugins
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#install-nerdctl" class="md-nav__link">
-    Install nerdctl
+    <span class="md-ellipsis">
+      Install nerdctl
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#setup-thinpool-devmapper" class="md-nav__link">
-    Setup thinpool devmapper
+    <span class="md-ellipsis">
+      Setup thinpool devmapper
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#configure-containerd-for-devmapper" class="md-nav__link">
-    Configure containerd for devmapper
+    <span class="md-ellipsis">
+      Configure containerd for devmapper
+    </span>
   </a>
   
 </li>
@@ -687,22 +941,52 @@
       
         <li class="md-nav__item">
   <a href="#initialize-devmapper" class="md-nav__link">
-    Initialize devmapper
+    <span class="md-ellipsis">
+      Initialize devmapper
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Initialize devmapper">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#option-1-build-from-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 1: Build from source
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option 1: Build from source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#build-and-install-urunc" class="md-nav__link">
-    Build and install urunc
+    <span class="md-ellipsis">
+      Build and install urunc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-install-from-binaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 2: Install from binaries
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#add-urunc-runtime-to-containerd" class="md-nav__link">
-    Add urunc runtime to containerd
+    <span class="md-ellipsis">
+      Add urunc runtime to containerd
+    </span>
   </a>
   
 </li>
@@ -714,7 +998,9 @@
       
         <li class="md-nav__item">
   <a href="#run-an-example-unikernel" class="md-nav__link">
-    Run an example unikernel
+    <span class="md-ellipsis">
+      Run an example unikernel
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Run an example unikernel">
@@ -722,14 +1008,18 @@
         
           <li class="md-nav__item">
   <a href="#install-solo5" class="md-nav__link">
-    Install solo5
+    <span class="md-ellipsis">
+      Install solo5
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#run-a-redis-rumprun-unikernel-over-solo5" class="md-nav__link">
-    Run a redis rumprun unikernel over solo5
+    <span class="md-ellipsis">
+      Run a redis rumprun unikernel over solo5
+    </span>
   </a>
   
 </li>
@@ -754,7 +1044,7 @@
                   
 
 
-  <h1>Build from source</h1>
+  <h1>Installation</h1>
 
 <p>This document guides you through the installation of <code>urunc</code> and all required
 components in a vanilla Ubuntu 22.04 machine.</p>
@@ -871,11 +1161,30 @@ sudo systemctl restart containerd
 <h2 id="initialize-devmapper">Initialize devmapper</h2>
 <pre><code class="language-bash">sudo /usr/local/bin/scripts/dm_create.sh
 </code></pre>
-<h3 id="build-and-install-urunc">Build and install urunc</h3>
+<h3 id="option-1-build-from-source">Option 1: Build from source</h3>
+<h4 id="build-and-install-urunc">Build and install urunc</h4>
 <pre><code class="language-bash">git clone git@github.com:nubificus/urunc.git
 cd urunc
 make &amp;&amp; sudo make install
 cd ..
+</code></pre>
+<h3 id="option-2-install-from-binaries">Option 2: Install from binaries</h3>
+<pre><code class="language-bash">declare -A ARCH_MAP
+ARCH_MAP[&quot;x86_64&quot;]=&quot;amd64&quot;
+ARCH_MAP[&quot;aarch64&quot;]=&quot;aarch64&quot;
+SYSTEM_ARCH=$(uname -m)
+ARCHITECTURE=${ARCH_MAP[$SYSTEM_ARCH]}
+LATEST_RELEASE_URL=&quot;https://api.github.com/repos/nubificus/urunc/releases/latest&quot;
+RELEASE_JSON=$(curl -s $LATEST_RELEASE_URL)
+LATEST_TAG=$(echo $RELEASE_JSON | jq -r '.tag_name')
+ASSETS_URL=$(echo $RELEASE_JSON | jq -r '.assets[].browser_download_url')
+BINARY_URLS=$(echo &quot;$ASSETS_URL&quot; | grep &quot;$ARCHITECTURE&quot;)
+for BINARY_URL in $BINARY_URLS; do
+  echo &quot;Downloading $BINARY_URL...&quot;
+  curl -LO &quot;$BINARY_URL&quot;
+  chmod +x `basename $BINARY_URL`
+  sudo mv `basename $BINARY_URL` /usr/local/bin
+done
 </code></pre>
 <h3 id="add-urunc-runtime-to-containerd">Add urunc runtime to containerd</h3>
 <pre><code class="language-bash">sudo tee -a /etc/containerd/config.toml &gt; /dev/null &lt;&lt;EOT
@@ -909,52 +1218,24 @@ sudo cp tenders/spt/solo5-spt /usr/local/bin
 
 
 
+
+
+
+
+
+
+
                 
               </article>
             </div>
           
           
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Home
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../image-building/" class="md-footer__link md-footer__link--next" aria-label="Next: Container image building" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Container image building
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -981,10 +1262,11 @@ sudo cp tenders/spt/solo5-spt /usr/local/bin
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>

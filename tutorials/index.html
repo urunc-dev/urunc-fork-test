@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../hypervisor-support/">
+        <link rel="prev" href="../developer-guide/timestamps/">
       
       
-        <link rel="next" href="../design/">
+        <link rel="next" href="How-to-urunc-on-k8s/">
       
       
       <link rel="icon" href="../img/urunc-logo.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Container image building - urunc Documentation</title>
+        <title>Tutorials - urunc Documentation</title>
       
     
     
@@ -73,11 +73,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#bima-package-a-unikernel-into-an-oci-artifact" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -109,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Container image building
+              Tutorials
             
           </span>
         </div>
@@ -287,30 +282,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Container image building
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../image-building/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -319,44 +294,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-from-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build from source
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -570,22 +507,24 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../tutorials/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   <span class="md-ellipsis">
@@ -596,13 +535,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_9" id="__nav_9_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
@@ -616,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/How-to-urunc-on-k8s/" class="md-nav__link">
+      <a href="How-to-urunc-on-k8s/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -654,34 +593,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-from-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build from source
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -696,89 +607,9 @@
                   
 
 
-<h1 id="bima-package-a-unikernel-into-an-oci-artifact">bima: Package a unikernel into an OCI artifact</h1>
-<p>bima builds an OCI-compatible Container Image from a special type of containerfile. This special containerfile supports
-a minimal set of "instructions", namely FROM, COPY and LABEL. The images built by bima are intended to be run by urunc,
-so there is no compatibility with other container runtimes.</p>
-<ul>
-<li><code>FROM</code>: this is not taken into account at the current implementation, but we plan to add support for.</li>
-<li><code>COPY</code>: this works as in Dockerfiles. At this moment, only a single copy operation per "instruction" (think one copy per line). These files are copied inside the image's <code>rootfs</code>, which is then passed to the unikernel as a block device and mounted under <code>/data</code> directory.</li>
-<li><code>LABEL</code>: all LABEL "instructions" are added as annotations to the Container image. They are also added to a special <code>urunc.json</code> inside the container's rootfs.</li>
-</ul>
-<p>Due to the tight coupling between bima and urunc, the few annotations that are required for urunc to work, are also required by bima.</p>
-<p>The required annotations are the following:</p>
-<ul>
-<li><code>com.urunc.unikernel.unikernelType</code>: The type of the unikernel (can be rumprun, unikraft, etc)</li>
-<li><code>com.urunc.unikernel.hypervisor</code>: The desired hypervisor to run the unikernel (eg qemu, hedge, hvt)</li>
-<li><code>com.urunc.unikernel.binary</code>: The unikernel binary to run</li>
-<li><code>com.urunc.unikernel.cmdline</code>: The cmdline used to run the unikernel</li>
-</ul>
-<p>The produced image's platform OS is always Linux, while the platform architecture is automatically extracted from the ELF headers of the file defined in <code>com.urunc.unikernel.binary</code> annotation.</p>
-<p>A sample Containerfile should look like this:</p>
-<pre><code class="language-Dockerfile"># the FROM instruction will not be parsed
-FROM scratch
+  <h1>Tutorials</h1>
 
-COPY test-redis.hvt /unikernel/test-redis.hvt
-COPY redis.conf /conf/redis.conf
 
-LABEL com.urunc.unikernel.binary=/unikernel/test-redis.hvt
-LABEL &quot;com.urunc.unikernel.cmdline&quot;='redis-server /data/conf/redis.conf'
-LABEL &quot;com.urunc.unikernel.unikernelType&quot;=&quot;rumprun&quot;
-LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;qemu&quot;
-</code></pre>
-<blockquote>
-<p>Note: For labels, you can use single quotes, double quotes or no quotes at all. Defining multiple label key-value pairs in a single LABEL instruction is not supported.</p>
-</blockquote>
-<h2 id="usage">Usage</h2>
-<p>Bima mostly follows the Docker build CLI interface, as you can see:</p>
-<pre><code>NAME:
-   bima build - build a container image
-
-USAGE:
-   bima build [command options] [arguments...]
-
-OPTIONS:
-   --namespace NAMESPACE, -n NAMESPACE       NAMESPACE to use when importing image to containerd (default: &quot;default&quot;) [$CONTAINERD_NAMESPACE]
-   --address ADDRESS, -a ADDRESS             ADDRESS for containerd's GRPC server to use when importing image to containerd (default: &quot;/run/containerd/containerd.sock&quot;) [$CONTAINERD_ADDRESS]
-   --snapshotter SNAPSHOTTER                 [Optional] SNAPSHOTTER name. Empty value stands for the default value. Used when importing the produced image to containerd [$CONTAINERD_SNAPSHOTTER]
-   --output OUTPUT, --out OUTPUT, -o OUTPUT  [Optional] OUTPUT format for the produced images. Possible values: [&quot;ctr&quot;, &quot;tar&quot;] (default: &quot;ctr&quot;)
-   --tar                                     [Optional] Shorthand version of --output=tar (default: false)
-   --tag NAME, -t NAME                       Image NAME and optionally a tag (format: &quot;name:tag&quot;)
-   --file CONTAINERFILE, -f CONTAINERFILE    Name of the CONTAINERFILE  (default: &quot;./Containerfile&quot;)
-   --help, -h                                show help
-</code></pre>
-<p>Apart from the command options, <code>bima build</code> only accepts a single argument: the context directory for the build.</p>
-<p>In addition to the usual options, there are a few more (non Docker) options, namely <code>namespace</code>, <code>address</code>, <code>snapshotter</code> and <code>output</code>. </p>
-<p>By default, bima will import the image to containerd. Namespace, address and snapshotter are passed directly to containerd, when importing the produced image.</p>
-<p>If you want to inspect the image instead, you can set <code>--output=tar</code> or <code>--tar</code> flag to create a local tarball of the container image.</p>
-<p>For example, to create an image based on Containerfile (or Dockerfile) found in the current directory:</p>
-<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/image:tag .
-</code></pre>
-<p>To create an image tarball:</p>
-<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/image:tag --tar .
-# or
-bima build -t harbor.nbfc.io/nubificus/image:tag --output tar .
-</code></pre>
-<p>To create an image from a different Containerfile:</p>
-<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/redis:latest -f Containerfile.redis .
-</code></pre>
-<p>You can verify that images were properly created:</p>
-<pre><code class="language-bash">sudo ctr image ls
-</code></pre>
-<p>To push the image:</p>
-<pre><code class="language-bash">sudo ctr image push harbor.nbfc.io/nubificus/redis:latest
-</code></pre>
-<h2 id="build-from-source">Build from source</h2>
-<p>To build from source, you can use the Makefile:</p>
-<pre><code class="language-bash">make
-</code></pre>
-<p>This will build a single binary under <code>./dist</code> directory for your CPU's architecture.</p>
-<p>To install the binary:</p>
-<pre><code class="language-bash">sudo make install
-</code></pre>
-<p>If you want to compile for both <code>aarch64</code> and <code>amd64</code>:</p>
-<pre><code class="language-bash">make all
-</code></pre>
 
 
 

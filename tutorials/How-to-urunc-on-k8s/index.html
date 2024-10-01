@@ -9,25 +9,23 @@
       
       
       
-        <link rel="prev" href="../hypervisor-support/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../design/">
       
-      
-      <link rel="icon" href="../img/urunc-logo.png">
+      <link rel="icon" href="../../img/urunc-logo.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
-        <title>Container image building - urunc Documentation</title>
+        <title>How to use urunc with k8s - urunc Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +44,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bima-package-a-unikernel-into-an-oci-artifact" class="md-skip">
+        <a href="#how-to-use-urunc-with-k8s" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +88,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="urunc Documentation" class="md-header__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
+    <a href="../.." title="urunc Documentation" class="md-header__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
       
-  <img src="../img/urunc-logo.png" alt="logo">
+  <img src="../../img/urunc-logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Container image building
+              How to use urunc with k8s
             
           </span>
         </div>
@@ -173,9 +171,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="urunc Documentation" class="md-nav__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
+    <a href="../.." title="urunc Documentation" class="md-nav__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
       
-  <img src="../img/urunc-logo.png" alt="logo">
+  <img src="../../img/urunc-logo.png" alt="logo">
 
     </a>
     urunc Documentation
@@ -190,7 +188,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -210,7 +208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart.md" class="md-nav__link">
+      <a href="../../quickstart.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -230,7 +228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../installation/" class="md-nav__link">
+      <a href="../../installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -250,7 +248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hypervisor-support/" class="md-nav__link">
+      <a href="../../hypervisor-support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -270,7 +268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../unikernel-support.md" class="md-nav__link">
+      <a href="../../unikernel-support.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -287,30 +285,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Container image building
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../image-building/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -319,44 +297,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-from-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build from source
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -380,7 +320,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../design/" class="md-nav__link ">
+            <a href="../../design/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -411,7 +351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/architecture/" class="md-nav__link">
+      <a href="../../design/architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -451,7 +391,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../developer-guide/" class="md-nav__link ">
+            <a href="../../developer-guide/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -482,7 +422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/contribute/" class="md-nav__link">
+      <a href="../../developer-guide/contribute/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -503,7 +443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/development/" class="md-nav__link">
+      <a href="../../developer-guide/development/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -524,7 +464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/timestamps/" class="md-nav__link">
+      <a href="../../developer-guide/timestamps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -570,22 +510,24 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../tutorials/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -602,7 +544,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
@@ -613,10 +555,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../tutorials/How-to-urunc-on-k8s/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    How to use urunc with k8s
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -625,6 +587,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-urunc-as-a-runtimeclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add urunc as a RuntimeClass
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-test-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a test deployment
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -664,18 +664,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#add-urunc-as-a-runtimeclass" class="md-nav__link">
     <span class="md-ellipsis">
-      Usage
+      Add urunc as a RuntimeClass
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#build-from-source" class="md-nav__link">
+  <a href="#create-a-test-deployment" class="md-nav__link">
     <span class="md-ellipsis">
-      Build from source
+      Create a test deployment
     </span>
   </a>
   
@@ -696,88 +696,77 @@
                   
 
 
-<h1 id="bima-package-a-unikernel-into-an-oci-artifact">bima: Package a unikernel into an OCI artifact</h1>
-<p>bima builds an OCI-compatible Container Image from a special type of containerfile. This special containerfile supports
-a minimal set of "instructions", namely FROM, COPY and LABEL. The images built by bima are intended to be run by urunc,
-so there is no compatibility with other container runtimes.</p>
-<ul>
-<li><code>FROM</code>: this is not taken into account at the current implementation, but we plan to add support for.</li>
-<li><code>COPY</code>: this works as in Dockerfiles. At this moment, only a single copy operation per "instruction" (think one copy per line). These files are copied inside the image's <code>rootfs</code>, which is then passed to the unikernel as a block device and mounted under <code>/data</code> directory.</li>
-<li><code>LABEL</code>: all LABEL "instructions" are added as annotations to the Container image. They are also added to a special <code>urunc.json</code> inside the container's rootfs.</li>
-</ul>
-<p>Due to the tight coupling between bima and urunc, the few annotations that are required for urunc to work, are also required by bima.</p>
-<p>The required annotations are the following:</p>
-<ul>
-<li><code>com.urunc.unikernel.unikernelType</code>: The type of the unikernel (can be rumprun, unikraft, etc)</li>
-<li><code>com.urunc.unikernel.hypervisor</code>: The desired hypervisor to run the unikernel (eg qemu, hedge, hvt)</li>
-<li><code>com.urunc.unikernel.binary</code>: The unikernel binary to run</li>
-<li><code>com.urunc.unikernel.cmdline</code>: The cmdline used to run the unikernel</li>
-</ul>
-<p>The produced image's platform OS is always Linux, while the platform architecture is automatically extracted from the ELF headers of the file defined in <code>com.urunc.unikernel.binary</code> annotation.</p>
-<p>A sample Containerfile should look like this:</p>
-<pre><code class="language-Dockerfile"># the FROM instruction will not be parsed
-FROM scratch
+<h1 id="how-to-use-urunc-with-k8s">How to use urunc with k8s</h1>
+<p>This guide assumes you have a working Kubernetes cluster and have <a href="Installation.md">installed urunc</a> on one or more nodes.</p>
+<h2 id="add-urunc-as-a-runtimeclass">Add urunc as a RuntimeClass</h2>
+<p>First, we need to add <code>urunc</code> as a runtime class for the k8s cluster:</p>
+<pre><code class="language-bash">cat &lt;&lt; EOF | tee urunc-runtimeClass.yaml
+kind: RuntimeClass
+apiVersion: node.k8s.io/v1
+metadata:
+    name: urunc
+handler: urunc
+EOF
 
-COPY test-redis.hvt /unikernel/test-redis.hvt
-COPY redis.conf /conf/redis.conf
+kubectl apply -f urunc-runtimeClass.yaml
+</code></pre>
+<p>To verify the runtimeClass was added:</p>
+<pre><code class="language-bash">kubectl get runtimeClass
+</code></pre>
+<h2 id="create-a-test-deployment">Create a test deployment</h2>
+<p>To properly test the newly added k8s runtime class, create a test deployment:</p>
+<pre><code class="language-bash">cat &lt;&lt;EOF | tee nginx-urunc.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: nginx-urunc
+  name: nginx-urunc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: nginx-urunc
+  template:
+    metadata:
+      labels:
+        run: nginx-urunc
+    spec:
+      nodeName: nuc4
+      runtimeClassName: urunc
+      containers:
+      - image: nubificus/nginx-hvt:x86_64
+        imagePullPolicy: Always
+        name: nginx-urunc
+        command: [&quot;sleep&quot;]
+        args: [&quot;infinity&quot;]
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 10m
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-urunc
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: nginx-urunc
+  sessionAffinity: None
+  type: ClusterIP
+EOF
 
-LABEL com.urunc.unikernel.binary=/unikernel/test-redis.hvt
-LABEL &quot;com.urunc.unikernel.cmdline&quot;='redis-server /data/conf/redis.conf'
-LABEL &quot;com.urunc.unikernel.unikernelType&quot;=&quot;rumprun&quot;
-LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;qemu&quot;
+kubectl apply -f nginx-urunc.yaml
 </code></pre>
-<blockquote>
-<p>Note: For labels, you can use single quotes, double quotes or no quotes at all. Defining multiple label key-value pairs in a single LABEL instruction is not supported.</p>
-</blockquote>
-<h2 id="usage">Usage</h2>
-<p>Bima mostly follows the Docker build CLI interface, as you can see:</p>
-<pre><code>NAME:
-   bima build - build a container image
-
-USAGE:
-   bima build [command options] [arguments...]
-
-OPTIONS:
-   --namespace NAMESPACE, -n NAMESPACE       NAMESPACE to use when importing image to containerd (default: &quot;default&quot;) [$CONTAINERD_NAMESPACE]
-   --address ADDRESS, -a ADDRESS             ADDRESS for containerd's GRPC server to use when importing image to containerd (default: &quot;/run/containerd/containerd.sock&quot;) [$CONTAINERD_ADDRESS]
-   --snapshotter SNAPSHOTTER                 [Optional] SNAPSHOTTER name. Empty value stands for the default value. Used when importing the produced image to containerd [$CONTAINERD_SNAPSHOTTER]
-   --output OUTPUT, --out OUTPUT, -o OUTPUT  [Optional] OUTPUT format for the produced images. Possible values: [&quot;ctr&quot;, &quot;tar&quot;] (default: &quot;ctr&quot;)
-   --tar                                     [Optional] Shorthand version of --output=tar (default: false)
-   --tag NAME, -t NAME                       Image NAME and optionally a tag (format: &quot;name:tag&quot;)
-   --file CONTAINERFILE, -f CONTAINERFILE    Name of the CONTAINERFILE  (default: &quot;./Containerfile&quot;)
-   --help, -h                                show help
-</code></pre>
-<p>Apart from the command options, <code>bima build</code> only accepts a single argument: the context directory for the build.</p>
-<p>In addition to the usual options, there are a few more (non Docker) options, namely <code>namespace</code>, <code>address</code>, <code>snapshotter</code> and <code>output</code>. </p>
-<p>By default, bima will import the image to containerd. Namespace, address and snapshotter are passed directly to containerd, when importing the produced image.</p>
-<p>If you want to inspect the image instead, you can set <code>--output=tar</code> or <code>--tar</code> flag to create a local tarball of the container image.</p>
-<p>For example, to create an image based on Containerfile (or Dockerfile) found in the current directory:</p>
-<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/image:tag .
-</code></pre>
-<p>To create an image tarball:</p>
-<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/image:tag --tar .
-# or
-bima build -t harbor.nbfc.io/nubificus/image:tag --output tar .
-</code></pre>
-<p>To create an image from a different Containerfile:</p>
-<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/redis:latest -f Containerfile.redis .
-</code></pre>
-<p>You can verify that images were properly created:</p>
-<pre><code class="language-bash">sudo ctr image ls
-</code></pre>
-<p>To push the image:</p>
-<pre><code class="language-bash">sudo ctr image push harbor.nbfc.io/nubificus/redis:latest
-</code></pre>
-<h2 id="build-from-source">Build from source</h2>
-<p>To build from source, you can use the Makefile:</p>
-<pre><code class="language-bash">make
-</code></pre>
-<p>This will build a single binary under <code>./dist</code> directory for your CPU's architecture.</p>
-<p>To install the binary:</p>
-<pre><code class="language-bash">sudo make install
-</code></pre>
-<p>If you want to compile for both <code>aarch64</code> and <code>amd64</code>:</p>
-<pre><code class="language-bash">make all
+<p>Now, we should be able to see the created Pod:</p>
+<pre><code class="language-bash">kubectl get pods
 </code></pre>
 
 
@@ -829,10 +818,10 @@ bima build -t harbor.nbfc.io/nubificus/image:tag --output tar .
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>

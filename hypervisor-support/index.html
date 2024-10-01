@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../hypervisor-support/">
+        <link rel="prev" href="../installation/">
       
       
-        <link rel="next" href="../design/">
+        <link rel="next" href="../image-building/">
       
       
       <link rel="icon" href="../img/urunc-logo.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Container image building - urunc Documentation</title>
+        <title>Hypervisor Support - urunc Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bima-package-a-unikernel-into-an-oci-artifact" class="md-skip">
+        <a href="#installing-urunc-with-all-supported-hypervisors" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Container image building
+              Hypervisor Support
             
           </span>
         </div>
@@ -247,10 +247,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../hypervisor-support/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Hypervisor Support
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -259,6 +279,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#urunc-with-solo5-hvt" class="md-nav__link">
+    <span class="md-ellipsis">
+      urunc with solo5-hvt
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#urunc-with-qemu" class="md-nav__link">
+    <span class="md-ellipsis">
+      urunc with qemu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#urunc-with-firecracker" class="md-nav__link">
+    <span class="md-ellipsis">
+      urunc with firecracker
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -287,30 +354,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Container image building
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../image-building/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -319,44 +366,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-from-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build from source
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -664,18 +673,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#urunc-with-solo5-hvt" class="md-nav__link">
     <span class="md-ellipsis">
-      Usage
+      urunc with solo5-hvt
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#build-from-source" class="md-nav__link">
+  <a href="#urunc-with-qemu" class="md-nav__link">
     <span class="md-ellipsis">
-      Build from source
+      urunc with qemu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#urunc-with-firecracker" class="md-nav__link">
+    <span class="md-ellipsis">
+      urunc with firecracker
     </span>
   </a>
   
@@ -696,88 +714,48 @@
                   
 
 
-<h1 id="bima-package-a-unikernel-into-an-oci-artifact">bima: Package a unikernel into an OCI artifact</h1>
-<p>bima builds an OCI-compatible Container Image from a special type of containerfile. This special containerfile supports
-a minimal set of "instructions", namely FROM, COPY and LABEL. The images built by bima are intended to be run by urunc,
-so there is no compatibility with other container runtimes.</p>
-<ul>
-<li><code>FROM</code>: this is not taken into account at the current implementation, but we plan to add support for.</li>
-<li><code>COPY</code>: this works as in Dockerfiles. At this moment, only a single copy operation per "instruction" (think one copy per line). These files are copied inside the image's <code>rootfs</code>, which is then passed to the unikernel as a block device and mounted under <code>/data</code> directory.</li>
-<li><code>LABEL</code>: all LABEL "instructions" are added as annotations to the Container image. They are also added to a special <code>urunc.json</code> inside the container's rootfs.</li>
-</ul>
-<p>Due to the tight coupling between bima and urunc, the few annotations that are required for urunc to work, are also required by bima.</p>
-<p>The required annotations are the following:</p>
-<ul>
-<li><code>com.urunc.unikernel.unikernelType</code>: The type of the unikernel (can be rumprun, unikraft, etc)</li>
-<li><code>com.urunc.unikernel.hypervisor</code>: The desired hypervisor to run the unikernel (eg qemu, hedge, hvt)</li>
-<li><code>com.urunc.unikernel.binary</code>: The unikernel binary to run</li>
-<li><code>com.urunc.unikernel.cmdline</code>: The cmdline used to run the unikernel</li>
-</ul>
-<p>The produced image's platform OS is always Linux, while the platform architecture is automatically extracted from the ELF headers of the file defined in <code>com.urunc.unikernel.binary</code> annotation.</p>
-<p>A sample Containerfile should look like this:</p>
-<pre><code class="language-Dockerfile"># the FROM instruction will not be parsed
-FROM scratch
-
-COPY test-redis.hvt /unikernel/test-redis.hvt
-COPY redis.conf /conf/redis.conf
-
-LABEL com.urunc.unikernel.binary=/unikernel/test-redis.hvt
-LABEL &quot;com.urunc.unikernel.cmdline&quot;='redis-server /data/conf/redis.conf'
-LABEL &quot;com.urunc.unikernel.unikernelType&quot;=&quot;rumprun&quot;
-LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;qemu&quot;
-</code></pre>
+<h1 id="installing-urunc-with-all-supported-hypervisors">Installing urunc with all supported hypervisors</h1>
+<p>In this document, we will go through the installation process of the various hypervisors currently supported by <code>urunc</code>.</p>
 <blockquote>
-<p>Note: For labels, you can use single quotes, double quotes or no quotes at all. Defining multiple label key-value pairs in a single LABEL instruction is not supported.</p>
+<p>Note: In general, <code>urunc</code> expects all supported hypervisors to be available somewhere in the <code>$PATH</code>.</p>
 </blockquote>
-<h2 id="usage">Usage</h2>
-<p>Bima mostly follows the Docker build CLI interface, as you can see:</p>
-<pre><code>NAME:
-   bima build - build a container image
+<h2 id="urunc-with-solo5-hvt">urunc with solo5-hvt</h2>
+<p>First, let's install the apt packages required to build solo5:</p>
+<pre><code class="language-bash">sudo apt-get install libseccomp-dev pkg-config gcc -y
+</code></pre>
+<p>Next, we can clone and build <code>solo5-hvt</code>.</p>
+<pre><code class="language-bash">git clone -b v0.6.9 https://github.com/Solo5/solo5.git
+cd solo5
+./configure.sh &amp;&amp; make -j$(nproc)
+</code></pre>
+<p><code>urunc</code> expects to find the <code>solo5-hvt</code> binary located in the <code>$PATH</code> and named <code>solo5-hvt</code>. To install it:</p>
+<pre><code class="language-bash">sudo cp tenders/hvt/solo5-hvt /usr/local/bin
+</code></pre>
+<p>Next, we need to configure the <a href="https://github.com/nubificus/urunc/blob/main/docs/Installation.md#setup-thinpool-devmapper">devmapper snapshotter</a>.</p>
+<p>Now we can run a test unikernel:</p>
+<pre><code class="language-bash">sudo nerdctl run --rm -ti --snapshotter devmapper --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/redis-hvt-rump:latest unikernel
+</code></pre>
+<h2 id="urunc-with-qemu">urunc with qemu</h2>
+<p><code>urunc</code> expects to find the <code>qemu</code> binary located in the <code>$PATH</code> and named <code>qemu-system-{ARCH}</code>. You can ensure this by executing the following commands:</p>
+<pre><code class="language-bash">sudo apt-get install qemu-kvm -y
+</code></pre>
+<p>Now we can run a test unikernel:</p>
+<pre><code class="language-bash">sudo nerdctl run --rm -ti --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/nginx-qemu-unikraft:latest unikernel
+</code></pre>
+<h2 id="urunc-with-firecracker">urunc with firecracker</h2>
+<p><code>urunc</code> expects to find the <code>firecracker</code> binary located in the <code>$PATH</code> and named <code>firecracker</code>. You can ensure this by executing the following commands:</p>
+<pre><code class="language-bash">ARCH=&quot;$(uname -m)&quot;
+release_url=&quot;https://github.com/firecracker-microvm/firecracker/releases&quot;
+latest=$(basename $(curl -fsSLI -o /dev/null -w %{url_effective} ${release_url}/latest))
+curl -L ${release_url}/download/${latest}/firecracker-${latest}-${ARCH}.tgz \
+| tar -xz
 
-USAGE:
-   bima build [command options] [arguments...]
-
-OPTIONS:
-   --namespace NAMESPACE, -n NAMESPACE       NAMESPACE to use when importing image to containerd (default: &quot;default&quot;) [$CONTAINERD_NAMESPACE]
-   --address ADDRESS, -a ADDRESS             ADDRESS for containerd's GRPC server to use when importing image to containerd (default: &quot;/run/containerd/containerd.sock&quot;) [$CONTAINERD_ADDRESS]
-   --snapshotter SNAPSHOTTER                 [Optional] SNAPSHOTTER name. Empty value stands for the default value. Used when importing the produced image to containerd [$CONTAINERD_SNAPSHOTTER]
-   --output OUTPUT, --out OUTPUT, -o OUTPUT  [Optional] OUTPUT format for the produced images. Possible values: [&quot;ctr&quot;, &quot;tar&quot;] (default: &quot;ctr&quot;)
-   --tar                                     [Optional] Shorthand version of --output=tar (default: false)
-   --tag NAME, -t NAME                       Image NAME and optionally a tag (format: &quot;name:tag&quot;)
-   --file CONTAINERFILE, -f CONTAINERFILE    Name of the CONTAINERFILE  (default: &quot;./Containerfile&quot;)
-   --help, -h                                show help
+# Rename the binary to &quot;firecracker&quot;
+sudo mv release-${latest}-$(uname -m)/firecracker-${latest}-${ARCH} /usr/local/bin/firecracker
+rm -fr release-${latest}-$(uname -m)
 </code></pre>
-<p>Apart from the command options, <code>bima build</code> only accepts a single argument: the context directory for the build.</p>
-<p>In addition to the usual options, there are a few more (non Docker) options, namely <code>namespace</code>, <code>address</code>, <code>snapshotter</code> and <code>output</code>. </p>
-<p>By default, bima will import the image to containerd. Namespace, address and snapshotter are passed directly to containerd, when importing the produced image.</p>
-<p>If you want to inspect the image instead, you can set <code>--output=tar</code> or <code>--tar</code> flag to create a local tarball of the container image.</p>
-<p>For example, to create an image based on Containerfile (or Dockerfile) found in the current directory:</p>
-<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/image:tag .
-</code></pre>
-<p>To create an image tarball:</p>
-<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/image:tag --tar .
-# or
-bima build -t harbor.nbfc.io/nubificus/image:tag --output tar .
-</code></pre>
-<p>To create an image from a different Containerfile:</p>
-<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/redis:latest -f Containerfile.redis .
-</code></pre>
-<p>You can verify that images were properly created:</p>
-<pre><code class="language-bash">sudo ctr image ls
-</code></pre>
-<p>To push the image:</p>
-<pre><code class="language-bash">sudo ctr image push harbor.nbfc.io/nubificus/redis:latest
-</code></pre>
-<h2 id="build-from-source">Build from source</h2>
-<p>To build from source, you can use the Makefile:</p>
-<pre><code class="language-bash">make
-</code></pre>
-<p>This will build a single binary under <code>./dist</code> directory for your CPU's architecture.</p>
-<p>To install the binary:</p>
-<pre><code class="language-bash">sudo make install
-</code></pre>
-<p>If you want to compile for both <code>aarch64</code> and <code>amd64</code>:</p>
-<pre><code class="language-bash">make all
+<p>Now we can run a test unikernel:</p>
+<pre><code class="language-bash">sudo nerdctl run --rm -ti --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/nginx-fc-unik:latest unikernel
 </code></pre>
 
 
