@@ -6,8 +6,6 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Contributing guidelines">
-      
       
       
       <link rel="icon" href="../img/urunc-img-logo.png">
@@ -15,7 +13,7 @@
     
     
       
-        <title>Contributing - urunc Documentation</title>
+        <title>Container image building - urunc Documentation</title>
       
     
     
@@ -70,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#table-of-contents" class="md-skip">
+        <a href="#bima-package-a-unikernel-into-an-oci-artifact" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Contributing
+              Container image building
             
           </span>
         </div>
@@ -296,11 +294,59 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../image-building/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Container image building
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Container image building
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-from-source" class="md-nav__link">
+    Build from source
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -428,6 +474,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -436,90 +484,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#table-of-contents" class="md-nav__link">
-    Table of contents:
+  <a href="#usage" class="md-nav__link">
+    Usage
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#code-organization" class="md-nav__link">
-    Code organization
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-contribute" class="md-nav__link">
-    How to contribute
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#opening-an-issue" class="md-nav__link">
-    Opening an issue
-  </a>
-  
-    <nav class="md-nav" aria-label="Opening an issue">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#reporting-bugs" class="md-nav__link">
-    Reporting bugs
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#requesting-new-features" class="md-nav__link">
-    Requesting new features
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#submitting-a-pr" class="md-nav__link">
-    Submitting a PR
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#style-guide" class="md-nav__link">
-    Style guide
-  </a>
-  
-    <nav class="md-nav" aria-label="Style guide">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#git-commit-messages" class="md-nav__link">
-    Git commit messages
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#golang-code-styde" class="md-nav__link">
-    Golang code styde
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contact" class="md-nav__link">
-    Contact
+  <a href="#build-from-source" class="md-nav__link">
+    Build from source
   </a>
   
 </li>
@@ -539,103 +512,89 @@
                   
 
 
-  <h1>Contributing</h1>
+<h1 id="bima-package-a-unikernel-into-an-oci-artifact">bima: Package a unikernel into an OCI artifact</h1>
+<p>bima builds an OCI-compatible Container Image from a special type of containerfile. This special containerfile supports
+a minimal set of "instructions", namely FROM, COPY and LABEL. The images built by bima are intended to be run by urunc,
+so there is no compatibility with other container runtimes.</p>
+<ul>
+<li><code>FROM</code>: this is not taken into account at the current implementation, but we plan to add support for.</li>
+<li><code>COPY</code>: this works as in Dockerfiles. At this moment, only a single copy operation per "instruction" (think one copy per line). These files are copied inside the image's <code>rootfs</code>, which is then passed to the unikernel as a block device and mounted under <code>/data</code> directory.</li>
+<li><code>LABEL</code>: all LABEL "instructions" are added as annotations to the Container image. They are also added to a special <code>urunc.json</code> inside the container's rootfs.</li>
+</ul>
+<p>Due to the tight coupling between bima and urunc, the few annotations that are required for urunc to work, are also required by bima.</p>
+<p>The required annotations are the following:</p>
+<ul>
+<li><code>com.urunc.unikernel.unikernelType</code>: The type of the unikernel (can be rumprun, unikraft, etc)</li>
+<li><code>com.urunc.unikernel.hypervisor</code>: The desired hypervisor to run the unikernel (eg qemu, hedge, hvt)</li>
+<li><code>com.urunc.unikernel.binary</code>: The unikernel binary to run</li>
+<li><code>com.urunc.unikernel.cmdline</code>: The cmdline used to run the unikernel</li>
+</ul>
+<p>The produced image's platform OS is always Linux, while the platform architecture is automatically extracted from the ELF headers of the file defined in <code>com.urunc.unikernel.binary</code> annotation.</p>
+<p>A sample Containerfile should look like this:</p>
+<pre><code class="language-Dockerfile"># the FROM instruction will not be parsed
+FROM scratch
 
-<p>Urunc is an open-source project licenced under the <a href="LICENSE">Apache License 2.0</a>.
-We welcome anyone who would be interested in contributing to <code>urunc</code>.
-As a first step, please take a look at the following document.
-The current document provides a high level overview of <code>urunc</code>'s code structure, along with a few guidelines regarding contributions to the project.</p>
-<h2 id="table-of-contents">Table of contents:</h2>
-<ol>
-<li><a href="CONTRIBUTING.md#Code-organization">Code organization</a></li>
-<li><a href="CONTRIBUTING.md#How-to-contribute">How to contribute</a></li>
-<li><a href="CONTRIBUTING.md#Opening-a-new-issue">Opening a new issue</a></li>
-<li><a href="CONTRIBUTING.md#Requesting-a-new-feature">Requesting a new feature</a></li>
-<li><a href="CONTRIBUTING.md#Submitting-a-PR">Submitting a PR</a></li>
-<li><a href="CONTRIBUTING.md#Style-guide">Style guide</a></li>
-<li><a href="CONTRIBUTING.md#Contact">Contact</a></li>
-</ol>
-<h2 id="code-organization">Code organization</h2>
-<p>Urunc is written in Go and we structure the code and other files as follows:
-- <code>/</code>: The root directory contains the Makefile to build <code>urunc</code>, along with other non-code files, such as the licence, readme and more.
-- <code>/docs</code>: This directory contains all the documentation related to <code>urunc</code>, such as the installation guide, timestamping and more.
-- <code>/cmd</code>: This directory contains handlers for the various command line options of <code>urunc</code> and the implementation of containerd-shim.
-- <code>/internal/metrics</code>: This directory contains the implementation of the metrics logger, which is used for the internal measuring of <code>urunc</code>'s setup steps.
-- <code>/pkg</code>: This directory contains the majority of the code for <code>urunc</code>. In particular, the subdirectory <code>/pkg/network/</code> contains network related code as expected, while the <code>/pkg/unikontainers/</code> subdirectory contains the main logic of <code>urunc</code>, along with the VMM/unikernel related logic.</p>
-<p>Therefore, we expect any new documentation related files to be placed under <code>/docs</code> and any changes or new files in code to be either in the <code>/cmd/</code> or <code>/pkg/</code> directory.</p>
-<h2 id="how-to-contribute">How to contribute</h2>
-<p>There are plenty of ways to contribute to an open source project, even without changing or touching the code.
-Therefore, anyone who is interested in this project is very welcome to contribute in one of the following ways:
-1. Using <code>urunc</code>. Try it out yourself and let us know your experience. Did everything work well? Were the instructions clear?
-2. Improve or suggest changes to the documentation of the project. Documentation is very important for every project, hence any ideas on how to improve the documentation to make it more clear are more than welcome.
-3. Request new features. Any proposals for improving or adding new features are very welcome.
-4. Find a bug and report it. Bugs are everywhere and some are hidden very well. As a result, we would really appreciate it if someone found a bug and reported it to the maintainers.
-5. Make changes to the code. Improve the code, add new functionalities and make <code>urunc</code> even more useful.</p>
-<h2 id="opening-an-issue">Opening an issue</h2>
-<p>We use Github issues to track bugs and requests for new features.
-Anyone is welcome to open a new issue, which is either related to a bug or a request for a new feature.</p>
-<h3 id="reporting-bugs">Reporting bugs</h3>
-<p>In order to report a bug or misbehavior in <code>urunc</code>, a user can open a new issue explaining the problem.
-For the time being, we do not use any strict template for reporting any issues.
-However, in order to easily identify and fix the problem, it would be very helpful to provide enough information.
-In that context, when opening a new issue regarding a bug, we kindly ask you to:
-- Mark the issue with the bug label
-- Provide the following information:
-    1. A short description of the bug.
-    2. The respective logs both from the output and containerd.
-    3. Urunc's version (either the commit's hash or the version).
-    4. The CPU architecture, VMM and the Unikernel framework used.
-    5. Any particular steps to reproduce the issue.
-- Keep an eye on the issue for possible questions from the maintainers.</p>
-<p>A template for an issue could be the following one:</p>
-<pre><code>## Description
-An explanation of the issue 
+COPY test-redis.hvt /unikernel/test-redis.hvt
+COPY redis.conf /conf/redis.conf
 
-## System info
-- Urunc version:
-- Arch:
-- VMM:
-- Unikernel:
-
-## Steps to reproduce
-A list of steps that can reproduce the issue.
+LABEL com.urunc.unikernel.binary=/unikernel/test-redis.hvt
+LABEL &quot;com.urunc.unikernel.cmdline&quot;='redis-server /data/conf/redis.conf'
+LABEL &quot;com.urunc.unikernel.unikernelType&quot;=&quot;rumprun&quot;
+LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;qemu&quot;
 </code></pre>
-<h3 id="requesting-new-features">Requesting new features</h3>
-<p>We will be very happy to listen from users about new features that they would like to see in <code>urunc</code>.
-One way to communicate such a request is using Github issues.
-For the time being, we do not use any strict template for requesting new features.
-However, we kindly ask you to mark the issue with the enhancement label and provide a description of the new feature.</p>
-<h2 id="submitting-a-pr">Submitting a PR</h2>
-<p>Anyone should feel free to submit a change or an addition to the codebase of <code>urunc</code>.
-Currently, we use Github's Pull Requests (PRs) to submit changes to <code>urunc</code>'s codebase.
-Before creating a new PR, please follow the below guidelines:
-- Make sure that the changes do not break the building process of <code>urunc</code>.
-- Make sure that the tests run successfully.
-- Use one commit for each new or changed functionality 
-- Make sure that no commit in a PR breaks the building process of <code>urunc</code>
-- Make sure to sign-off your commits.
-- Provide meaningful commit messages, describing shortly the changes the commit introduces.
-- Provide a meaningful PR message</p>
-<p>As soon as a new PR is created the following workflow will take place:
-1. One of <code>urunc</code>'s maintainers will check the PR and invoke the tests, by adding the <code>ok-to-test</code> label.
-2. If the tests pass, one or more <code>urunc</code>'s maintainers will review the PR.
-3. The author of the PR should address all the comments from the reviewers.
-4. As soon as a reviewer approves the PR, an action will add the appropriate git trailers in the PR's commits.
-5. The PR is now ready to be merged.</p>
-<h2 id="style-guide">Style guide</h2>
-<h3 id="git-commit-messages">Git commit messages</h3>
-<p>Please follow the below guidelines for your commit messages:
-- Limit the first line to 72 characters or less.
-- Limit all the other lines to 80 characters
-- In case the PR is associated with an issue, please refer to it, using the git trailer <code>Fixes: #Nr_issue</code>
-- Always sign-off your commit message</p>
-<h3 id="golang-code-styde">Golang code styde</h3>
-<p>We follow gofmt's rules on formatting GO code. Therefore, we ask all contributors to do the same.
-Go provides the <code>gofmt</code> tool, which can be used for formatting your code.</p>
-<h2 id="contact">Contact</h2>
-<p>Feel free to contact any of the authors directly using their emails in the commit messages or using one of the below email addresses:
-- urunc@nubificus.co.uk
-- urunc@nubis-pc.eu</p>
+<blockquote>
+<p>Note: For labels, you can use single quotes, double quotes or no quotes at all. Defining multiple label key-value pairs in a single LABEL instruction is not supported.</p>
+</blockquote>
+<h2 id="usage">Usage</h2>
+<p>Bima mostly follows the Docker build CLI interface, as you can see:</p>
+<pre><code>NAME:
+   bima build - build a container image
+
+USAGE:
+   bima build [command options] [arguments...]
+
+OPTIONS:
+   --namespace NAMESPACE, -n NAMESPACE       NAMESPACE to use when importing image to containerd (default: &quot;default&quot;) [$CONTAINERD_NAMESPACE]
+   --address ADDRESS, -a ADDRESS             ADDRESS for containerd's GRPC server to use when importing image to containerd (default: &quot;/run/containerd/containerd.sock&quot;) [$CONTAINERD_ADDRESS]
+   --snapshotter SNAPSHOTTER                 [Optional] SNAPSHOTTER name. Empty value stands for the default value. Used when importing the produced image to containerd [$CONTAINERD_SNAPSHOTTER]
+   --output OUTPUT, --out OUTPUT, -o OUTPUT  [Optional] OUTPUT format for the produced images. Possible values: [&quot;ctr&quot;, &quot;tar&quot;] (default: &quot;ctr&quot;)
+   --tar                                     [Optional] Shorthand version of --output=tar (default: false)
+   --tag NAME, -t NAME                       Image NAME and optionally a tag (format: &quot;name:tag&quot;)
+   --file CONTAINERFILE, -f CONTAINERFILE    Name of the CONTAINERFILE  (default: &quot;./Containerfile&quot;)
+   --help, -h                                show help
+</code></pre>
+<p>Apart from the command options, <code>bima build</code> only accepts a single argument: the context directory for the build.</p>
+<p>In addition to the usual options, there are a few more (non Docker) options, namely <code>namespace</code>, <code>address</code>, <code>snapshotter</code> and <code>output</code>. </p>
+<p>By default, bima will import the image to containerd. Namespace, address and snapshotter are passed directly to containerd, when importing the produced image.</p>
+<p>If you want to inspect the image instead, you can set <code>--output=tar</code> or <code>--tar</code> flag to create a local tarball of the container image.</p>
+<p>For example, to create an image based on Containerfile (or Dockerfile) found in the current directory:</p>
+<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/image:tag .
+</code></pre>
+<p>To create an image tarball:</p>
+<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/image:tag --tar .
+# or
+bima build -t harbor.nbfc.io/nubificus/image:tag --output tar .
+</code></pre>
+<p>To create an image from a different Containerfile:</p>
+<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/redis:latest -f Containerfile.redis .
+</code></pre>
+<p>You can verify that images were properly created:</p>
+<pre><code class="language-bash">sudo ctr image ls
+</code></pre>
+<p>To push the image:</p>
+<pre><code class="language-bash">sudo ctr image push harbor.nbfc.io/nubificus/redis:latest
+</code></pre>
+<h2 id="build-from-source">Build from source</h2>
+<p>To build from source, you can use the Makefile:</p>
+<pre><code class="language-bash">make
+</code></pre>
+<p>This will build a single binary under <code>./dist</code> directory for your CPU's architecture.</p>
+<p>To install the binary:</p>
+<pre><code class="language-bash">sudo make install
+</code></pre>
+<p>If you want to compile for both <code>aarch64</code> and <code>amd64</code>:</p>
+<pre><code class="language-bash">make all
+</code></pre>
 
 
 
@@ -651,6 +610,27 @@ Go provides the <code>gofmt</code> tool, which can be used for formatting your c
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../installation-source/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Build from source" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Build from source
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

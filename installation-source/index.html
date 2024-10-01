@@ -6,8 +6,6 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Installation Guide">
-      
       
       
       <link rel="icon" href="../img/urunc-img-logo.png">
@@ -15,7 +13,7 @@
     
     
       
-        <title>Installation - urunc Documentation</title>
+        <title>Build from source - urunc Documentation</title>
       
     
     
@@ -102,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Installation
+              Build from source
             
           </span>
         </div>
@@ -204,12 +202,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -230,11 +230,178 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../installation-source/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Build from source
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Build from source
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install-urunc" class="md-nav__link">
+    Install urunc
+  </a>
+  
+    <nav class="md-nav" aria-label="Install urunc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-required-dependencies-through-package-management" class="md-nav__link">
+    Install required dependencies (through package management)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-go" class="md-nav__link">
+    Install Go
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-runc" class="md-nav__link">
+    Install runc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-containerd" class="md-nav__link">
+    Install containerd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-containerd-service" class="md-nav__link">
+    Install containerd service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-containerd" class="md-nav__link">
+    Configure containerd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-cni-plugins" class="md-nav__link">
+    Install CNI plugins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-nerdctl" class="md-nav__link">
+    Install nerdctl
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-thinpool-devmapper" class="md-nav__link">
+    Setup thinpool devmapper
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-containerd-for-devmapper" class="md-nav__link">
+    Configure containerd for devmapper
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-devmapper" class="md-nav__link">
+    Initialize devmapper
+  </a>
+  
+    <nav class="md-nav" aria-label="Initialize devmapper">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-and-install-urunc" class="md-nav__link">
+    Build and install urunc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-urunc-runtime-to-containerd" class="md-nav__link">
+    Add urunc runtime to containerd
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-an-example-unikernel" class="md-nav__link">
+    Run an example unikernel
+  </a>
+  
+    <nav class="md-nav" aria-label="Run an example unikernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-solo5" class="md-nav__link">
+    Install solo5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-a-redis-rumprun-unikernel-over-solo5" class="md-nav__link">
+    Run a redis rumprun unikernel over solo5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -444,15 +611,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#update-ubuntu" class="md-nav__link">
-    Update Ubuntu
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install-required-apt-packages" class="md-nav__link">
-    Install required apt packages
+  <a href="#install-required-dependencies-through-package-management" class="md-nav__link">
+    Install required dependencies (through package management)
   </a>
   
 </li>
@@ -534,13 +694,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#install-bima" class="md-nav__link">
-    Install bima
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#build-and-install-urunc" class="md-nav__link">
     Build and install urunc
   </a>
@@ -575,8 +728,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#run-a-redis-unikernel" class="md-nav__link">
-    Run a redis unikernel
+  <a href="#run-a-redis-rumprun-unikernel-over-solo5" class="md-nav__link">
+    Run a redis rumprun unikernel over solo5
   </a>
   
 </li>
@@ -601,9 +754,10 @@
                   
 
 
-  <h1>Installation</h1>
+  <h1>Build from source</h1>
 
-<p>This document guides you through the installation of <code>urunc</code> and all required components in a fresh Ubuntu 22.04 machine. An example unikernel spawn is also included.</p>
+<p>This document guides you through the installation of <code>urunc</code> and all required
+components in a vanilla Ubuntu 22.04 machine.</p>
 <p>We will be installing and setting up:</p>
 <ul>
 <li><a href="https://go.dev/doc/install">Go 1.20.6</a></li>
@@ -613,30 +767,30 @@
 <li><a href="https://github.com/containerd/nerdctl">nerdctl</a></li>
 <li><a href="https://docs.docker.com/storage/storagedriver/device-mapper-driver/">devmapper</a></li>
 <li><a href="https://github.com/nubificus/bima">bima</a></li>
-<li>urunc</li>
+<li><a href="https://github.com/nubificus/urunc">urunc</a></li>
 </ul>
 <h2 id="install-urunc">Install urunc</h2>
-<h3 id="update-ubuntu">Update Ubuntu</h3>
-<p>Before we continue, let's make sure Ubuntu is up to date:</p>
-<pre><code class="language-bash">sudo apt-get update
-sudo apt-get upgrade -y
-</code></pre>
-<h3 id="install-required-apt-packages">Install required apt packages</h3>
-<p>The following apt packages are required to complete the installation. Depending on your specific needs, some of them may not be neccessary in your use case.</p>
+<h3 id="install-required-dependencies-through-package-management">Install required dependencies (through package management)</h3>
+<p>The following apt packages are required to complete the installation. Depending
+on your specific needs, some of them may not be neccessary in your use case.</p>
 <pre><code class="language-bash">sudo apt-get install git wget bc make build-essential -y
 </code></pre>
 <h3 id="install-go">Install Go</h3>
 <p>To install Go 1.20.6:</p>
 <pre><code class="language-bash">wget -q https://go.dev/dl/go1.20.6.linux-$(dpkg --print-architecture).tar.gz
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf go1.20.6.linux-$(dpkg --print-architecture).tar.gz
+sudo mkdir go1.20.6
+sudo tar -C /usr/local/go1.20.6 -xzf go1.20.6.linux-$(dpkg --print-architecture).tar.gz
 sudo tee -a /etc/profile &gt; /dev/null &lt;&lt; 'EOT'
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/go1.20.6/go/bin
 EOT
 rm -f go1.20.6.linux-$(dpkg --print-architecture).tar.gz
 </code></pre>
 <h3 id="install-runc">Install runc</h3>
-<p><code>urunc</code> requires <code>runc</code> to handle any unsupported container images (for example, in k8s pods the pause container is delegated to <code>runc</code> and urunc handles only the unikernel container). You can <a href="https://github.com/opencontainers/runc/tree/main#building">build runc from source</a> or download the latest binary following the commands:</p>
+<p><code>urunc</code> requires <code>runc</code> to handle any unsupported container images (for
+example, in k8s pods the pause container is delegated to <code>runc</code> and urunc
+handles only the unikernel container). You can <a href="https://github.com/opencontainers/runc/tree/main#building">build runc from
+source</a> or download
+the latest binary following the commands:</p>
 <pre><code class="language-bash">RUNC_VERSION=$(curl -L -s -o /dev/null -w '%{url_effective}' &quot;https://github.com/opencontainers/runc/releases/latest&quot; | grep -oP &quot;v\d+\.\d+\.\d+&quot; | sed 's/v//')
 wget -q https://github.com/opencontainers/runc/releases/download/v$RUNC_VERSION/runc.$(dpkg --print-architecture)
 sudo install -m 755 runc.$(dpkg --print-architecture) /usr/local/sbin/runc
@@ -663,7 +817,9 @@ sudo mv /etc/containerd/config.toml /etc/containerd/config.toml.bak
 sudo containerd config default | sudo tee /etc/containerd/config.toml
 sudo systemctl restart containerd
 </code></pre>
-<p>For more information, you can read containerd's <a href="https://github.com/containerd/containerd/blob/main/docs/getting-started.md">Getting Started</a> guide. </p>
+<p>For more information, you can read containerd's <a href="https://github.com/containerd/containerd/blob/main/docs/getting-started.md">Getting
+Started</a>
+guide. </p>
 <h3 id="install-cni-plugins">Install CNI plugins</h3>
 <p>To install the latest release of CNI plugins:</p>
 <pre><code class="language-bash">CNI_VERSION=$(curl -L -s -o /dev/null -w '%{url_effective}' &quot;https://github.com/containernetworking/plugins/releases/latest&quot; | grep -oP &quot;v\d+\.\d+\.\d+&quot; | sed 's/v//')
@@ -681,7 +837,7 @@ sudo rm -f nerdctl-$NERDCTL_VERSION-linux-$(dpkg --print-architecture).tar.gz
 </code></pre>
 <h3 id="setup-thinpool-devmapper">Setup thinpool devmapper</h3>
 <pre><code class="language-bash">sudo mkdir -p /usr/local/bin/scripts
-git clone git@github.com:nubificus/urunc.git
+git clone https://github.com/nubificus/urunc.git
 
 sudo cp urunc/script/dm_create.sh /usr/local/bin/scripts/dm_create.sh
 sudo chmod 755 /usr/local/bin/scripts/dm_create.sh
@@ -715,12 +871,6 @@ sudo systemctl restart containerd
 <h2 id="initialize-devmapper">Initialize devmapper</h2>
 <pre><code class="language-bash">sudo /usr/local/bin/scripts/dm_create.sh
 </code></pre>
-<h3 id="install-bima">Install bima</h3>
-<pre><code class="language-bash">git clone git@github.com:nubificus/bima.git
-cd bima
-make &amp;&amp; sudo make install
-cd ..
-</code></pre>
 <h3 id="build-and-install-urunc">Build and install urunc</h3>
 <pre><code class="language-bash">git clone git@github.com:nubificus/urunc.git
 cd urunc
@@ -737,7 +887,7 @@ cd ..
 EOT
 sudo systemctl restart containerd
 </code></pre>
-<p>Now, we are ready to build and run our unikernel images!</p>
+<p>Now, we are ready to run our unikernel images!</p>
 <h2 id="run-an-example-unikernel">Run an example unikernel</h2>
 <h3 id="install-solo5">Install solo5</h3>
 <p>First, let's install the apt packages required to build solo5:</p>
@@ -750,7 +900,7 @@ cd solo5
 sudo cp tenders/hvt/solo5-hvt /usr/local/bin
 sudo cp tenders/spt/solo5-spt /usr/local/bin
 </code></pre>
-<h3 id="run-a-redis-unikernel">Run a redis unikernel</h3>
+<h3 id="run-a-redis-rumprun-unikernel-over-solo5">Run a redis rumprun unikernel over solo5</h3>
 <p>Now, let's run a unikernel image:</p>
 <pre><code class="language-bash">sudo nerdctl run --rm -ti --snapshotter devmapper --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/redis-hvt-rump:latest unikernel
 </code></pre>
@@ -769,6 +919,42 @@ sudo cp tenders/spt/solo5-spt /usr/local/bin
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../image-building/" class="md-footer__link md-footer__link--next" aria-label="Next: Container image building" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Container image building
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

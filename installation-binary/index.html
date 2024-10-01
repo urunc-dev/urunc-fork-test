@@ -6,8 +6,6 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Contributing guidelines">
-      
       
       
       <link rel="icon" href="../img/urunc-img-logo.png">
@@ -15,7 +13,7 @@
     
     
       
-        <title>Contributing - urunc Documentation</title>
+        <title>Installation binary - urunc Documentation</title>
       
     
     
@@ -70,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#table-of-contents" class="md-skip">
+        <a href="#install-urunc" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Contributing
+              Installation binary
             
           </span>
         </div>
@@ -436,44 +434,79 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#table-of-contents" class="md-nav__link">
-    Table of contents:
+  <a href="#install-urunc" class="md-nav__link">
+    Install urunc
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#code-organization" class="md-nav__link">
-    Code organization
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-contribute" class="md-nav__link">
-    How to contribute
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#opening-an-issue" class="md-nav__link">
-    Opening an issue
-  </a>
-  
-    <nav class="md-nav" aria-label="Opening an issue">
+    <nav class="md-nav" aria-label="Install urunc">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#reporting-bugs" class="md-nav__link">
-    Reporting bugs
+  <a href="#install-required-dependencies-through-package-management" class="md-nav__link">
+    Install required dependencies (through package management)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#requesting-new-features" class="md-nav__link">
-    Requesting new features
+  <a href="#install-go" class="md-nav__link">
+    Install Go
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-runc" class="md-nav__link">
+    Install runc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-containerd" class="md-nav__link">
+    Install containerd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-containerd-service" class="md-nav__link">
+    Install containerd service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-containerd" class="md-nav__link">
+    Configure containerd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-cni-plugins" class="md-nav__link">
+    Install CNI plugins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-nerdctl" class="md-nav__link">
+    Install nerdctl
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-thinpool-devmapper" class="md-nav__link">
+    Setup thinpool devmapper
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-containerd-for-devmapper" class="md-nav__link">
+    Configure containerd for devmapper
   </a>
   
 </li>
@@ -484,30 +517,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#submitting-a-pr" class="md-nav__link">
-    Submitting a PR
+  <a href="#initialize-devmapper" class="md-nav__link">
+    Initialize devmapper
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#style-guide" class="md-nav__link">
-    Style guide
-  </a>
-  
-    <nav class="md-nav" aria-label="Style guide">
+    <nav class="md-nav" aria-label="Initialize devmapper">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#git-commit-messages" class="md-nav__link">
-    Git commit messages
+  <a href="#install-urunc_1" class="md-nav__link">
+    Install urunc
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#golang-code-styde" class="md-nav__link">
-    Golang code styde
+  <a href="#add-urunc-runtime-to-containerd" class="md-nav__link">
+    Add urunc runtime to containerd
   </a>
   
 </li>
@@ -518,9 +544,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#contact" class="md-nav__link">
-    Contact
+  <a href="#run-an-example-unikernel" class="md-nav__link">
+    Run an example unikernel
   </a>
+  
+    <nav class="md-nav" aria-label="Run an example unikernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-solo5" class="md-nav__link">
+    Install solo5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-a-redis-rumprun-unikernel-over-solo5" class="md-nav__link">
+    Run a redis rumprun unikernel over solo5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -539,103 +585,168 @@
                   
 
 
-  <h1>Contributing</h1>
+  <h1>Installation binary</h1>
 
-<p>Urunc is an open-source project licenced under the <a href="LICENSE">Apache License 2.0</a>.
-We welcome anyone who would be interested in contributing to <code>urunc</code>.
-As a first step, please take a look at the following document.
-The current document provides a high level overview of <code>urunc</code>'s code structure, along with a few guidelines regarding contributions to the project.</p>
-<h2 id="table-of-contents">Table of contents:</h2>
-<ol>
-<li><a href="CONTRIBUTING.md#Code-organization">Code organization</a></li>
-<li><a href="CONTRIBUTING.md#How-to-contribute">How to contribute</a></li>
-<li><a href="CONTRIBUTING.md#Opening-a-new-issue">Opening a new issue</a></li>
-<li><a href="CONTRIBUTING.md#Requesting-a-new-feature">Requesting a new feature</a></li>
-<li><a href="CONTRIBUTING.md#Submitting-a-PR">Submitting a PR</a></li>
-<li><a href="CONTRIBUTING.md#Style-guide">Style guide</a></li>
-<li><a href="CONTRIBUTING.md#Contact">Contact</a></li>
-</ol>
-<h2 id="code-organization">Code organization</h2>
-<p>Urunc is written in Go and we structure the code and other files as follows:
-- <code>/</code>: The root directory contains the Makefile to build <code>urunc</code>, along with other non-code files, such as the licence, readme and more.
-- <code>/docs</code>: This directory contains all the documentation related to <code>urunc</code>, such as the installation guide, timestamping and more.
-- <code>/cmd</code>: This directory contains handlers for the various command line options of <code>urunc</code> and the implementation of containerd-shim.
-- <code>/internal/metrics</code>: This directory contains the implementation of the metrics logger, which is used for the internal measuring of <code>urunc</code>'s setup steps.
-- <code>/pkg</code>: This directory contains the majority of the code for <code>urunc</code>. In particular, the subdirectory <code>/pkg/network/</code> contains network related code as expected, while the <code>/pkg/unikontainers/</code> subdirectory contains the main logic of <code>urunc</code>, along with the VMM/unikernel related logic.</p>
-<p>Therefore, we expect any new documentation related files to be placed under <code>/docs</code> and any changes or new files in code to be either in the <code>/cmd/</code> or <code>/pkg/</code> directory.</p>
-<h2 id="how-to-contribute">How to contribute</h2>
-<p>There are plenty of ways to contribute to an open source project, even without changing or touching the code.
-Therefore, anyone who is interested in this project is very welcome to contribute in one of the following ways:
-1. Using <code>urunc</code>. Try it out yourself and let us know your experience. Did everything work well? Were the instructions clear?
-2. Improve or suggest changes to the documentation of the project. Documentation is very important for every project, hence any ideas on how to improve the documentation to make it more clear are more than welcome.
-3. Request new features. Any proposals for improving or adding new features are very welcome.
-4. Find a bug and report it. Bugs are everywhere and some are hidden very well. As a result, we would really appreciate it if someone found a bug and reported it to the maintainers.
-5. Make changes to the code. Improve the code, add new functionalities and make <code>urunc</code> even more useful.</p>
-<h2 id="opening-an-issue">Opening an issue</h2>
-<p>We use Github issues to track bugs and requests for new features.
-Anyone is welcome to open a new issue, which is either related to a bug or a request for a new feature.</p>
-<h3 id="reporting-bugs">Reporting bugs</h3>
-<p>In order to report a bug or misbehavior in <code>urunc</code>, a user can open a new issue explaining the problem.
-For the time being, we do not use any strict template for reporting any issues.
-However, in order to easily identify and fix the problem, it would be very helpful to provide enough information.
-In that context, when opening a new issue regarding a bug, we kindly ask you to:
-- Mark the issue with the bug label
-- Provide the following information:
-    1. A short description of the bug.
-    2. The respective logs both from the output and containerd.
-    3. Urunc's version (either the commit's hash or the version).
-    4. The CPU architecture, VMM and the Unikernel framework used.
-    5. Any particular steps to reproduce the issue.
-- Keep an eye on the issue for possible questions from the maintainers.</p>
-<p>A template for an issue could be the following one:</p>
-<pre><code>## Description
-An explanation of the issue 
-
-## System info
-- Urunc version:
-- Arch:
-- VMM:
-- Unikernel:
-
-## Steps to reproduce
-A list of steps that can reproduce the issue.
+<p>This document guides you through the binary installation of <code>urunc</code> and all
+required components in a vanilla Ubuntu 22.04 machine.</p>
+<p>We will be installing and setting up:</p>
+<ul>
+<li><a href="https://go.dev/doc/install">Go 1.20.6</a></li>
+<li><a href="https://github.com/opencontainers/runc">runc</a></li>
+<li><a href="https://github.com/containerd/containerd/">containerd</a></li>
+<li><a href="https://github.com/containernetworking/plugins">CNI plugins</a></li>
+<li><a href="https://github.com/containerd/nerdctl">nerdctl</a></li>
+<li><a href="https://docs.docker.com/storage/storagedriver/device-mapper-driver/">devmapper</a></li>
+<li><a href="https://github.com/nubificus/bima">bima</a></li>
+<li><a href="https://github.com/nubificus/urunc">urunc</a></li>
+</ul>
+<h2 id="install-urunc">Install urunc</h2>
+<h3 id="install-required-dependencies-through-package-management">Install required dependencies (through package management)</h3>
+<p>The following apt packages are required to complete the installation. Depending
+on your specific needs, some of them may not be neccessary in your use case.</p>
+<pre><code class="language-bash">sudo apt-get install git wget bc make build-essential -y
 </code></pre>
-<h3 id="requesting-new-features">Requesting new features</h3>
-<p>We will be very happy to listen from users about new features that they would like to see in <code>urunc</code>.
-One way to communicate such a request is using Github issues.
-For the time being, we do not use any strict template for requesting new features.
-However, we kindly ask you to mark the issue with the enhancement label and provide a description of the new feature.</p>
-<h2 id="submitting-a-pr">Submitting a PR</h2>
-<p>Anyone should feel free to submit a change or an addition to the codebase of <code>urunc</code>.
-Currently, we use Github's Pull Requests (PRs) to submit changes to <code>urunc</code>'s codebase.
-Before creating a new PR, please follow the below guidelines:
-- Make sure that the changes do not break the building process of <code>urunc</code>.
-- Make sure that the tests run successfully.
-- Use one commit for each new or changed functionality 
-- Make sure that no commit in a PR breaks the building process of <code>urunc</code>
-- Make sure to sign-off your commits.
-- Provide meaningful commit messages, describing shortly the changes the commit introduces.
-- Provide a meaningful PR message</p>
-<p>As soon as a new PR is created the following workflow will take place:
-1. One of <code>urunc</code>'s maintainers will check the PR and invoke the tests, by adding the <code>ok-to-test</code> label.
-2. If the tests pass, one or more <code>urunc</code>'s maintainers will review the PR.
-3. The author of the PR should address all the comments from the reviewers.
-4. As soon as a reviewer approves the PR, an action will add the appropriate git trailers in the PR's commits.
-5. The PR is now ready to be merged.</p>
-<h2 id="style-guide">Style guide</h2>
-<h3 id="git-commit-messages">Git commit messages</h3>
-<p>Please follow the below guidelines for your commit messages:
-- Limit the first line to 72 characters or less.
-- Limit all the other lines to 80 characters
-- In case the PR is associated with an issue, please refer to it, using the git trailer <code>Fixes: #Nr_issue</code>
-- Always sign-off your commit message</p>
-<h3 id="golang-code-styde">Golang code styde</h3>
-<p>We follow gofmt's rules on formatting GO code. Therefore, we ask all contributors to do the same.
-Go provides the <code>gofmt</code> tool, which can be used for formatting your code.</p>
-<h2 id="contact">Contact</h2>
-<p>Feel free to contact any of the authors directly using their emails in the commit messages or using one of the below email addresses:
-- urunc@nubificus.co.uk
-- urunc@nubis-pc.eu</p>
+<h3 id="install-go">Install Go</h3>
+<p>To install Go 1.20.6:</p>
+<pre><code class="language-bash">wget -q https://go.dev/dl/go1.20.6.linux-$(dpkg --print-architecture).tar.gz
+sudo mkdir go1.20.6
+sudo tar -C /usr/local/go1.20.6 -xzf go1.20.6.linux-$(dpkg --print-architecture).tar.gz
+sudo tee -a /etc/profile &gt; /dev/null &lt;&lt; 'EOT'
+export PATH=$PATH:/usr/local/go1.20.6/go/bin
+EOT
+rm -f go1.20.6.linux-$(dpkg --print-architecture).tar.gz
+</code></pre>
+<h3 id="install-runc">Install runc</h3>
+<p><code>urunc</code> requires <code>runc</code> to handle any unsupported container images (for
+example, in k8s pods the pause container is delegated to <code>runc</code> and urunc
+handles only the unikernel container). You can <a href="https://github.com/opencontainers/runc/tree/main#building">build runc from
+source</a> or download
+the latest binary following the commands:</p>
+<pre><code class="language-bash">RUNC_VERSION=$(curl -L -s -o /dev/null -w '%{url_effective}' &quot;https://github.com/opencontainers/runc/releases/latest&quot; | grep -oP &quot;v\d+\.\d+\.\d+&quot; | sed 's/v//')
+wget -q https://github.com/opencontainers/runc/releases/download/v$RUNC_VERSION/runc.$(dpkg --print-architecture)
+sudo install -m 755 runc.$(dpkg --print-architecture) /usr/local/sbin/runc
+rm -f ./runc.$(dpkg --print-architecture)
+</code></pre>
+<h3 id="install-containerd">Install containerd</h3>
+<p>To install the latest release of <code>containerd</code>:</p>
+<pre><code class="language-bash">CONTAINERD_VERSION=$(curl -L -s -o /dev/null -w '%{url_effective}' &quot;https://github.com/containerd/containerd/releases/latest&quot; | grep -oP &quot;v\d+\.\d+\.\d+&quot; | sed 's/v//')
+wget -q https://github.com/containerd/containerd/releases/download/v$CONTAINERD_VERSION/containerd-$CONTAINERD_VERSION-linux-$(dpkg --print-architecture).tar.gz
+sudo tar Cxzvf /usr/local containerd-$CONTAINERD_VERSION-linux-$(dpkg --print-architecture).tar.gz
+sudo rm -f containerd-$CONTAINERD_VERSION-linux-$(dpkg --print-architecture).tar.gz
+</code></pre>
+<h3 id="install-containerd-service">Install containerd service</h3>
+<pre><code class="language-bash">CONTAINERD_VERSION=$(curl -L -s -o /dev/null -w '%{url_effective}' &quot;https://github.com/containerd/containerd/releases/latest&quot; | grep -oP &quot;v\d+\.\d+\.\d+&quot; | sed 's/v//')
+wget -q https://raw.githubusercontent.com/containerd/containerd/v$CONTAINERD_VERSION/containerd.service
+sudo rm -f /lib/systemd/system/containerd.service
+sudo mv containerd.service /lib/systemd/system/containerd.service
+sudo systemctl daemon-reload
+sudo systemctl enable --now containerd
+</code></pre>
+<h3 id="configure-containerd">Configure containerd</h3>
+<pre><code class="language-bash">sudo mkdir -p /etc/containerd/
+sudo mv /etc/containerd/config.toml /etc/containerd/config.toml.bak
+sudo containerd config default | sudo tee /etc/containerd/config.toml
+sudo systemctl restart containerd
+</code></pre>
+<p>For more information, you can read containerd's <a href="https://github.com/containerd/containerd/blob/main/docs/getting-started.md">Getting
+Started</a>
+guide. </p>
+<h3 id="install-cni-plugins">Install CNI plugins</h3>
+<p>To install the latest release of CNI plugins:</p>
+<pre><code class="language-bash">CNI_VERSION=$(curl -L -s -o /dev/null -w '%{url_effective}' &quot;https://github.com/containernetworking/plugins/releases/latest&quot; | grep -oP &quot;v\d+\.\d+\.\d+&quot; | sed 's/v//')
+wget -q https://github.com/containernetworking/plugins/releases/download/v$CNI_VERSION/cni-plugins-linux-$(dpkg --print-architecture)-v$CNI_VERSION.tgz
+sudo mkdir -p /opt/cni/bin
+sudo tar Cxzvf /opt/cni/bin cni-plugins-linux-$(dpkg --print-architecture)-v$CNI_VERSION.tgz
+sudo rm -f cni-plugins-linux-$(dpkg --print-architecture)-v$CNI_VERSION.tgz
+</code></pre>
+<h3 id="install-nerdctl">Install nerdctl</h3>
+<p>To install the latest release of <code>nerdctl</code>:</p>
+<pre><code class="language-bash">NERDCTL_VERSION=$(curl -L -s -o /dev/null -w '%{url_effective}' &quot;https://github.com/containerd/nerdctl/releases/latest&quot; | grep -oP &quot;v\d+\.\d+\.\d+&quot; | sed 's/v//')
+wget -q https://github.com/containerd/nerdctl/releases/download/v$NERDCTL_VERSION/nerdctl-$NERDCTL_VERSION-linux-$(dpkg --print-architecture).tar.gz
+sudo tar Cxzvf /usr/local/bin nerdctl-$NERDCTL_VERSION-linux-$(dpkg --print-architecture).tar.gz
+sudo rm -f nerdctl-$NERDCTL_VERSION-linux-$(dpkg --print-architecture).tar.gz
+</code></pre>
+<h3 id="setup-thinpool-devmapper">Setup thinpool devmapper</h3>
+<pre><code class="language-bash">sudo mkdir -p /usr/local/bin/scripts
+git clone https://github.com/nubificus/urunc.git
+
+sudo cp urunc/script/dm_create.sh /usr/local/bin/scripts/dm_create.sh
+sudo chmod 755 /usr/local/bin/scripts/dm_create.sh
+
+sudo cp urunc/script/dm_reload.sh /usr/local/bin/scripts/dm_reload.sh
+sudo chmod 755 /usr/local/bin/scripts/dm_reload.sh
+
+sudo mkdir -p /usr/local/lib/systemd/system/
+
+sudo cp urunc/script/dm_reload.service /usr/local/lib/systemd/system/dm_reload.service
+sudo chmod 644 /usr/local/lib/systemd/system/dm_reload.service
+sudo chown root:root /usr/local/lib/systemd/system/dm_reload.service
+sudo systemctl daemon-reload
+sudo systemctl enable dm_reload.service
+</code></pre>
+<h3 id="configure-containerd-for-devmapper">Configure containerd for devmapper</h3>
+<pre><code class="language-bash">sudo sed -i '/\[plugins\.&quot;io\.containerd\.snapshotter\.v1\.devmapper&quot;\]/,/^$/d' /etc/containerd/config.toml
+sudo tee -a /etc/containerd/config.toml &gt; /dev/null &lt;&lt;'EOT'
+
+# Customizations for urunc
+
+[plugins.&quot;io.containerd.snapshotter.v1.devmapper&quot;]
+  pool_name = &quot;containerd-pool&quot;
+  root_path = &quot;/var/lib/containerd/io.containerd.snapshotter.v1.devmapper&quot;
+  base_image_size = &quot;10GB&quot;
+  discard_blocks = true
+  fs_type = &quot;ext2&quot;
+EOT
+sudo systemctl restart containerd
+</code></pre>
+<h2 id="initialize-devmapper">Initialize devmapper</h2>
+<pre><code class="language-bash">sudo /usr/local/bin/scripts/dm_create.sh
+</code></pre>
+<h3 id="install-urunc_1">Install urunc</h3>
+<pre><code class="language-bash">declare -A ARCH_MAP
+ARCH_MAP[&quot;x86_64&quot;]=&quot;amd64&quot;
+ARCH_MAP[&quot;aarch64&quot;]=&quot;aarch64&quot;
+SYSTEM_ARCH=$(uname -m)
+ARCHITECTURE=${ARCH_MAP[$SYSTEM_ARCH]}
+LATEST_RELEASE_URL=&quot;https://api.github.com/repos/nubificus/urunc/releases/latest&quot;
+RELEASE_JSON=$(curl -s $LATEST_RELEASE_URL)
+LATEST_TAG=$(echo $RELEASE_JSON | jq -r '.tag_name')
+ASSETS_URL=$(echo $RELEASE_JSON | jq -r '.assets[].browser_download_url')
+BINARY_URLS=$(echo &quot;$ASSETS_URL&quot; | grep &quot;$ARCHITECTURE&quot;)
+for BINARY_URL in $BINARY_URLS; do
+  echo &quot;Downloading $BINARY_URL...&quot;
+  curl -LO &quot;$BINARY_URL&quot;
+  chmod +x `basename $BINARY_URL`
+  sudo mv `basename $BINARY_URL` /usr/local/bin
+done
+</code></pre>
+<h3 id="add-urunc-runtime-to-containerd">Add urunc runtime to containerd</h3>
+<pre><code class="language-bash">sudo tee -a /etc/containerd/config.toml &gt; /dev/null &lt;&lt;EOT
+[plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd.runtimes.urunc]
+    runtime_type = &quot;io.containerd.urunc.v2&quot;
+    container_annotations = [&quot;com.urunc.unikernel.*&quot;]
+    pod_annotations = [&quot;com.urunc.unikernel.*&quot;]
+    snapshotter = &quot;devmapper&quot;
+EOT
+sudo systemctl restart containerd
+</code></pre>
+<p>Now, we are ready to run our unikernel images!</p>
+<h2 id="run-an-example-unikernel">Run an example unikernel</h2>
+<h3 id="install-solo5">Install solo5</h3>
+<p>First, let's install the apt packages required to build solo5:</p>
+<pre><code class="language-bash">sudo apt-get install libseccomp-dev pkg-config gcc -y
+</code></pre>
+<p>Next, we can clone, build and install <code>solo5</code>.</p>
+<pre><code class="language-bash">git clone -b v0.6.9 https://github.com/Solo5/solo5.git
+cd solo5
+./configure.sh  &amp;&amp; make -j$(nproc)
+sudo cp tenders/hvt/solo5-hvt /usr/local/bin
+sudo cp tenders/spt/solo5-spt /usr/local/bin
+</code></pre>
+<h3 id="run-a-redis-rumprun-unikernel-over-solo5">Run a redis rumprun unikernel over solo5</h3>
+<p>Now, let's run a unikernel image:</p>
+<pre><code class="language-bash">sudo nerdctl run --rm -ti --snapshotter devmapper --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/redis-hvt-rump:latest unikernel
+</code></pre>
 
 
 
