@@ -838,7 +838,7 @@
 <tr>
 <td>TS05</td>
 <td>reexec</td>
-<td>unikontainer struct created for spec</td>
+<td>unikontainer struct created from spec</td>
 </tr>
 <tr>
 <td>TS06</td>
@@ -878,7 +878,7 @@
 <tr>
 <td>TS13</td>
 <td>start</td>
-<td>unikontainer struct created for spec</td>
+<td>unikontainer struct created from spec</td>
 </tr>
 <tr>
 <td>TS14</td>
@@ -909,25 +909,6 @@
 <td>TS19</td>
 <td>reexec</td>
 <td><code>execve</code> the hypervisor process</td>
-</tr>
-</tbody>
-</table>
-<p>In addition to these timestamps, two more are added to measure the delay caused by the <code>handleNonBimaContainer</code> function that is run every time <code>urunc</code> is invoked:</p>
-<table>
-<thead>
-<tr>
-<th>Timestamp ID</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>cTS00</td>
-<td>before invoking  <code>handleNonBimaContainer</code></td>
-</tr>
-<tr>
-<td>cTS01</td>
-<td>after invoking  <code>handleNonBimaContainer</code></td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +956,7 @@ sudo systemctl restart containerd.service
 <p>Note: the timestamp destination (<code>/tmp/urunc.zlog</code>) is hardcoded for the time being.</p>
 </blockquote>
 <h2 id="using-the-python-utilities">Using the Python utilities</h2>
-<p>There are 3 Python utilites inside the <code>script/performance</code> directory to help gather the timestamps.</p>
+<p>There are 3 Python utilities inside the <code>script/performance</code> directory to help gather the timestamps.</p>
 <h3 id="measure-single-container-execution">Measure single container execution</h3>
 <p>To gather the timestamps produced by a single unikernel container execution, you can use the <code>measure_single.py</code> script, passing the desired container id.</p>
 <pre><code class="language-bash">cd urunc/script/performance
