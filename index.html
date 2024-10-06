@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#urunc-a-lightweight-container-runtime" class="md-skip">
+        <a href="#urunc-a-lightweight-container-runtime-for-sandboxed-applications" class="md-skip">
           Skip to content
         </a>
       
@@ -234,6 +234,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-urunc-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How urunc works
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#features" class="md-nav__link">
     <span class="md-ellipsis">
       Features
@@ -317,7 +326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="unikernel-support.md" class="md-nav__link">
+      <a href="unikernel-support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -653,6 +662,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-urunc-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How urunc works
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#features" class="md-nav__link">
     <span class="md-ellipsis">
       Features
@@ -676,14 +694,44 @@
                   
 
 
-<h1 id="urunc-a-lightweight-container-runtime">urunc: A Lightweight Container Runtime</h1>
-<p><code>urunc</code> is a custom container runtime designed for lightweight application
-sandboxing. At the moment, it supports unikernels, executed on a number of
-hypervisors.</p>
+<h1 id="urunc-a-lightweight-container-runtime-for-sandboxed-applications">urunc: A Lightweight Container Runtime for Sandboxed Applications</h1>
+<p>To tighten the security aspects of execution environments, enabling seamless
+integration of any kind of sandbox mechanism (software, or hardware)with
+cloud-native architectures, we introduce <code>urunc</code>, a lightweight container
+runtime, able to spawn applications in various sandboxes.</p>
+<p>Designed to fully leverage the container semantics and benefit from the OCI
+tools and methodology, <code>urunc</code> aims to become a micro (μ)runc, while offering
+compatibility with the Container Runtime Interface (CRI). </p>
+<p>By relying on software- and hardware-based sandboxing, urunc launches
+applications provided by OCI-compatible images, allowing developers and
+administrators to deploy, and manage their software using familiar cloud-native
+practices.</p>
+<p>At the moment, <code>urunc</code> supports unikernels, executed on a number of
+hypervisors. Check out the <a href="https://github.com/nubificus/urunc">roadmap</a> we
+have for upcoming features &amp; platforms!</p>
+<h2 id="how-urunc-works">How urunc works</h2>
+<p>The process of starting a new application container with <code>urunc</code>, starts at the
+higher-level runtime (<code>containerd</code>) level:</p>
+<ul>
+<li><code>Containerd</code> unpacks the image into a supported snapshotter (eg <code>devmapper</code>)
+  and invokes <code>urunc</code>.</li>
+<li><code>urunc</code> parses the image's rootfs and annotations, initiating the required
+  setup procedures. These include creating essential pipes for stdio and
+  verifying the availability of the specified vmm.</li>
+<li>Subsequently, <code>urunc</code> spawns a new process within a distinct network
+  namespace and awaits the completion of the setup phase.</li>
+<li>Once the setup is finished, <code>urunc</code> executes the sandbox process, replacing
+  the container's init process with the sandbox process. The parameters for the
+  sandbox process are derived from the container image annotations and options provided within
+  the application image. </li>
+<li>Finally, <code>urunc</code> returns the process ID (PID) of the sandbox process to
+  <code>containerd</code>, effectively enabling it to handle the container's lifecycle
+  management.</li>
+</ul>
 <h2 id="features">Features</h2>
 <ul>
-<li><a href="unikernel-support">Unikernel support</a></li>
 <li><a href="hypervisor-support">Lightweight sandboxing</a></li>
+<li><a href="unikernel-support">Unikernel support</a></li>
 <li><a href="image-building">Integration with OCI images</a></li>
 </ul>
 

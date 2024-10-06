@@ -9,23 +9,25 @@
       
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../hypervisor-support/">
       
       
+        <link rel="next" href="../image-building/">
       
-      <link rel="icon" href="../../img/urunc-logo.png">
+      
+      <link rel="icon" href="../img/urunc-logo.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
-        <title>How to use urunc with k8s - urunc Documentation</title>
+        <title>Unikernel Support - urunc Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -44,9 +46,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -72,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-to-use-urunc-with-k8s" class="md-skip">
+        <a href="#unikernel-support" class="md-skip">
           Skip to content
         </a>
       
@@ -88,9 +90,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="urunc Documentation" class="md-header__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
+    <a href=".." title="urunc Documentation" class="md-header__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
       
-  <img src="../../img/urunc-logo.png" alt="logo">
+  <img src="../img/urunc-logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -107,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              How to use urunc with k8s
+              Unikernel Support
             
           </span>
         </div>
@@ -171,9 +173,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="urunc Documentation" class="md-nav__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
+    <a href=".." title="urunc Documentation" class="md-nav__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
       
-  <img src="../../img/urunc-logo.png" alt="logo">
+  <img src="../img/urunc-logo.png" alt="logo">
 
     </a>
     urunc Documentation
@@ -188,7 +190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -208,7 +210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quickstart.md" class="md-nav__link">
+      <a href="../quickstart.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -228,7 +230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/" class="md-nav__link">
+      <a href="../installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -248,7 +250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hypervisor-support/" class="md-nav__link">
+      <a href="../hypervisor-support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -265,10 +267,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../unikernel-support/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -277,6 +288,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -288,7 +300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../image-building/" class="md-nav__link">
+      <a href="../image-building/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -320,7 +332,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../design/" class="md-nav__link ">
+            <a href="../design/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -351,7 +363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../design/architecture/" class="md-nav__link">
+      <a href="../design/architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -391,7 +403,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../developer-guide/" class="md-nav__link ">
+            <a href="../developer-guide/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -422,7 +434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer-guide/contribute/" class="md-nav__link">
+      <a href="../developer-guide/contribute/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -443,7 +455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer-guide/development/" class="md-nav__link">
+      <a href="../developer-guide/development/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -464,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer-guide/timestamps/" class="md-nav__link">
+      <a href="../developer-guide/timestamps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -510,24 +522,22 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../tutorials/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -544,7 +554,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
@@ -555,30 +565,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    How to use urunc with k8s
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../tutorials/How-to-urunc-on-k8s/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -587,44 +577,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#add-urunc-as-a-runtimeclass" class="md-nav__link">
-    <span class="md-ellipsis">
-      Add urunc as a RuntimeClass
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-a-test-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create a test deployment
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -657,32 +609,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#add-urunc-as-a-runtimeclass" class="md-nav__link">
-    <span class="md-ellipsis">
-      Add urunc as a RuntimeClass
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-a-test-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create a test deployment
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -696,78 +622,34 @@
                   
 
 
-<h1 id="how-to-use-urunc-with-k8s">How to use urunc with k8s</h1>
-<p>This guide assumes you have a working Kubernetes cluster and have <a href="Installation.md">installed urunc</a> on one or more nodes.</p>
-<h2 id="add-urunc-as-a-runtimeclass">Add urunc as a RuntimeClass</h2>
-<p>First, we need to add <code>urunc</code> as a runtime class for the k8s cluster:</p>
-<pre><code class="language-bash">cat &lt;&lt; EOF | tee urunc-runtimeClass.yaml
-kind: RuntimeClass
-apiVersion: node.k8s.io/v1
-metadata:
-    name: urunc
-handler: urunc
-EOF
-
-kubectl apply -f urunc-runtimeClass.yaml
-</code></pre>
-<p>To verify the runtimeClass was added:</p>
-<pre><code class="language-bash">kubectl get runtimeClass
-</code></pre>
-<h2 id="create-a-test-deployment">Create a test deployment</h2>
-<p>To properly test the newly added k8s runtime class, create a test deployment:</p>
-<pre><code class="language-bash">cat &lt;&lt;EOF | tee nginx-urunc.yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    run: nginx-urunc
-  name: nginx-urunc
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      run: nginx-urunc
-  template:
-    metadata:
-      labels:
-        run: nginx-urunc
-    spec:
-      nodeName: nuc4
-      runtimeClassName: urunc
-      containers:
-      - image: nubificus/nginx-hvt:x86_64
-        imagePullPolicy: Always
-        name: nginx-urunc
-        command: [&quot;sleep&quot;]
-        args: [&quot;infinity&quot;]
-        ports:
-        - containerPort: 80
-          protocol: TCP
-        resources:
-          requests:
-            cpu: 10m
-      restartPolicy: Always
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx-urunc
-spec:
-  ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 80
-  selector:
-    run: nginx-urunc
-  sessionAffinity: None
-  type: ClusterIP
-EOF
-
-kubectl apply -f nginx-urunc.yaml
-</code></pre>
-<p>Now, we should be able to see the created Pod:</p>
-<pre><code class="language-bash">kubectl get pods
-</code></pre>
+<h1 id="unikernel-support">Unikernel support</h1>
+<p><code>urunc</code> currently supports running applications as unikernels. Unikernels are
+specialized, minimalistic operating systems constructed to run a single
+application. By compiling only the necessary components of an OS into the final
+image, unikernels offer improved performance, security, and smaller footprints
+compared to traditional OS-based virtual machines.</p>
+<p>Some of the prominent frameworks supported include:</p>
+<p>Unikraft: Unikraft is a relatively new and highly modular unikernel framework
+designed to make it easier to build optimized, lightweight, and
+high-performance unikernels. Unlike traditional monolithic unikernel
+approaches, Unikraft allows developers to include only the components necessary
+for their application, resulting in reduced footprint and improved performance.
+With support for various programming languages and environments, Unikraft is
+ideal for building fast, secure unikernels across a wide range of use cases.</p>
+<p>OSv: An OS designed specifically to run as a single application on top of a
+hypervisor. OSv is known for its performance optimization and supports a wide
+range of programming languages, including Java, Node.js, and Python.</p>
+<p>Rumprun: A unikernel framework based on NetBSD, providing support for a variety
+of POSIX-compliant applications. Rumprun is particularly useful for deploying
+existing POSIX applications with minimal modification.</p>
+<p>MirageOS: A library operating system that constructs unikernels for the Xen
+hypervisor. MirageOS is written in OCaml, offering a functional and modular
+approach to building lightweight, secure unikernels.</p>
+<p>IncludeOS: A minimalistic operating system for building C++ applications
+directly as unikernels. IncludeOS offers simplicity and performance, making it
+ideal for microservices and other resource-efficient applications.</p>
+<p><code>urunc</code> currently supports <code>Unikraft</code> and <code>Rumprun</code>, while support for
+additional unikernel frameworks is <a href="LINK TO ROADMAP">in progress</a>.</p>
 
 
 
@@ -818,10 +700,10 @@ kubectl apply -f nginx-urunc.yaml
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>
