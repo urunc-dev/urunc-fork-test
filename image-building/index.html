@@ -12,7 +12,7 @@
         <link rel="prev" href="../unikernel-support/">
       
       
-        <link rel="next" href="../design/">
+        <link rel="next" href="../design/architecture/">
       
       
       <link rel="icon" href="../img/urunc-logo.png">
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bima-package-a-unikernel-into-an-oci-artifact" class="md-skip">
+        <a href="#urunc-compatible-oci-images" class="md-skip">
           Skip to content
         </a>
       
@@ -210,7 +210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart.md" class="md-nav__link">
+      <a href="../quickstart/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -336,6 +336,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#bima-package-a-unikernel-into-an-oci-artifact" class="md-nav__link">
+    <span class="md-ellipsis">
+      bima: Package a unikernel into an OCI artifact
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       Usage
@@ -367,67 +376,16 @@
   
   
   
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../design/architecture/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../design/" class="md-nav__link ">
-              
   
   <span class="md-ellipsis">
     Design
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            Design
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../design/architecture/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Architecture
-  </span>
-  
-
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -664,6 +622,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#bima-package-a-unikernel-into-an-oci-artifact" class="md-nav__link">
+    <span class="md-ellipsis">
+      bima: Package a unikernel into an OCI artifact
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       Usage
@@ -696,24 +663,38 @@
                   
 
 
-<h1 id="bima-package-a-unikernel-into-an-oci-artifact">bima: Package a unikernel into an OCI artifact</h1>
+<h1 id="urunc-compatible-oci-images"><code>urunc</code>-compatible OCI images</h1>
+<p>To spawn a unikernel as a container, <code>urunc</code> assumes a specific structure for
+the OCI image. To facilitate the process, we built a tool that packages a
+unikernel binary, along with specific annotations into a container image.</p>
+<h2 id="bima-package-a-unikernel-into-an-oci-artifact">bima: Package a unikernel into an OCI artifact</h2>
 <p>bima builds an OCI-compatible Container Image from a special type of containerfile. This special containerfile supports
 a minimal set of "instructions", namely FROM, COPY and LABEL. The images built by bima are intended to be run by urunc,
 so there is no compatibility with other container runtimes.</p>
 <ul>
-<li><code>FROM</code>: this is not taken into account at the current implementation, but we plan to add support for.</li>
-<li><code>COPY</code>: this works as in Dockerfiles. At this moment, only a single copy operation per "instruction" (think one copy per line). These files are copied inside the image's <code>rootfs</code>, which is then passed to the unikernel as a block device and mounted under <code>/data</code> directory.</li>
-<li><code>LABEL</code>: all LABEL "instructions" are added as annotations to the Container image. They are also added to a special <code>urunc.json</code> inside the container's rootfs.</li>
+<li><code>FROM</code>: this is not taken into account at the current implementation, but we
+  plan to add support for.</li>
+<li><code>COPY</code>: this works as in Dockerfiles. At this moment, only a single copy
+  operation per "instruction" (think one copy per line). These files are copied
+  inside the image's <code>rootfs</code>, which is then passed to the unikernel as a block
+  device and mounted under <code>/data</code> directory.</li>
+<li><code>LABEL</code>: all LABEL "instructions" are added as annotations to the Container
+  image. They are also added to a special <code>urunc.json</code> inside the container's
+  rootfs.</li>
 </ul>
-<p>Due to the tight coupling between bima and urunc, the few annotations that are required for urunc to work, are also required by bima.</p>
+<p>Due to the tight coupling between <code>bima</code> and <code>urunc</code>, the few annotations that are
+required for urunc to work, are also required by bima.</p>
 <p>The required annotations are the following:</p>
 <ul>
 <li><code>com.urunc.unikernel.unikernelType</code>: The type of the unikernel (can be rumprun, unikraft, etc)</li>
-<li><code>com.urunc.unikernel.hypervisor</code>: The desired hypervisor to run the unikernel (eg qemu, hedge, hvt)</li>
+<li><code>com.urunc.unikernel.hypervisor</code>: The desired hypervisor to run the unikernel (e.g. qemu, hedge, hvt)</li>
 <li><code>com.urunc.unikernel.binary</code>: The unikernel binary to run</li>
 <li><code>com.urunc.unikernel.cmdline</code>: The cmdline used to run the unikernel</li>
+<li><code>com.urunc.unikernel.version</code>: The version of the framework used to build the unikernel (e.g. 0.17.0)</li>
 </ul>
-<p>The produced image's platform OS is always Linux, while the platform architecture is automatically extracted from the ELF headers of the file defined in <code>com.urunc.unikernel.binary</code> annotation.</p>
+<p>The produced image's platform OS is always Linux, while the platform
+architecture is automatically extracted from the ELF headers of the file
+defined in <code>com.urunc.unikernel.binary</code> annotation.</p>
 <p>A sample Containerfile should look like this:</p>
 <pre><code class="language-Dockerfile"># the FROM instruction will not be parsed
 FROM scratch
@@ -725,9 +706,12 @@ LABEL com.urunc.unikernel.binary=/unikernel/test-redis.hvt
 LABEL &quot;com.urunc.unikernel.cmdline&quot;='redis-server /data/conf/redis.conf'
 LABEL &quot;com.urunc.unikernel.unikernelType&quot;=&quot;rumprun&quot;
 LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;qemu&quot;
+LABEL &quot;com.urunc.unikernel.version&quot;=&quot;0.2.0&quot;
 </code></pre>
 <blockquote>
-<p>Note: For labels, you can use single quotes, double quotes or no quotes at all. Defining multiple label key-value pairs in a single LABEL instruction is not supported.</p>
+<p>Note: For labels, you can use single quotes, double quotes or no quotes at
+all. Defining multiple label key-value pairs in a single LABEL instruction is
+not supported.</p>
 </blockquote>
 <h2 id="usage">Usage</h2>
 <p>Bima mostly follows the Docker build CLI interface, as you can see:</p>
@@ -747,32 +731,39 @@ OPTIONS:
    --file CONTAINERFILE, -f CONTAINERFILE    Name of the CONTAINERFILE  (default: &quot;./Containerfile&quot;)
    --help, -h                                show help
 </code></pre>
-<p>Apart from the command options, <code>bima build</code> only accepts a single argument: the context directory for the build.</p>
-<p>In addition to the usual options, there are a few more (non Docker) options, namely <code>namespace</code>, <code>address</code>, <code>snapshotter</code> and <code>output</code>. </p>
-<p>By default, bima will import the image to containerd. Namespace, address and snapshotter are passed directly to containerd, when importing the produced image.</p>
-<p>If you want to inspect the image instead, you can set <code>--output=tar</code> or <code>--tar</code> flag to create a local tarball of the container image.</p>
-<p>For example, to create an image based on Containerfile (or Dockerfile) found in the current directory:</p>
-<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/image:tag .
+<p>Apart from the command options, <code>bima build</code> only accepts a single argument:
+the context directory for the build.</p>
+<p>In addition to the usual options, there are a few more (non Docker) options,
+namely <code>namespace</code>, <code>address</code>, <code>snapshotter</code> and <code>output</code>. </p>
+<p>By default, bima will import the image to containerd. Namespace, address and
+snapshotter are passed directly to containerd, when importing the produced
+image.</p>
+<p>If you want to inspect the image instead, you can set <code>--output=tar</code> or <code>--tar</code>
+flag to create a local tarball of the container image.</p>
+<p>For example, to create an image based on Containerfile (or Dockerfile) found in
+the current directory:</p>
+<pre><code class="language-bash">bima build -t nubificus/image:tag .
 </code></pre>
 <p>To create an image tarball:</p>
-<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/image:tag --tar .
+<pre><code class="language-bash">bima build -t nubificus/image:tag --tar .
 # or
-bima build -t harbor.nbfc.io/nubificus/image:tag --output tar .
+bima build -t nubificus/image:tag --output tar .
 </code></pre>
 <p>To create an image from a different Containerfile:</p>
-<pre><code class="language-bash">bima build -t harbor.nbfc.io/nubificus/redis:latest -f Containerfile.redis .
+<pre><code class="language-bash">bima build -t nubificus/redis:latest -f Containerfile.redis .
 </code></pre>
 <p>You can verify that images were properly created:</p>
 <pre><code class="language-bash">sudo ctr image ls
 </code></pre>
 <p>To push the image:</p>
-<pre><code class="language-bash">sudo ctr image push harbor.nbfc.io/nubificus/redis:latest
+<pre><code class="language-bash">sudo ctr image push nubificus/redis:latest
 </code></pre>
 <h2 id="build-from-source">Build from source</h2>
 <p>To build from source, you can use the Makefile:</p>
 <pre><code class="language-bash">make
 </code></pre>
-<p>This will build a single binary under <code>./dist</code> directory for your CPU's architecture.</p>
+<p>This will build a single binary under <code>./dist</code> directory for your CPU's
+architecture.</p>
 <p>To install the binary:</p>
 <pre><code class="language-bash">sudo make install
 </code></pre>

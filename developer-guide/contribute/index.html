@@ -212,7 +212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quickstart.md" class="md-nav__link">
+      <a href="../../quickstart/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -311,67 +311,16 @@
   
   
   
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../design/architecture/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../design/" class="md-nav__link ">
-              
   
   <span class="md-ellipsis">
     Design
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            Design
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../design/architecture/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Architecture
-  </span>
-  
-
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -897,21 +846,45 @@ The current document provides a high level overview of <code>urunc</code>'s code
 <li><a href="#contact">Contact</a></li>
 </ol>
 <h2 id="code-organization">Code organization</h2>
-<p>Urunc is written in Go and we structure the code and other files as follows:
-- <code>/</code>: The root directory contains the Makefile to build <code>urunc</code>, along with other non-code files, such as the licence, readme and more.
-- <code>/docs</code>: This directory contains all the documentation related to <code>urunc</code>, such as the installation guide, timestamping and more.
-- <code>/cmd</code>: This directory contains handlers for the various command line options of <code>urunc</code> and the implementation of containerd-shim.
-- <code>/internal/metrics</code>: This directory contains the implementation of the metrics logger, which is used for the internal measuring of <code>urunc</code>'s setup steps.
-- <code>/pkg</code>: This directory contains the majority of the code for <code>urunc</code>. In particular, the subdirectory <code>/pkg/network/</code> contains network related code as expected, while the <code>/pkg/unikontainers/</code> subdirectory contains the main logic of <code>urunc</code>, along with the VMM/unikernel related logic.</p>
+<p>Urunc is written in Go and we structure the code and other files as follows:</p>
+<ul>
+<li>
+<p><code>/</code>: The root directory contains the Makefile to build <code>urunc</code>, along with other non-code files, such as the licence, readme and more.</p>
+</li>
+<li>
+<p><code>/docs</code>: This directory contains all the documentation related to <code>urunc</code>, such as the installation guide, timestamping and more.</p>
+</li>
+<li>
+<p><code>/cmd</code>: This directory contains handlers for the various command line options of <code>urunc</code> and the implementation of containerd-shim.</p>
+</li>
+<li>
+<p><code>/internal/metrics</code>: This directory contains the implementation of the metrics logger, which is used for the internal measuring of <code>urunc</code>'s setup steps.</p>
+</li>
+<li>
+<p><code>/pkg</code>: This directory contains the majority of the code for <code>urunc</code>. In particular, the subdirectory <code>/pkg/network/</code> contains network related code as expected, while the <code>/pkg/unikontainers/</code> subdirectory contains the main logic of <code>urunc</code>, along with the VMM/unikernel related logic.</p>
+</li>
+</ul>
 <p>Therefore, we expect any new documentation related files to be placed under <code>/docs</code> and any changes or new files in code to be either in the <code>/cmd/</code> or <code>/pkg/</code> directory.</p>
 <h2 id="how-to-contribute">How to contribute</h2>
 <p>There are plenty of ways to contribute to an open source project, even without changing or touching the code.
-Therefore, anyone who is interested in this project is very welcome to contribute in one of the following ways:
-1. Using <code>urunc</code>. Try it out yourself and let us know your experience. Did everything work well? Were the instructions clear?
-2. Improve or suggest changes to the documentation of the project. Documentation is very important for every project, hence any ideas on how to improve the documentation to make it more clear are more than welcome.
-3. Request new features. Any proposals for improving or adding new features are very welcome.
-4. Find a bug and report it. Bugs are everywhere and some are hidden very well. As a result, we would really appreciate it if someone found a bug and reported it to the maintainers.
-5. Make changes to the code. Improve the code, add new functionalities and make <code>urunc</code> even more useful.</p>
+Therefore, anyone who is interested in this project is very welcome to contribute in one of the following ways:</p>
+<ol>
+<li>
+<p>Using <code>urunc</code>. Try it out yourself and let us know your experience. Did everything work well? Were the instructions clear?</p>
+</li>
+<li>
+<p>Improve or suggest changes to the documentation of the project. Documentation is very important for every project, hence any ideas on how to improve the documentation to make it more clear are more than welcome.</p>
+</li>
+<li>
+<p>Request new features. Any proposals for improving or adding new features are very welcome.</p>
+</li>
+<li>
+<p>Find a bug and report it. Bugs are everywhere and some are hidden very well. As a result, we would really appreciate it if someone found a bug and reported it to the maintainers.</p>
+</li>
+<li>
+<p>Make changes to the code. Improve the code, add new functionalities and make <code>urunc</code> even more useful.</p>
+</li>
+</ol>
 <h2 id="opening-an-issue">Opening an issue</h2>
 <p>We use Github issues to track bugs and requests for new features.
 Anyone is welcome to open a new issue, which is either related to a bug or a request for a new feature.</p>
@@ -919,15 +892,35 @@ Anyone is welcome to open a new issue, which is either related to a bug or a req
 <p>In order to report a bug or misbehavior in <code>urunc</code>, a user can open a new issue explaining the problem.
 For the time being, we do not use any strict template for reporting any issues.
 However, in order to easily identify and fix the problem, it would be very helpful to provide enough information.
-In that context, when opening a new issue regarding a bug, we kindly ask you to:
-- Mark the issue with the bug label
-- Provide the following information:
-    1. A short description of the bug.
-    2. The respective logs both from the output and containerd.
-    3. Urunc's version (either the commit's hash or the version).
-    4. The CPU architecture, VMM and the Unikernel framework used.
-    5. Any particular steps to reproduce the issue.
-- Keep an eye on the issue for possible questions from the maintainers.</p>
+In that context, when opening a new issue regarding a bug, we kindly ask you to:</p>
+<ul>
+<li>
+<p>Mark the issue with the bug label</p>
+</li>
+<li>
+<p>Provide the following information:</p>
+<ol>
+<li>
+<p>A short description of the bug.</p>
+</li>
+<li>
+<p>The respective logs both from the output and containerd.</p>
+</li>
+<li>
+<p>Urunc's version (either the commit's hash or the version).</p>
+</li>
+<li>
+<p>The CPU architecture, VMM and the Unikernel framework used.</p>
+</li>
+<li>
+<p>Any particular steps to reproduce the issue.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Keep an eye on the issue for possible questions from the maintainers.</p>
+</li>
+</ul>
 <p>A template for an issue could be the following one:</p>
 <pre><code>## Description
 An explanation of the issue 
@@ -949,27 +942,118 @@ However, we kindly ask you to mark the issue with the enhancement label and prov
 <h2 id="submitting-a-pr">Submitting a PR</h2>
 <p>Anyone should feel free to submit a change or an addition to the codebase of <code>urunc</code>.
 Currently, we use Github's Pull Requests (PRs) to submit changes to <code>urunc</code>'s codebase.
-Before creating a new PR, please follow the below guidelines:
-- Make sure that the changes do not break the building process of <code>urunc</code>.
-- Make sure that the tests run successfully.
-- Use one commit for each new or changed functionality 
-- Make sure that no commit in a PR breaks the building process of <code>urunc</code>
-- Make sure to sign-off your commits.
-- Provide meaningful commit messages, describing shortly the changes the commit introduces.
-- Provide a meaningful PR message</p>
-<p>As soon as a new PR is created the following workflow will take place:
-1. One of <code>urunc</code>'s maintainers will check the PR and invoke the tests, by adding the <code>ok-to-test</code> label.
-2. If the tests pass, one or more <code>urunc</code>'s maintainers will review the PR.
-3. The author of the PR should address all the comments from the reviewers.
-4. As soon as a reviewer approves the PR, an action will add the appropriate git trailers in the PR's commits.
-5. The PR is now ready to be merged.</p>
+Before creating a new PR, please follow the guidelines below:</p>
+<ul>
+<li>
+<p>Make sure that the changes do not break the building process of <code>urunc</code>.</p>
+</li>
+<li>
+<p>Make sure that the tests run successfully.</p>
+</li>
+<li>
+<p>Use one commit for each new or changed functionality </p>
+</li>
+<li>
+<p>Make sure that no commit in a PR breaks the building process of <code>urunc</code></p>
+</li>
+<li>
+<p>Make sure to sign-off your commits.</p>
+</li>
+<li>
+<p>Provide meaningful commit messages, describing shortly the changes the commit introduces.</p>
+</li>
+<li>
+<p>Provide a meaningful PR message</p>
+</li>
+</ul>
+<p>As soon as a new PR is created the following workflow will take place:</p>
+<ol>
+<li>
+<p>One of <code>urunc</code>'s maintainers will check the PR and invoke the tests, by adding the <code>ok-to-test</code> label.</p>
+</li>
+<li>
+<p>If the tests pass, one or more <code>urunc</code>'s maintainers will review the PR.</p>
+</li>
+<li>
+<p>The author of the PR should address all the comments from the reviewers.</p>
+</li>
+<li>
+<p>As soon as a reviewer approves the PR, an action will add the appropriate git trailers in the PR's commits.</p>
+</li>
+<li>
+<p>The PR is now ready to be merged.</p>
+</li>
+</ol>
+<p>To facilitate the development, while keeping tests active, we introduced labeling to PRs. Specifically, our CI supports three labels:</p>
+<ul>
+<li><code>ok-to-test</code>: Runs a full CI workflow</li>
+<li><code>skip-build</code>: Skips the building workflow, doing linting on code and
+  documentation. This is useful when the PR is related to docs,
+  cleanup/polishing text, so no need to run the whole CI workflow.</li>
+<li><code>skip-lint</code>: Skips the linting phase. This is particularly useful on draft
+  PRs, when we want to just test the functionality of the code (either a bug
+  fix, or a new feature) and defer the cleanup/polishing of commits, code, and
+  docs to when the PR will be ready for review.</li>
+</ul>
+<p><strong>Note</strong>: Both <code>skip-build</code> and <code>skip-lint</code> assume that the <code>ok-to-test</code> label
+is added.</p>
 <h2 id="style-guide">Style guide</h2>
 <h3 id="git-commit-messages">Git commit messages</h3>
 <p>Please follow the below guidelines for your commit messages:
-- Limit the first line to 72 characters or less.
-- Limit all the other lines to 80 characters
-- In case the PR is associated with an issue, please refer to it, using the git trailer <code>Fixes: #Nr_issue</code>
-- Always sign-off your commit message</p>
+- Limit the first line to 72 characters or less.</p>
+<ul>
+<li>
+<p>Limit all the other lines to 80 characters</p>
+</li>
+<li>
+<p>Follow the <a href="https://www.conventionalcommits.org/">Conventional Commits</a>
+  specification and, specifically, format the header as <code>&lt;type&gt;[optional scope]:
+  &lt;description&gt;</code>, where <code>description</code> must not end with a fullstop and <code>type</code>
+  can be one of:</p>
+</li>
+<li>
+<p><em>feat</em>: A new feature</p>
+</li>
+<li>
+<p><em>fix</em>: A bug fix</p>
+</li>
+<li>
+<p><em>docs</em>: Documentation only changes</p>
+</li>
+<li>
+<p><em>style</em>: Changes that do not affect the meaning of the code (white-space,
+    formatting, missing semi-colons, etc)</p>
+</li>
+<li>
+<p><em>refactor</em>: A code change that neither fixes a bug nor adds a feature</p>
+</li>
+<li>
+<p><em>perf</em>: A code change that improves performance</p>
+</li>
+<li>
+<p><em>test</em>: Adding missing tests</p>
+</li>
+<li>
+<p><em>build</em>: Changes that affect the build system or external dependencies
+    (example scopes: gulp, broccoli, npm)</p>
+</li>
+<li>
+<p><em>ci</em>: Changes to our CI configuration files and scripts (example scopes:
+    Travis, Circle, BrowserStack, SauceLabs)</p>
+</li>
+<li>
+<p><em>chore</em>: Other changes that don't modify src or test files</p>
+</li>
+<li>
+<p><em>revert</em>: Reverts a previous commit</p>
+</li>
+<li>
+<p>In case the PR is associated with an issue, please refer to it, using the git trailer <code>Fixes: #Nr_issue</code></p>
+</li>
+<li>
+<p>Always sign-off your commit message</p>
+</li>
+</ul>
 <h3 id="golang-code-styde">Golang code styde</h3>
 <p>We follow gofmt's rules on formatting GO code. Therefore, we ask all contributors to do the same.
 Go provides the <code>gofmt</code> tool, which can be used for formatting your code.</p>

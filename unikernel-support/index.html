@@ -210,7 +210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart.md" class="md-nav__link">
+      <a href="../quickstart/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -319,67 +319,16 @@
   
   
   
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../design/architecture/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../design/" class="md-nav__link ">
-              
   
   <span class="md-ellipsis">
     Design
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            Design
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../design/architecture/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Architecture
-  </span>
-  
-
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -623,12 +572,11 @@
 
 
 <h1 id="unikernel-support">Unikernel support</h1>
-<p><code>urunc</code> currently supports running applications as unikernels. Unikernels are
-specialized, minimalistic operating systems constructed to run a single
-application. By compiling only the necessary components of an OS into the final
-image, unikernels offer improved performance, security, and smaller footprints
-compared to traditional OS-based virtual machines.</p>
-<p>Some of the prominent frameworks supported include:</p>
+<p>Unikernels are specialized, minimalistic operating systems constructed to run a
+single application. By compiling only the necessary components of an OS into
+the final image, unikernels offer improved performance, security, and smaller
+footprints compared to traditional OS-based virtual machines.</p>
+<p><code>urunc</code> currently supports:</p>
 <p>Unikraft: Unikraft is a relatively new and highly modular unikernel framework
 designed to make it easier to build optimized, lightweight, and
 high-performance unikernels. Unlike traditional monolithic unikernel
@@ -636,20 +584,23 @@ approaches, Unikraft allows developers to include only the components necessary
 for their application, resulting in reduced footprint and improved performance.
 With support for various programming languages and environments, Unikraft is
 ideal for building fast, secure unikernels across a wide range of use cases.</p>
-<p>OSv: An OS designed specifically to run as a single application on top of a
-hypervisor. OSv is known for its performance optimization and supports a wide
-range of programming languages, including Java, Node.js, and Python.</p>
 <p>Rumprun: A unikernel framework based on NetBSD, providing support for a variety
 of POSIX-compliant applications. Rumprun is particularly useful for deploying
 existing POSIX applications with minimal modification.</p>
-<p>MirageOS: A library operating system that constructs unikernels for the Xen
+<p>In the near future, we plan to add support for the following frameworks: </p>
+<p><code>OSv</code>: An OS designed specifically to run as a single application on top of a
+hypervisor. OSv is known for its performance optimization and supports a wide
+range of programming languages, including Java, Node.js, and Python.</p>
+<p><code>MirageOS</code>: A library operating system that constructs unikernels for the Xen
 hypervisor. MirageOS is written in OCaml, offering a functional and modular
 approach to building lightweight, secure unikernels.</p>
-<p>IncludeOS: A minimalistic operating system for building C++ applications
+<p><code>IncludeOS</code>: A minimalistic operating system for building C++ applications
 directly as unikernels. IncludeOS offers simplicity and performance, making it
 ideal for microservices and other resource-efficient applications.</p>
-<p><code>urunc</code> currently supports <code>Unikraft</code> and <code>Rumprun</code>, while support for
-additional unikernel frameworks is <a href="LINK TO ROADMAP">in progress</a>.</p>
+<p>In what follows, we describe the process to build a simple unikernel for the
+supported frameworks. Once we get a binary image, we can then move on to the
+<a href="/image-building/">packaging</a> process to produce the OCI image that is
+compatible with <code>urunc</code>.</p>
 
 
 

@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lightweight-sandboxing" class="md-skip">
+        <a href="#hypervisor-support" class="md-skip">
           Skip to content
         </a>
       
@@ -210,7 +210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart.md" class="md-nav__link">
+      <a href="../quickstart/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -376,67 +376,16 @@
   
   
   
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../design/architecture/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../design/" class="md-nav__link ">
-              
   
   <span class="md-ellipsis">
     Design
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            Design
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../design/architecture/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Architecture
-  </span>
-  
-
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -714,15 +663,13 @@
                   
 
 
-<h1 id="lightweight-sandboxing">Lightweight sandboxing</h1>
+<h1 id="hypervisor-support">Hypervisor Support</h1>
 <p><code>urunc</code> supports the execution of pre-packaged applications in pre-defined
 sandboxes. These sandboxes can be software-based, like
-<a href="https://gvisor.dev">gvisor</a> or
-<a href="https://en.wikipedia.org/wiki/Seccomp">seccomp</a>-based sandboxes. In addition
-to software-based sandboxing, <code>urunc</code> can spawn applications in hardware-based
-enclaves, such as traditional or lightweight hypervisors, eg.
-<a href="https://qemu.org">QEMU</a>, <a href="https://github.com/firecracker-microvm/firecracker">AWS
-Firecracker</a>).</p>
+<a href="https://en.wikipedia.org/wiki/Seccomp">seccomp</a>-based sandboxes (<code>solo5-spt</code>)
+or hardware-assisted enclaves, such as traditional or lightweight hypervisors,
+eg.  <a href="https://qemu.org">QEMU</a>, <a href="https://github.com/firecracker-microvm/firecracker">AWS
+Firecracker</a> etc.).</p>
 <p>In this document, we will go through the installation process of the various
 sandboxes currently supported by <code>urunc</code>.</p>
 <blockquote>
