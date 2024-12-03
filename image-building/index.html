@@ -858,11 +858,11 @@ format</a> is a standardized
 specification for packaging and distributing containerized applications across
 different platforms and container runtimes. It defines a common structure for
 container images, including their metadata, layers, and filesystem content.
-Since <code>urunc</code> is a OCI-compatible container runtime, it expects the unikernel to
-be placed inside a OCI container image.</p>
+Since <code>urunc</code> is an OCI-compatible container runtime, it expects the unikernel
+to be placed inside an OCI container image.</p>
 <p>Nevertheless, in order to differentiate between traditional container images
-and unikernel OCI images, <code>urunc</code> makes use of annotations or a specific file,
-called <code>urunc.json</code>, inside the container's rootfs.</p>
+and unikernel OCI images, <code>urunc</code> makes use of annotations or a metadata file
+(<code>urunc.json</code>) inside the container's rootfs.</p>
 <p>To facilitate the process, we provide various tools that package a unikernel
 binary, along with the application's necessary files in a container image and
 set the respective annotations. In particular, we can produce an OCI image with
@@ -874,9 +874,9 @@ all <code>urunc</code>'s annotations using:
    <a href="https://github.com/moby/buildkit?tab=readme-ov-file#output">buildkit</a> and
 3. <a href="https://github.com/nubificus/bimanix">bimanix</a> which uses <a href="https://github.com/NixOS/nix">Nix
    packages</a> to build the image.</p>
-<p>In this document, we will first explain all the annotations that <code>urunc</code> expects
-to handle unikernels and describe each one of the three ways to build such OCI
-images for unikernels.</p>
+<p>In this document, we will first explain all the annotations that <code>urunc</code>
+expects, in order to handle unikernels and describe each one of the three ways
+to build such OCI images for unikernels.</p>
 <h2 id="annotations">Annotations</h2>
 <p><a href="https://github.com/opencontainers/image-spec/blob/main/annotations.md">OCI
 annotations</a>
@@ -890,13 +890,14 @@ The annotations can be placed in several components of the specification.
 However, in the case of <code>urunc</code> we are interested about annotations which can
 reach the container runtime.</p>
 <p>Using these annotations <code>urunc</code> receives information regarding the type of the
-unikernel, the VMM or sandbox mechanism to use and more. 2For the time being, the
+unikernel, the VMM or sandbox mechanism to use and more. For the time being, the
 required annotations are the following:</p>
 <ul>
 <li><code>com.urunc.unikernel.unikernelType</code>: The type of the unikernel. Currently
   supported values: a) unikraft, b) rumprun.</li>
 <li><code>com.urunc.unikernel.hypervisor</code>: The VMM or sandbox monitor to run the
-  unikernel Currently supported values: a) qemu, b) firecracker, c) spt, d) hvt.</li>
+  unikernel Currently supported values: a) <code>qemu</code>, b) <code>firecracker</code>, c) <code>spt</code>,
+  d) <code>hvt</code>.</li>
 <li><code>com.urunc.unikernel.binary</code>: The path to the unikernel binary inside the
   container's rootfs</li>
 <li><code>com.urunc.unikernel.cmdline</code>: The application's cmdline to pass to the
@@ -916,7 +917,7 @@ required annotations are the following:</p>
 <p>Due to the fact that <a href="https://www.docker.com/">Docker</a> and some high-level
 container runtimes do not pass the image annotations to the underlying container
 runtime, <code>urunc</code> can also read the above information from a file inside the
-container's rootfs. The file should be named as <code>urunc.json</code>, it should be
+container's rootfs. The file should be named <code>urunc.json</code>, it should be
 placed in the root directory of the container's rootfs and it should have a JSON
 format with the above information, where the values are base64 encoded.</p>
 <h2 id="tools-to-construct-oci-images-with-uruncs-annotations">Tools to construct OCI images with <code>urunc</code>'s annotations</h2>
@@ -925,10 +926,10 @@ unikernels in OCI images with <code>urunc</code>'s annotations.</p>
 <h3 id="bima">Bima</h3>
 <p><a href="https://github.com/nubificus/bima">bima</a> uses
 <a href="https://github.com/containerd/containerd">containerd</a> to build OCI images. In
-particular, <a href="https://github.com/nubificus/bima">bima</a> reads the contents of a file
-with a Dokcerfile-like syntax. This
-file can contain a set of <em>instructions</em> that specify how to package an existing
-unikernel binary as an OCI image. The currently supported <em>instructions</em> are:</p>
+particular, <a href="https://github.com/nubificus/bima">bima</a> reads the contents of a
+file with a Dockerfile-like syntax. This file can contain a set of
+<em>instructions</em> that specify how to package an existing unikernel binary as an
+OCI image. The currently supported <em>instructions</em> are:</p>
 <ul>
 <li><code>FROM</code>: this is not taken into account at the current implementation, but we
   plan to add support for.</li>
@@ -1044,9 +1045,9 @@ not supported.</p>
 </blockquote>
 <p>For more information check <a href="https://github.com/nubificus/pun">pun's README</a> </p>
 <h3 id="bimanix">Bimanix</h3>
-<p>For the Nix users, we have created a set of Nix scripts that we maintain in the
+<p>For Nix users, we have created a set of Nix scripts that we maintain in the
 <a href="https://github.com/nubificus/bimanix">bimanix</a> repository to build container
-images for <code>urunc</code>. In contrast with the previous tools
+images for <code>urunc</code>. In contrast to the previous tools,
 <a href="https://github.com/nubificus/bimanix">bimanix</a> uses a nix file to define the
 files to package as a container image, along with the <code>urunc</code> annotations. In
 particular, this file is the <code>args.nix</code> file, which expects the same fields:</p>
