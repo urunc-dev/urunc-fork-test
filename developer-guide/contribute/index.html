@@ -1064,19 +1064,21 @@ In particulat, we perform the following workflows tests:
 - Unit tests
 - End-to-end tests</p>
 <p>For a better control over the tests and workflows that run in a PR, we define
-three labels which can be used:
-- <code>ok-to-test</code>: Runs a full CI workflow, meaning all lint tests (commit
+three labels which can be used:</p>
+<ul>
+<li><code>ok-to-test</code>: Runs a full CI workflow, meaning all lint tests (commit
   message, spellcheck, license), Go's linting, building for x86 and aarch64,
-  unit tests and at last end-to-end tests.
-- <code>skip-build</code>: Skips the building workflows along with unit and end-to end tests
+  unit tests and at last end-to-end tests.</li>
+<li><code>skip-build</code>: Skips the building workflows along with unit and end-to end tests
   running all the linting tests. This is useful when
   the PR is related to docs and it can help for catching spelling errors etc. In
   addition, if the changes are not related to the codebase, running the
-  end-to-end tests is not required and saves some time.
-- <code>skip-lint</code>: Skips the linting phase. This is particularly useful on draft
+  end-to-end tests is not required and saves some time.</li>
+<li><code>skip-lint</code>: Skips the linting phase. This is particularly useful on draft
   PRs, when we want to just test the functionality of the code (either a bug
   fix, or a new feature) and defer the cleanup/polishing of commits, code, and
-  docs to when the PR will be ready for review.</p>
+  docs to when the PR will be ready for review.</li>
+</ul>
 <p><strong>Note</strong>: Both <code>skip-build</code> and <code>skip-lint</code> assume that the <code>ok-to-test</code> label
 is added.</p>
 <h2 id="style-guide">Style guide</h2>
