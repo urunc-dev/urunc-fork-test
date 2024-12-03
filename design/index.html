@@ -659,21 +659,20 @@ Initiative) tools and methodologies. By acting as a unikernel container runtime
 compatible with the Container Runtime Interface (CRI), <code>urunc</code> allows unikernels
 to be managed like containers, opening up possibilities for lightweight,
 secure, and high-performance application deployment.</p>
-<p>In <code>urunc</code> the user code runs inside a unikernel on top of a Virtual Machine
+<p>In <code>urunc</code>, the user code runs inside a unikernel on top of a Virtual Machine
 Monitor (VMM) or a sandbox monitor. As a result, <code>urunc</code> guarantees strong
 isolation among the containers and inherits the enhanced security features of
-unikernels, such as small attack surface. </p>
-<p>In the unikernel context a single process applications runs directly on top of a
-Virtual Machine (VM) or a sandbox. On the same time, in the VM context every VM
-runs as a process. Subsequently, <code>urunc</code> combines these two characteristics and
-treats the VM's process, which executes the unikernel that runs the application,
-as the container's process. In that way <code>urunc</code> does not reuire any auxiliary
-process running alongside the unikernel, maintaining as less overhead as
-possible. Instead <code>urunc</code> directly manages the
-application running in the unikernel through the VMM or the sandbox monitor.
-Moreover, <code>urunc</code> does not require any modifications in the unikernel framework
-and hence all unikernel frameworks and similar technologies can easily integrate
-with <code>urunc</code>.</p>
+unikernels, such as their small attack surface.</p>
+<p>In the unikernel context a single-process application runs directly on top of a
+Virtual Machine (VM) or a sandbox. At the same time, in the VM context, every
+VM runs as a process. Subsequently, <code>urunc</code> combines these two characteristics
+and treats the VM's process, which executes the unikernel that runs the
+application, as the container's process. This way, <code>urunc</code> does not reuire any
+auxiliary process running alongside the unikernel, maintaining as less overhead
+as possible. Instead <code>urunc</code> directly manages the application running in the
+unikernel through the VMM or the sandbox monitor. Moreover, <code>urunc</code> does not
+require any modifications in the unikernel framework and hence all unikernel
+frameworks and similar technologies can easily integrate with <code>urunc</code>.</p>
 <h2 id="execution-flow">Execution flow</h2>
 <p>The process of starting a new unikernel container with <code>urunc</code>, starts at the
 higher-level runtime (<code>containerd</code>) level:</p>
