@@ -1014,12 +1014,12 @@ manage their execution.  Some of the biggest advantages of
 In addition, <a href="https://www.qemu.org/">Qemu</a> supports various paravirtual
 devices, mostly based on
 <a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VirtIO</a> and
-allows the directl use of the host's devices with passthrough.</p>
+allows the direct use of the host's devices with passthrough.</p>
 <h4 id="installing-qemu">Installing Qemu</h4>
 <p>We can easily install <a href="https://www.qemu.org/">Qemu</a> through almost all package
 managers. For more details check <a href="https://www.qemu.org/download/#linux">Qemu's download
-page</a>. For instance in case of Ubuntu, we
-can simply run the following command:</p>
+page</a>. For instance, in the case of
+Ubuntu, we can simply run the following command:</p>
 <pre><code class="language-bash">$ sudo apt-get install qemu-system
 </code></pre>
 <h4 id="qemu-and-urunc">Qemu and <code>urunc</code></h4>
@@ -1044,12 +1044,12 @@ only Initramfs is supported for the time being.</p>
 virtualization technology developed by Amazon Web Services (AWS) that is
 designed to run serverless workloads efficiently.
 <a href="https://firecracker-microvm.github.io/">Firecracker</a> provides a minimalist
-virtual machine (VM) monitor, allowing the creation of lightweight virtual
-machines, called microVMs, that are faster and more resource-efficient than
-traditional VMs. In contrast with <a href="https://www.qemu.org/">Qemu</a>,
+VMM, allowing the creation of lightweight virtual machines, called microVMs,
+that are faster and more resource-efficient than traditional VMs. In contrast
+with <a href="https://www.qemu.org/">Qemu</a>,
 <a href="https://firecracker-microvm.github.io/">Firecracker</a> aims to provide a smaller
-set of devices for the VMs. The main benefit of FIrecracker comes from its fast
-VM and guest OS boot.</p>
+set of devices for the VMs. The main benefit of Firecracker comes from its fast
+VM instantiation and guest OS boot.</p>
 <h4 id="installing-firecracker">Installing Firecracker</h4>
 <p><a href="https://firecracker-microvm.github.io/">Firecracker</a> is not available through
 a package manger, but it can easily be installed. The <a href="https://github.com/firecracker-microvm/firecracker/blob/main/docs/getting-started.md">Getting
@@ -1069,7 +1069,7 @@ $ rm -fr release-${latest}-$(uname -m)
 <p>It is important to note that <code>urunc</code> expects to find the <code>firecracker</code> binary
 located in the <code>$PATH</code> and named <code>firecracker</code>.</p>
 <blockquote>
-<p>Note: Since only Unikraft can boot on top of Unikraft (from the supported
+<p>Note: Since only Unikraft can boot on top of Firecracker (from the supported
 unikernels in <code>urunc</code>) we use the v1.7.0 version of
 <a href="https://firecracker-microvm.github.io/">Firecracker</a>, due to some <a href="https://github.com/unikraft/unikraft/issues/1410">booting
 issues</a> of Unikraft in newer
@@ -1095,16 +1095,15 @@ Initramfs is supported for the time being.</p>
 </code></pre>
 <h3 id="solo5-hvt">Solo5-hvt</h3>
 <p><a href="https://github.com/Solo5/solo5">Solo5-hvt</a> is a lightweight, high-performance
-virtual machine monitor (VMM) designed to run unikernels in a virtualized
-environment. As a part of the broader Solo5 project,
-<a href="https://github.com/Solo5/solo5">Solo5-hvt</a> provides a minimal, efficient
-abstraction layer for running unikernels on modern hardware, leveraging
-hardware virtualization technologies Some of the key benefits of
-<a href="https://github.com/Solo5/solo5">Solo5-hvt</a> is its simplicity and and
-extremely fast boot times of unikernels. In contrast with the other VMMs,
-<a href="https://github.com/Solo5/solo5">Solo5-hvt</a> does not provide support for
-virtIO devices. Instead, it defines its own interface,, which can be used for
-network and block I/O.</p>
+VMM designed to run unikernels in a virtualized environment. As a part of the
+broader Solo5 project, <a href="https://github.com/Solo5/solo5">Solo5-hvt</a> provides a
+minimal, efficient abstraction layer for running unikernels on modern hardware,
+leveraging hardware virtualization technologies Some of the key benefits of
+<a href="https://github.com/Solo5/solo5">Solo5-hvt</a> is its simplicity and and extremely
+fast boot times of unikernels. In contrast to the other VMMs,
+<a href="https://github.com/Solo5/solo5">Solo5-hvt</a> does not provide support for virtIO
+devices. Instead, it defines its own interface, which can be used for network
+and block I/O.</p>
 <h4 id="installing-solo5-hvt">Installing Solo5-hvt</h4>
 <p>Solo5 can be installed by building from source. However, in order to do that,
 we will need a few packages.</p>
@@ -1141,31 +1140,32 @@ type (e.g. ext2/3/4). This is the case for Rumprun unikernel.</p>
 <pre><code class="language-bash">$ sudo nerdctl run --rm -ti --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/redis-hvt-rumprun-block:latest unikernel
 </code></pre>
 <h2 id="software-based-isolation-monitors">Software-based isolation monitors</h2>
-<p>Except of the traditional VM-based isolation solutions, there are other solutions
-which provide isolation using software-based technologies too. In that case the
-monitor interacts with a user-space kernel on top of which the application is
-running. The user-space kernel intercepts or defines a set of system calls and
-then forwards them to the monitor. To further strengthen the security, it is
-common to use seccomp filters to limit the exposure of the host OS to the
-monitor.</p>
+<p>Except for the traditional VM-based isolation solutions, there are other
+solutions which provide isolation using software-based technologies too. In
+that case the monitor interacts with a user-space kernel on top of which the
+application is running. The user-space kernel intercepts or defines a set of
+system calls and then forwards them to the monitor. To further strengthen
+security, it is common to use seccomp filters to limit the exposure of the host
+OS to the monitor.</p>
 <p>A well-known example of such a technology is <a href="https://gvisor.dev/">gVisor</a>.
 Unfortunately, gVisor does not support the execution of any unikernel
 framework.</p>
 <h3 id="solo5-spt">Solo5-spt</h3>
 <p>In a similar way,
 <a href="https://github.com/Solo5/solo5">Solo5-spt</a> is a specialized backend for the
-Solo5 project, designed to run unikernels in systems that do not have access in
-hardware assisted virtualization technologies. In contrast,
-<a href="https://github.com/Solo5/solo5">Solo5-spt</a> executes a unikernel monitor with
-a seccomp filter allowing only seven system calls. The unikernel running on top
+Solo5 project, designed to run unikernels in systems that do not have access to
+hardware-assisted virtualization technologies.
+<a href="https://github.com/Solo5/solo5">Solo5-spt</a> executes a unikernel monitor with a
+seccomp filter allowing only seven system calls. The unikernel running on top of Solo5-spt
 interacts with this monitor through a similar interface with
 <a href="https://github.com/Solo5/solo5">Solo5-hvt</a>, facilitating network and block
 storage I/O. <a href="https://github.com/Solo5/solo5">Solo5-spt</a> can provide extremely
 fast intantiation times, very small overhead, along with performant execution.</p>
 <h4 id="installing-solo5-spt">Installing Solo5-spt</h4>
-<p>The installation process of <a href="https://github.com/Solo5/solo5">Solo5-spt</a> is similar with the <a href="https://github.com/Solo5/solo5">Solo5-hvt</a> one. In
-fact, both projects share the same repository. Hence we can follow the same
-steps as in SOlo5-hvt.  At first, make sure to install the necessary packages.</p>
+<p>The installation process of <a href="https://github.com/Solo5/solo5">Solo5-spt</a> is
+similar with the <a href="https://github.com/Solo5/solo5">Solo5-hvt</a> one. In fact, both
+projects share the same repository. Hence we can follow the same steps as in
+Solo5-hvt. At first, make sure to install the necessary packages.</p>
 <pre><code class="language-bash">$ sudo apt install libseccomp-dev pkg-config build-essential
 </code></pre>
 <p>Next, we can clone and build <code>solo5-spt</code>.</p>
@@ -1180,7 +1180,8 @@ located in the <code>$PATH</code> and named <code>solo5-spt</code>. Therefore, t
 <h4 id="solo5-spt-and-urunc">Solo5-spt and <code>urunc</code></h4>
 <p>Similarly with <a href="https://github.com/Solo5/solo5">Solo5-hvt</a>, <code>urunc</code> supports
 all the devices of <a href="https://github.com/Solo5/solo5">Solo5-spt</a>. For more
-information take look at the respective <a href="$Solo5-hvt-and-urunc">Solo5-hvt section</a></p>
+information take a look at the respective <a href="#Solo5-hvt-and-urunc">Solo5-hvt
+section</a>.</p>
 <p>Supported unikernel frameworks with <code>urunc</code>:</p>
 <ul>
 <li><a href="/unikernel-support/#rumprun">Rumprun</a></li>
