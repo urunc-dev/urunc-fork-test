@@ -359,9 +359,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#rumprun-vmms-and-other-sandbox-monitors-support" class="md-nav__link">
+  <a href="#vmms-and-other-sandbox-monitors_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Rumprun VMMs and other sandbox monitors support
+      VMMs and other sandbox monitors
     </span>
   </a>
   
@@ -764,9 +764,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#rumprun-vmms-and-other-sandbox-monitors-support" class="md-nav__link">
+  <a href="#vmms-and-other-sandbox-monitors_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Rumprun VMMs and other sandbox monitors support
+      VMMs and other sandbox monitors
     </span>
   </a>
   
@@ -851,7 +851,7 @@ shared-fs option is Work-In-Progress and we will soon provide an update about
 this.</p>
 <p><a href="https://unikraft.org/">Unikraft</a> maintains a
 <a href="https://github.com/unikraft/catalog">catalog</a> with available applications as
-unikernel images. Check out our <a href="image-building">packaging</a> page on how to
+unikernel images. Check out our <a href="../image-building">packaging</a> page on how to
 get these images and run them on top of <code>urunc</code>.</p>
 <p>An example of <a href="https://unikraft.org/">Unikraft</a> on top of Qemu with <code>urunc</code>:</p>
 <pre><code class="language-bash">$ sudo nerdctl run --rm -ti --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/nginx-qemu-unikraft-initrd:latest unikernel
@@ -869,11 +869,11 @@ modifications. As a consequence of its design
 latest changes of NetBSD. However, the current repositories are not totally
 up-to-date. The repository with the most recent NetBSD version is
 <a href="https://github.com/cloudkernels/rumprun">here</a>.</p>
-<p>In addition <a href="https://github.com/cloudkernels/rumprun">Rumprun</a> maintains a
+<p>In addition, <a href="https://github.com/cloudkernels/rumprun">Rumprun</a> maintains a
 <a href="https://github.com/cloudkernels/rumprun-packages">repository</a> with all ported
 applications that can be easily used on top of
 <a href="https://github.com/cloudkernels/rumprun">Rumprun</a>.</p>
-<h3 id="rumprun-vmms-and-other-sandbox-monitors-support">Rumprun VMMs and other sandbox monitors support</h3>
+<h3 id="vmms-and-other-sandbox-monitors_1">VMMs and other sandbox monitors</h3>
 <p><a href="https://github.com/cloudkernels/rumprun">Rumprun</a>, as one of the oldest
 unikernel frameworks, provides support for both Xen and KVM hypervisors.
 Especially in the case of KVM,
@@ -900,12 +900,12 @@ filesystem support and allows the mounting of the containerd's snapshot
 directly in the unikernel. This is only possible using devmapper as a
 snapshotter in containerd. For more information on setting up devmapper, please
 take a look on our <a href="/installation/#setup-thinpool-devmapper">installation guide</a>.</p>
-<p>Except of the devmapper, <code>urunc</code> also supports the option of adding a block
-image inside the container image and attaching it to
+<p>Except for devmapper, <code>urunc</code> also supports the option of adding a block image
+inside the container image and attaching it to
 <a href="https://github.com/cloudkernels/rumprun">Rumprun</a>.</p>
 <p>For more information on packaging
 <a href="https://github.com/cloudkernels/rumprun">Rumprun</a> unikernels for <code>urunc</code> take
-a look at our <a href="/image-building/">packaging</a> page.</p>
+a look at our <a href="../image-building/">packaging</a> page.</p>
 <p>An example of <a href="https://github.com/cloudkernels/rumprun">Rumprun</a> on top of
 Solo5-hvt using a block image inside the container's rootfs with 'urunc':</p>
 <pre><code class="language-bash">$ sudo nerdctl run --rm -ti --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/redis-hvt-rumprun-block:latest unikernel
