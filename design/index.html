@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../image-building/">
+      
+      
+        <link rel="next" href="seccomp/">
       
       
       <link rel="icon" href="../img/urunc-logo.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Seccomp in Urunc - urunc Documentation</title>
+        <title>Design - urunc Documentation</title>
       
     
     
@@ -70,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#seccomp-in-urunc" class="md-skip">
+        <a href="#overview" class="md-skip">
           Skip to content
         </a>
       
@@ -105,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Seccomp in Urunc
+              Design
             
           </span>
         </div>
@@ -250,7 +254,7 @@
         
   
   <span class="md-ellipsis">
-    Hypervisor Support
+    VMM/Sandbox Support
   </span>
   
 
@@ -290,7 +294,7 @@
         
   
   <span class="md-ellipsis">
-    Container image building
+    Packaging unikernels
   </span>
   
 
@@ -303,18 +307,71 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../design/architecture/" class="md-nav__link">
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
   
   <span class="md-ellipsis">
     Design
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccomp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seccomp
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -394,7 +451,7 @@
         
   
   <span class="md-ellipsis">
-    Setup a Build environment
+    Setup a Dev environment
   </span>
   
 
@@ -541,8 +598,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -560,27 +615,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-seccomp-is-used-in-urunc" class="md-nav__link">
+  <a href="#execution-flow" class="md-nav__link">
     <span class="md-ellipsis">
-      How Seccomp is used in 'urunc'
+      Execution flow
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#caveats-of-using-seccomp-in-urunc" class="md-nav__link">
+  <a href="#image-format-and-annotations" class="md-nav__link">
     <span class="md-ellipsis">
-      Caveats of using seccomp in 'urunc'
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setting-a-seccomp-profile" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setting a seccomp profile
+      Image Format and Annotations
     </span>
   </a>
   
@@ -601,53 +647,72 @@
                   
 
 
-<h1 id="seccomp-in-urunc">Seccomp in Urunc</h1>
+  <h1>Design</h1>
+
+<p>This section describes the high-level architecture of <code>urunc</code>, along with the
+design choices and limitations.</p>
 <h2 id="overview">Overview</h2>
-<p>Seccomp (Secure Computing Mode) is a Linux kernel security feature that
-restricts the system calls a process can make, limiting the kernel exposure
-to the processes. Container runtimes make use of this mechanism to
-further limit a container and enhance overall security. </p>
-<h2 id="how-seccomp-is-used-in-urunc">How Seccomp is used in 'urunc'</h2>
-<p>In 'urunc' the application does not execute directly in the host kernel. Instead,
-'urunc' makes use of either a VMM (Virtual Machine Monitor) or the <code>solo5-spt</code>
-tender to execute the application inside a unikernel. As a result, in contrast
-with other container runtimes, in 'urunc' the applications do not share the same
-kernel.</p>
-<p>Thus, a malicious user must take control of the guest kernel and escape to the
-VMM before attacking the host. To further limit the exposure of
-the host kernel to the VMM, 'urunc' uses seccomp filters for each
-supported VMM. In particular, in the case of:
-- Firecracker, 'urunc' does not have to do anything more, since Firecracker by
-  default makes uses seccomp filters.
-- Qemu, 'urunc' makes use of Qemu's sandbox command line options to activate
-  all possible seccomp filters in Qemu.
-- Solo5-hvt, 'urunc' applies the seccomp filters before executing
-  'Solo5-hvt'.
-- Solo5-spt, 'urunc' can not do anything since solo5-spt makes use of seccomp by
-  itself.</p>
-<h2 id="caveats-of-using-seccomp-in-urunc">Caveats of using seccomp in 'urunc'</h2>
-<p>Since 'urunc', in most cases, makes use of the VMM's mechanisms to enforce the
-seccomp filters, 'urunc' heavily relies on the VMM to properly restrict the system
-calls the VMM can use.</p>
-<p>In the case of 'Solo5-hvt', since 'urunc' is responsible for applying the seccomp
-filters, proper identification of the required system calls is necessary.
-Unfortunately, due to dynamic linking and Go's runtime, it is
-impossible to always predict correctly for every system the necessary system
-calls for 'Solo5-hvt' execution.</p>
-<p>Nevertheless, 'Solo5-hvt' with seccomp in 'urunc' has been tested in Ubuntu 20.04
-and Ubuntu 22.04. Using 'urunc' and solo5-hvt on different platforms might result
-in failed execution. For that reason, we strongly recommend running the seccomp
-test first, by <code>make test_nerdctl_Seccomp</code>. In case the test fails, the seccomp
-profile for 'Solo5-hvt' needs to get updated.</p>
-<p>For that reason, we created a toolset to identify the required system calls.
-The toolset, along with instructions on how to use it, can be found in <a href="https://github.com/nubificus/goscall">goscall
-repository</a>.</p>
-<h2 id="setting-a-seccomp-profile">Setting a seccomp profile</h2>
-<p>Due to its design, 'urunc' does not allow the definition of a seccomp profile other
-than the default. However, users can totally disable seccomp by using
-the <code>--security-opt seccomp=unconfined</code> command line option. In that scenario,
-'urunc' will not make use of any seccomp filters in all the supported VMMs, except
-of 'Solo5-spt'.</p>
+<p><code>urunc</code> is a container runtime designed to bridge the gap between traditional
+unikernels and containerized environments. It enables seamless integration with
+cloud-native architectures by leveraging familiar OCI (Open Container
+Initiative) tools and methodologies. By acting as a unikernel container runtime
+compatible with the Container Runtime Interface (CRI), <code>urunc</code> allows unikernels
+to be managed like containers, opening up possibilities for lightweight,
+secure, and high-performance application deployment.</p>
+<p>In <code>urunc</code> the user code runs inside a unikernel on top of a Virtual Machine
+Monitor (VMM) or a sandbox monitor. As a result, <code>urunc</code> guarantees strong
+isolation among the containers and inherits the enhanced security features of
+unikernels, such as small attack surface. </p>
+<p>In the unikernel context a single process applications runs directly on top of a
+Virtual Machine (VM) or a sandbox. On the same time, in the VM context every VM
+runs as a process. Subsequently, <code>urunc</code> combines these two characteristics and
+treats the VM's process, which executes the unikernel that runs the application,
+as the container's process. In that way <code>urunc</code> does not reuire any auxiliary
+process running alongside the unikernel, maintaining as less overhead as
+possible. Instead <code>urunc</code> directly manages the
+application running in the unikernel through the VMM or the sandbox monitor.
+Moreover, <code>urunc</code> does not require any modifications in the unikernel framework
+and hence all unikernel frameworks and similar technologies can easily integrate
+with <code>urunc</code>.</p>
+<h2 id="execution-flow">Execution flow</h2>
+<p>The process of starting a new unikernel container with <code>urunc</code>, starts at the
+higher-level runtime (<code>containerd</code>) level:</p>
+<ul>
+<li><code>Containerd</code> unpacks the image into a supported snapshotter (e.g. <code>devmapper</code>)
+  and invokes <code>urunc</code>, as any other OCI runtime.</li>
+<li><code>urunc</code> parses the image's rootfs and annotations, initiating the required
+  setup procedures. In particular, it creates essential pipes for stdio, it
+  creates the container's state file and runs the <code>prestart</code> hooks (if any).</li>
+<li>Subsequently, <code>urunc</code> spawns a new process within a distinct network
+  namespace, stores its PID and invokes the <code>createRuntime</code> and
+  <code>createContainer</code> hooks.</li>
+<li>When <code>Containerd</code> starts the container <code>urunc</code> configures any required
+  resources such as block devices or  network interfaces and runs the
+  <code>statContainer</code> hooks.</li>
+<li>Depending on the specified unikernel type and annotations, <code>urunc</code> selects the
+  appropriate VMM or sandbox monitor (e.g.  Qemu, Solo5-spt) and boots the
+  unikernel. The unikernel runs inside its own isolated environment, interacting
+  with external systems through the namespaces and devices configured by
+  <code>urunc</code>.</li>
+<li>Finally the unikernel is up and running as a container, and we can manage its
+  lifecycle like any other container through <code>urunc</code> (e.g., stopping,
+  restarting, or deleting the container).</li>
+</ul>
+<h2 id="image-format-and-annotations">Image Format and Annotations</h2>
+<p>To support unikernels in a containerized environment, <code>urunc</code> requires specific
+metadata embedded in OCI container images. These images must include the
+unikernel binary, configuration and any other files required from the application
+or the unikernel and the aforementioned metadata which dictate how the unikernel
+should be run. The metadata can be passed to <code>urunc</code> either in the form of
+<a href="https://github.com/opencontainers/runtime-spec/blob/main/config.md#annotations">annotations</a>
+or as a specific file in the container's rootfs. For a detailed explanation and
+an up-to-date list of the currently supported annotations take alook at the
+<a href="/image-building/#annotations">packaging unikernels page</a>.</p>
+<p>Although <code>urunc</code>-formatted unikernel images are not designed to be executed by
+other container runtimes, they can still be stored and distributed via generic
+container registries, such as Docker Hub or Harbor. This ensures compatibility
+with standard cloud-native workflows for building, shipping, and deploying
+applications.</p>
 
 
 

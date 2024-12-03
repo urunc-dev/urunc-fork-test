@@ -256,7 +256,7 @@
         
   
   <span class="md-ellipsis">
-    Hypervisor Support
+    VMM/Sandbox Support
   </span>
   
 
@@ -296,7 +296,7 @@
         
   
   <span class="md-ellipsis">
-    Container image building
+    Packaging unikernels
   </span>
   
 
@@ -311,16 +311,67 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../design/architecture/" class="md-nav__link">
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../design/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Design
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/seccomp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seccomp
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -402,7 +453,7 @@
         
   
   <span class="md-ellipsis">
-    Setup a Build environment
+    Setup a Dev environment
   </span>
   
 
@@ -497,13 +548,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-the-python-utilities" class="md-nav__link">
+  <a href="#gethering-the-timestamps" class="md-nav__link">
     <span class="md-ellipsis">
-      Using the Python utilities
+      Gethering the timestamps
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Using the Python utilities">
+    <nav class="md-nav" aria-label="Gethering the timestamps">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -698,13 +749,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-the-python-utilities" class="md-nav__link">
+  <a href="#gethering-the-timestamps" class="md-nav__link">
     <span class="md-ellipsis">
-      Using the Python utilities
+      Gethering the timestamps
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Using the Python utilities">
+    <nav class="md-nav" aria-label="Gethering the timestamps">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -869,31 +920,29 @@
 <h2 id="how-to-enable-timestamping">How to enable timestamping</h2>
 <p>In order to capture the timestamps, a separate <code>containerd-shim</code> and container runtime must be configured in your system.</p>
 <p>To create the "timestamping" version of <code>containerd-shim-urunc-v2</code>:</p>
-<pre><code class="language-bash">sudo tee -a /usr/local/bin/containerd-shim-uruncts-v2 &gt; /dev/null &lt;&lt; 'EOT'
+<pre><code class="language-bash">$ sudo tee -a /usr/local/bin/containerd-shim-uruncts-v2 &gt; /dev/null &lt;&lt; 'EOT'
 #!/bin/bash
 URUNC_TIMESTAMPS=1 /usr/local/bin/containerd-shim-urunc-v2 $@
 EOT
-
-sudo chmod +x /usr/local/bin/containerd-shim-uruncts-v2
+$ sudo chmod +x /usr/local/bin/containerd-shim-uruncts-v2
 </code></pre>
 <p>To add the "timestamping" urunc to containerd config:</p>
-<pre><code class="language-bash">sudo tee -a /etc/containerd/config.toml &gt; /dev/null &lt;&lt; 'EOT'
+<pre><code class="language-bash">$ sudo tee -a /etc/containerd/config.toml &gt; /dev/null &lt;&lt; 'EOT'
 # timestamping urunc
-[plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd.runtimes.uruncts]
+[plugins.'io.containerd.cri.v1.runtime'.containerd.runtimes.uruncts]
     runtime_type = &quot;io.containerd.uruncts.v2&quot;
     container_annotations = [&quot;com.urunc.unikernel.*&quot;]
     pod_annotations = [&quot;com.urunc.unikernel.*&quot;]
     snapshotter = &quot;devmapper&quot;
 EOT
-sudo systemctl restart containerd.service
+$ sudo systemctl restart containerd.service
 </code></pre>
 <h2 id="how-to-gather-timestamps">How to gather timestamps</h2>
 <p>Now we need to run a unikernel using the new container runtime <code>uruncts</code>:</p>
-<pre><code class="language-bash">sudo nerdctl run --rm --snapshotter devmapper --runtime io.containerd.uruncts.v2 \
-    harbor.nbfc.io/nubificus/urunc/hello-hvt-rump:latest
+<pre><code class="language-bash">$ sudo nerdctl run --rm --snapshotter devmapper --runtime io.containerd.uruncts.v2 harbor.nbfc.io/nubificus/urunc/hello-hvt-rumprun:latest
 </code></pre>
 <p>The timestamp logs are located at <code>/tmp/urunc.zlog</code>:</p>
-<pre><code class="language-bash">cat /tmp/urunc.zlog | grep TS
+<pre><code class="language-bash">$ cat /tmp/urunc.zlog | grep TS
 {&quot;containerID&quot;:&quot;faaf830245ffab0df81927cebd7f11065e70c7703121fbc1b11d4bca49bab461&quot;,&quot;timestampID&quot;:&quot;cTS00&quot;,&quot;time&quot;:1703676366849599657}
 {&quot;containerID&quot;:&quot;faaf830245ffab0df81927cebd7f11065e70c7703121fbc1b11d4bca49bab461&quot;,&quot;timestampID&quot;:&quot;cTS01&quot;,&quot;time&quot;:1703676366853466038}
 {&quot;containerID&quot;:&quot;faaf830245ffab0df81927cebd7f11065e70c7703121fbc1b11d4bca49bab461&quot;,&quot;timestampID&quot;:&quot;TS00&quot;,&quot;time&quot;:1703676366853478852}
@@ -904,12 +953,12 @@ sudo systemctl restart containerd.service
 <blockquote>
 <p>Note: the timestamp destination (<code>/tmp/urunc.zlog</code>) is hardcoded for the time being.</p>
 </blockquote>
-<h2 id="using-the-python-utilities">Using the Python utilities</h2>
+<h2 id="gethering-the-timestamps">Gethering the timestamps</h2>
 <p>There are 3 Python utilities inside the <code>script/performance</code> directory to help gather the timestamps.</p>
 <h3 id="measure-single-container-execution">Measure single container execution</h3>
 <p>To gather the timestamps produced by a single unikernel container execution, you can use the <code>measure_single.py</code> script, passing the desired container id.</p>
-<pre><code class="language-bash">cd urunc/script/performance
-python3 measure_single.py 15c769b9be14c59174626521f7964a8ae06e75c48c5cfd91e2829317c15d455b
+<pre><code class="language-bash">$ cd urunc/script/performance
+$ python3 measure_single.py 15c769b9be14c59174626521f7964a8ae06e75c48c5cfd91e2829317c15d455b
 </code></pre>
 <p>If no container ID is specified, it will return an error:</p>
 <pre><code class="language-bash">$ python3 measure_single.py 
@@ -951,8 +1000,8 @@ Usage:
 # ... (rest of the output)
 </code></pre>
 <p>The same functionality is provided by <code>measure_to_json.py</code>, but instead of <code>stdout</code> the results are saved in a .json file:</p>
-<pre><code class="language-bash">sudo python3 measure_to_json.py 5 ts.json
-cat ts.json | jq
+<pre><code class="language-bash">$ sudo python3 measure_to_json.py 5 ts.json
+$ cat ts.json | jq
 {
   &quot;TS00 -&gt; TS01&quot;: {
     &quot;maximum&quot;: &quot;989525 ns&quot;,

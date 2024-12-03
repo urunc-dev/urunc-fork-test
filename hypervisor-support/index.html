@@ -20,7 +20,7 @@
     
     
       
-        <title>Hypervisor Support - urunc Documentation</title>
+        <title>VMM/Sandbox Support - urunc Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hypervisor-support" class="md-skip">
+        <a href="#supported-vmms-and-software-based-monitors" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hypervisor Support
+              VMM/Sandbox Support
             
           </span>
         </div>
@@ -263,7 +263,7 @@
           
   
   <span class="md-ellipsis">
-    Hypervisor Support
+    VMM/Sandbox Support
   </span>
   
 
@@ -274,7 +274,7 @@
         
   
   <span class="md-ellipsis">
-    Hypervisor Support
+    VMM/Sandbox Support
   </span>
   
 
@@ -296,29 +296,164 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#urunc-with-solo5-hvt-solo5-spt" class="md-nav__link">
+  <a href="#virtual-machine-monitors-vmms" class="md-nav__link">
     <span class="md-ellipsis">
-      urunc with solo5-hvt / solo5-spt
+      Virtual Machine Monitors (VMMs)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Virtual Machine Monitors (VMMs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qemu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Qemu
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Qemu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-qemu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Qemu
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#urunc-with-qemu" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#qemu-and-urunc" class="md-nav__link">
     <span class="md-ellipsis">
-      urunc with qemu
+      Qemu and urunc
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#urunc-with-firecracker" class="md-nav__link">
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-firecracker" class="md-nav__link">
     <span class="md-ellipsis">
-      urunc with firecracker
+      AWS Firecracker
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="AWS Firecracker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-firecracker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Firecracker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firecracker-and-urunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firecracker and urunc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solo5-hvt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solo5-hvt
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solo5-hvt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-solo5-hvt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Solo5-hvt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solo5-hvt-and-urunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solo5-hvt and urunc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-based-isolation-monitors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software-based isolation monitors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software-based isolation monitors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solo5-spt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solo5-spt
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solo5-spt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-solo5-spt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Solo5-spt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solo5-spt-and-urunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solo5-spt and urunc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -361,7 +496,7 @@
         
   
   <span class="md-ellipsis">
-    Container image building
+    Packaging unikernels
   </span>
   
 
@@ -376,16 +511,67 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../design/architecture/" class="md-nav__link">
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../design/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Design
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/seccomp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seccomp
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -465,7 +651,7 @@
         
   
   <span class="md-ellipsis">
-    Setup a Build environment
+    Setup a Dev environment
   </span>
   
 
@@ -622,29 +808,164 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#urunc-with-solo5-hvt-solo5-spt" class="md-nav__link">
+  <a href="#virtual-machine-monitors-vmms" class="md-nav__link">
     <span class="md-ellipsis">
-      urunc with solo5-hvt / solo5-spt
+      Virtual Machine Monitors (VMMs)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Virtual Machine Monitors (VMMs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qemu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Qemu
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Qemu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-qemu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Qemu
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#urunc-with-qemu" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#qemu-and-urunc" class="md-nav__link">
     <span class="md-ellipsis">
-      urunc with qemu
+      Qemu and urunc
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#urunc-with-firecracker" class="md-nav__link">
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-firecracker" class="md-nav__link">
     <span class="md-ellipsis">
-      urunc with firecracker
+      AWS Firecracker
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="AWS Firecracker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-firecracker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Firecracker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firecracker-and-urunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firecracker and urunc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solo5-hvt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solo5-hvt
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solo5-hvt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-solo5-hvt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Solo5-hvt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solo5-hvt-and-urunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solo5-hvt and urunc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-based-isolation-monitors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software-based isolation monitors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software-based isolation monitors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solo5-spt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solo5-spt
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solo5-spt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-solo5-spt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Solo5-spt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solo5-spt-and-urunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solo5-spt and urunc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -663,63 +984,216 @@
                   
 
 
-<h1 id="hypervisor-support">Hypervisor Support</h1>
-<p><code>urunc</code> supports the execution of pre-packaged applications in pre-defined
-sandboxes. These sandboxes can be software-based, like
-<a href="https://en.wikipedia.org/wiki/Seccomp">seccomp</a>-based sandboxes (<code>solo5-spt</code>)
-or hardware-assisted enclaves, such as traditional or lightweight hypervisors,
-eg.  <a href="https://qemu.org">QEMU</a>, <a href="https://github.com/firecracker-microvm/firecracker">AWS
-Firecracker</a> etc.).</p>
-<p>In this document, we will go through the installation process of the various
-sandboxes currently supported by <code>urunc</code>.</p>
+<h1 id="supported-vmms-and-software-based-monitors">Supported VMMs and software-based monitors</h1>
+<p>One of the main goals of <code>urunc</code> is to be a generic OCI unikernel runtime for
+various unikernel frameworks and similar technologies. In order to achieve
+that, we want to support as many Virtual Machine Monitors (VMMs) and other
+types of sandboxing mechanisms such as user-space monitors based on
+<a href="https://en.wikipedia.org/wiki/Seccomp">seccomp</a>.</p>
+<p>In this document, we will go through the current state of <code>urunc</code>'s support for
+VMMs and monitors that utilize software-based isolation technologies. We will provide
+a few information about them along with installation instructions and a few
+comments regarding their integration with <code>urunc</code>.</p>
 <blockquote>
-<p>Note: In general, <code>urunc</code> expects all supported hypervisors to be available somewhere in the <code>$PATH</code>.</p>
+<p>Note: In general, <code>urunc</code> expects all supported VM/Sandbox monitors to be available
+somewhere in the <code>$PATH</code>.</p>
 </blockquote>
-<h2 id="urunc-with-solo5-hvt-solo5-spt">urunc with <code>solo5-hvt</code> / <code>solo5-spt</code></h2>
-<p>First, let's install the apt packages required to build solo5:</p>
-<pre><code class="language-bash">sudo apt-get install libseccomp-dev pkg-config gcc -y
+<h2 id="virtual-machine-monitors-vmms">Virtual Machine Monitors (VMMs)</h2>
+<p>VMMs use hardware-assisted virtualization technologies in order to create a
+Virtual Machine (VM) where a guest OS will execute. It is one of the most
+widely used technology for providing strong isolation in multi-tenant
+environments. For the time being <code>urunc</code> supports 3 types of such VMMs: 1)
+<a href="https://www.qemu.org/">Qemu</a>, 2)
+<a href="https://firecracker-microvm.github.io/">Firecracker</a> and 3) <a href="https://github.com/Solo5/solo5">Solo5-hvt</a>.</p>
+<h3 id="qemu">Qemu</h3>
+<p><a href="https://www.qemu.org/">Qemu</a> (Quick Emulator) is an open-source virtualization
+platform that enables the emulation of various hardware architectures. By
+leveraging Linux's KVM, <a href="https://www.qemu.org/">Qemu</a> is able to create VMs and
+manage their execution.  Some of the biggest advantages of
+<a href="https://www.qemu.org/">Qemu</a> are the mature and stable interface and codebase.
+In addition, <a href="https://www.qemu.org/">Qemu</a> supports various paravirtual
+devices, mostly based on
+<a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VirtIO</a> and
+allows the directl use of the host's devices with passthrough.</p>
+<h4 id="installing-qemu">Installing Qemu</h4>
+<p>We can easily install <a href="https://www.qemu.org/">Qemu</a> through almost all package
+managers. For more details check <a href="https://www.qemu.org/download/#linux">Qemu's download
+page</a>. For instance in case of Ubuntu, we
+can simply run the following command:</p>
+<pre><code class="language-bash">$ sudo apt-get install qemu-system
+</code></pre>
+<h4 id="qemu-and-urunc">Qemu and <code>urunc</code></h4>
+<p>In the case of <a href="https://www.qemu.org/">Qemu</a>, <code>urunc</code> makes use of its
+<code>virtio-net</code> device to provide network support for the unikernel through a tap
+device. In addition, <code>urunc</code> can leverage <a href="https://www.qemu.org/">Qemu</a>'s
+initrd option in order to provide the Unikernel with an initial RamFS
+(initramfs). However, <a href="https://www.qemu.org/">Qemu</a> supports various ways to
+provide storage in VMs such as block devices through virtio-blk,
+shared-fs through 9p and virtio-fs and initramfs.</p>
+<p>We plan to add support for all the above options, but as previously mentioned
+only Initramfs is supported for the time being.</p>
+<p>Supported unikernel frameworks with <code>urunc</code>:</p>
+<ul>
+<li><a href="/unikernel-support/#unikraft">Unikraft</a></li>
+</ul>
+<p>An example unikernel:</p>
+<pre><code class="language-bash">$ sudo nerdctl run --rm -ti --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/nginx-qemu-unikraft-initrd:latest unikernel
+</code></pre>
+<h3 id="aws-firecracker">AWS Firecracker</h3>
+<p>AWS <a href="https://firecracker-microvm.github.io/">Firecracker</a> is an open-source
+virtualization technology developed by Amazon Web Services (AWS) that is
+designed to run serverless workloads efficiently.
+<a href="https://firecracker-microvm.github.io/">Firecracker</a> provides a minimalist
+virtual machine (VM) monitor, allowing the creation of lightweight virtual
+machines, called microVMs, that are faster and more resource-efficient than
+traditional VMs. In contrast with <a href="https://www.qemu.org/">Qemu</a>,
+<a href="https://firecracker-microvm.github.io/">Firecracker</a> aims to provide a smaller
+set of devices for the VMs. The main benefit of FIrecracker comes from its fast
+VM and guest OS boot.</p>
+<h4 id="installing-firecracker">Installing Firecracker</h4>
+<p><a href="https://firecracker-microvm.github.io/">Firecracker</a> is not available through
+a package manger, but it can easily be installed. The <a href="https://github.com/firecracker-microvm/firecracker/blob/main/docs/getting-started.md">Getting
+Started</a> guide
+of <a href="https://firecracker-microvm.github.io/">Firecracker</a> describes how users
+can set up <a href="https://firecracker-microvm.github.io/">Firecracker</a>. Long story short,
+we can fetch a
+<a href="https://firecracker-microvm.github.io/">Firecracker</a> binary with the following
+commands:</p>
+<pre><code class="language-bash">$ ARCH=&quot;$(uname -m)&quot; $ VERSION=v1.7.0&quot;
+$ release_url=&quot;https://github.com/firecracker-microvm/firecracker/releases&quot;
+$ curl -L ${release_url}/download/${VERSION}/firecracker-${VERSION}-${ARCH}.tgz | tar -xz
+$ # Rename the binary to &quot;firecracker&quot;
+$ sudo mv release-${latest}-$(uname-m)/firecracker-${latest}-${ARCH} /usr/local/bin/firecracker
+$ rm -fr release-${latest}-$(uname -m)
+</code></pre>
+<p>It is important to note that <code>urunc</code> expects to find the <code>firecracker</code> binary
+located in the <code>$PATH</code> and named <code>firecracker</code>.</p>
+<blockquote>
+<p>Note: Since only Unikraft can boot on top of Unikraft (from the supported
+unikernels in <code>urunc</code>) we use the v1.7.0 version of
+<a href="https://firecracker-microvm.github.io/">Firecracker</a>, due to some <a href="https://github.com/unikraft/unikraft/issues/1410">booting
+issues</a> of Unikraft in newer
+versions.</p>
+</blockquote>
+<h4 id="firecracker-and-urunc">Firecracker and <code>urunc</code></h4>
+<p>In the case of <a href="https://firecracker-microvm.github.io/">Firecracker</a>, <code>urunc</code>
+makes use of its <code>virtio-net</code> device to provide network support for the
+unikernel though a tap device. In addition, <code>urunc</code> can leverage
+<a href="https://firecracker-microvm.github.io/">Firecracker</a>'s initrd option in order
+to provide the Unikernel with an initial RamFS (initramfs).
+<a href="https://firecracker-microvm.github.io/">Firecracker</a> does not support
+shared-fs between the host and the guest. However, it does provide support for
+virtio-block. </p>
+<p>We plan to add support for virtio-block, but as previously mentioned only
+Initramfs is supported for the time being.</p>
+<p>Supported unikernel frameworks with <code>urunc</code>:</p>
+<ul>
+<li><a href="/unikernel-support/#unikraft">Unikraft</a></li>
+</ul>
+<p>An example unikernel:</p>
+<pre><code class="language-bash">$ sudo nerdctl run --rm -ti --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/nginx-firecracker-unikraft-initrd:latest unikernel
+</code></pre>
+<h3 id="solo5-hvt">Solo5-hvt</h3>
+<p><a href="https://github.com/Solo5/solo5">Solo5-hvt</a> is a lightweight, high-performance
+virtual machine monitor (VMM) designed to run unikernels in a virtualized
+environment. As a part of the broader Solo5 project,
+<a href="https://github.com/Solo5/solo5">Solo5-hvt</a> provides a minimal, efficient
+abstraction layer for running unikernels on modern hardware, leveraging
+hardware virtualization technologies Some of the key benefits of
+<a href="https://github.com/Solo5/solo5">Solo5-hvt</a> is its simplicity and and
+extremely fast boot times of unikernels. In contrast with the other VMMs,
+<a href="https://github.com/Solo5/solo5">Solo5-hvt</a> does not provide support for
+virtIO devices. Instead, it defines its own interface,, which can be used for
+network and block I/O.</p>
+<h4 id="installing-solo5-hvt">Installing Solo5-hvt</h4>
+<p>Solo5 can be installed by building from source. However, in order to do that,
+we will need a few packages.</p>
+<pre><code class="language-bash">$ sudo apt install libseccomp-dev pkg-config build-essential
 </code></pre>
 <p>Next, we can clone and build <code>solo5-hvt</code>.</p>
-<pre><code class="language-bash">git clone -b v0.6.9 https://github.com/Solo5/solo5.git
-cd solo5
-./configure.sh &amp;&amp; make -j$(nproc)
+<pre><code class="language-bash">$ git clone -b v0.6.9 https://github.com/Solo5/solo5.git
+$ cd solo5
+$ ./configure.sh &amp;&amp; make -j$(nproc)
 </code></pre>
-<p><code>urunc</code> expects to find the <code>solo5-hvt</code> binary located in the <code>$PATH</code> and named <code>solo5-hvt</code>. To install it:</p>
-<pre><code class="language-bash">sudo cp tenders/hvt/solo5-hvt /usr/local/bin
+<p>It is important to note that <code>urunc</code> expects to find the <code>solo5-hvt</code> binary
+located in the <code>$PATH</code> and named as <code>solo5-hvt</code>. Therefore, to install it:</p>
+<pre><code class="language-bash">$ sudo cp tenders/hvt/solo5-hvt /usr/local/bin
 </code></pre>
-<p>Next, we need to configure the <a href="/installation/#setup-thinpool-devmapper">devmapper snapshotter</a>.</p>
-<p>Now we can run a test unikernel:</p>
-<pre><code class="language-bash">sudo nerdctl run --rm -ti --snapshotter devmapper --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/redis-hvt-rump:latest unikernel
+<h4 id="solo5-hvt-and-urunc">Solo5-hvt and <code>urunc</code></h4>
+<p>In the case of <a href="https://github.com/Solo5/solo5">Solo5-hvt</a>, <code>urunc</code> supports
+all the devices and utilizes a tap device to provide network in the unikernel.
+For the storage part, <code>urunc</code> supports the block storage interface of
+<a href="https://github.com/Solo5/solo5">Solo5-hvt</a>, which can be used in two ways,
+either with a block image inside the container image, or using the devmapper as
+a snapshotter.</p>
+<p>In the first case, we copy inside the container image a block image that
+contains all the data we want to pass in the unikernel.</p>
+<p>In the second case, we copy directly all the files we want the unikernel to
+access inside the container's image. Using devmapper <code>urunc</code> will use the
+container's image snapshot as a block image for the unikernel. It is important
+to note that the unikernel framework must support the respective filesystem
+type (e.g. ext2/3/4). This is the case for Rumprun unikernel.</p>
+<p>Supported unikernel frameworks with <code>urunc</code>:</p>
+<ul>
+<li><a href="/unikernel-support/#rumprun">Rumprun</a></li>
+</ul>
+<p>An example unikernel with a block image inside the conntainer's rootfs:</p>
+<pre><code class="language-bash">$ sudo nerdctl run --rm -ti --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/redis-hvt-rumprun-block:latest unikernel
+</code></pre>
+<h2 id="software-based-isolation-monitors">Software-based isolation monitors</h2>
+<p>Except of the traditional VM-based isolation solutions, there are other solutions
+which provide isolation using software-based technologies too. In that case the
+monitor interacts with a user-space kernel on top of which the application is
+running. The user-space kernel intercepts or defines a set of system calls and
+then forwards them to the monitor. To further strengthen the security, it is
+common to use seccomp filters to limit the exposure of the host OS to the
+monitor.</p>
+<p>A well-known example of such a technology is <a href="https://gvisor.dev/">gVisor</a>.
+Unfortunately, gVisor does not support the execution of any unikernel
+framework.</p>
+<h3 id="solo5-spt">Solo5-spt</h3>
+<p>In a similar way,
+<a href="https://github.com/Solo5/solo5">Solo5-spt</a> is a specialized backend for the
+Solo5 project, designed to run unikernels in systems that do not have access in
+hardware assisted virtualization technologies. In contrast,
+<a href="https://github.com/Solo5/solo5">Solo5-spt</a> executes a unikernel monitor with
+a seccomp filter allowing only seven system calls. The unikernel running on top
+interacts with this monitor through a similar interface with
+<a href="https://github.com/Solo5/solo5">Solo5-hvt</a>, facilitating network and block
+storage I/O. <a href="https://github.com/Solo5/solo5">Solo5-spt</a> can provide extremely
+fast intantiation times, very small overhead, along with performant execution.</p>
+<h4 id="installing-solo5-spt">Installing Solo5-spt</h4>
+<p>The installation process of <a href="https://github.com/Solo5/solo5">Solo5-spt</a> is similar with the <a href="https://github.com/Solo5/solo5">Solo5-hvt</a> one. In
+fact, both projects share the same repository. Hence we can follow the same
+steps as in SOlo5-hvt.  At first, make sure to install the necessary packages.</p>
+<pre><code class="language-bash">$ sudo apt install libseccomp-dev pkg-config build-essential
+</code></pre>
+<p>Next, we can clone and build <code>solo5-spt</code>.</p>
+<pre><code class="language-bash">$ git clone -b v0.6.9 https://github.com/Solo5/solo5.git
+$ cd solo5
+$ ./configure.sh &amp;&amp; make -j$(nproc)
+</code></pre>
+<p>It is important to note that <code>urunc</code> expects to find the <code>solo5-spt</code> binary
+located in the <code>$PATH</code> and named <code>solo5-spt</code>. Therefore, to install it:</p>
+<pre><code class="language-bash">$ sudo cp tenders/spt/solo5-spt /usr/local/bin
+</code></pre>
+<h4 id="solo5-spt-and-urunc">Solo5-spt and <code>urunc</code></h4>
+<p>Similarly with <a href="https://github.com/Solo5/solo5">Solo5-hvt</a>, <code>urunc</code> supports
+all the devices of <a href="https://github.com/Solo5/solo5">Solo5-spt</a>. For more
+information take look at the respective <a href="$Solo5-hvt-and-urunc">Solo5-hvt section</a></p>
+<p>Supported unikernel frameworks with <code>urunc</code>:</p>
+<ul>
+<li><a href="/unikernel-support/#rumprun">Rumprun</a></li>
+</ul>
+<p>An example unikernel which utilizes devmapper for block storage:</p>
+<pre><code class="language-bash">$ sudo nerdctl run --rm -ti --snapshotter devmapper --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/redis-spt-rumprun:latest unikernel
 </code></pre>
 <blockquote>
-<p>Note: as <code>solo5-hvt</code> and <code>solo5-spt</code> share command-line options and features,
-replacing <code>hvt</code> with <code>spt</code> in the above instructions installs the <code>solo5-spt</code>
-sandbox.</p>
+<p>Note: Since only Rumrpun can boot on top of Solo5-{hvt|spt} (from the supported
+unikernels in <code>urunc</code>) we use the v0.6.9 version of
+<a href="https://github.com/Solo5/solo5">Solo5</a> since Rumprun has not been updated for
+the newer ones.</p>
 </blockquote>
-<h2 id="urunc-with-qemu">urunc with qemu</h2>
-<p><code>urunc</code> expects to find the <code>qemu</code> binary located in the <code>$PATH</code> and named
-<code>qemu-system-{ARCH}</code>. You can ensure this by executing the following commands:</p>
-<pre><code class="language-bash">sudo apt-get install qemu-kvm -y
-</code></pre>
-<p>Now we can run a test unikernel:</p>
-<pre><code class="language-bash">sudo nerdctl run --rm -ti --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/nginx-qemu-unikraft:latest unikernel
-</code></pre>
-<h2 id="urunc-with-firecracker">urunc with firecracker</h2>
-<p><code>urunc</code> expects to find the <code>firecracker</code> binary located in the <code>$PATH</code> and
-named <code>firecracker</code>. You can ensure this by executing the following commands:</p>
-<pre><code class="language-bash">ARCH=&quot;$(uname -m)&quot;
-release_url=&quot;https://github.com/firecracker-microvm/firecracker/releases&quot;
-latest=$(basename $(curl -fsSLI -o /dev/null -w %{url_effective} ${release_url}/latest))
-curl -L ${release_url}/download/${latest}/firecracker-${latest}-${ARCH}.tgz \
-| tar -xz
-
-# Rename the binary to &quot;firecracker&quot;
-sudo mv release-${latest}-$(uname -m)/firecracker-${latest}-${ARCH} /usr/local/bin/firecracker
-rm -fr release-${latest}-$(uname -m)
-</code></pre>
-<p>Now we can run a test unikernel:</p>
-<pre><code class="language-bash">sudo nerdctl run --rm -ti --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/nginx-fc-unik:latest unikernel
-</code></pre>
 
 
 

@@ -234,18 +234,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-urunc-works" class="md-nav__link">
+  <a href="#key-features" class="md-nav__link">
     <span class="md-ellipsis">
-      How urunc works
+      Key features
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
+  <a href="#use-cases" class="md-nav__link">
     <span class="md-ellipsis">
-      Features
+      Use cases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-support-of-unikernels-and-vmsandbox-monitors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current support of unikernels and VM/Sandbox monitors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick links
     </span>
   </a>
   
@@ -310,7 +328,7 @@
         
   
   <span class="md-ellipsis">
-    Hypervisor Support
+    VMM/Sandbox Support
   </span>
   
 
@@ -350,7 +368,7 @@
         
   
   <span class="md-ellipsis">
-    Container image building
+    Packaging unikernels
   </span>
   
 
@@ -365,16 +383,67 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="design/architecture/" class="md-nav__link">
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="design/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Design
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="design/seccomp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seccomp
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -454,7 +523,7 @@
         
   
   <span class="md-ellipsis">
-    Setup a Build environment
+    Setup a Dev environment
   </span>
   
 
@@ -611,18 +680,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-urunc-works" class="md-nav__link">
+  <a href="#key-features" class="md-nav__link">
     <span class="md-ellipsis">
-      How urunc works
+      Key features
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
+  <a href="#use-cases" class="md-nav__link">
     <span class="md-ellipsis">
-      Features
+      Use cases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-support-of-unikernels-and-vmsandbox-monitors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current support of unikernels and VM/Sandbox monitors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick links
     </span>
   </a>
   
@@ -644,44 +731,81 @@
 
 
 <h1 id="urunc-a-lightweight-container-runtime-for-unikernels">urunc: A Lightweight Container Runtime for Unikernels</h1>
-<p>To tighten the security aspects of execution environments, enabling seamless
-integration of any kind of sandbox mechanism (software, or hardware) with
-cloud-native architectures, we introduce <code>urunc</code>, a lightweight container
-runtime, able to spawn applications built as unikernels.</p>
-<p>Designed to fully leverage the container semantics and benefit from the OCI
-tools and methodology, <code>urunc</code> aims to become a micro (μ)runc, while offering
-compatibility with the Container Runtime Interface (CRI). </p>
-<p>By relying on software- and hardware-based sandboxing, urunc launches
-unikernels packaged as OCI-compatible images, allowing developers and
-administrators to deploy, and manage unikernel-based applications using
-familiar cloud-native practices.</p>
-<p><code>urunc</code> supports various unikernels, executed on a number of hypervisors. Check
-out the <a href="https://github.com/nubificus/urunc">roadmap</a> we have for upcoming
-features &amp; platforms!</p>
-<h2 id="how-urunc-works">How urunc works</h2>
-<p>The process of starting a new unikernel container with <code>urunc</code>, starts at the
-higher-level runtime (<code>containerd</code>) level:</p>
+<p>The main goal of <code>urunc</code> is to bridge the gap between traditional unikernels and
+containerized environments, enabling seamless integration with cloud-native
+architectures. Designed to fully leverage the container semantics and benefits
+from the OCI tools and methodology, <code>urunc</code> aims to become
+“runc for unikernels”, while offering compatibility with the Container
+Runtime Interface (CRI). Unikernels are packaged inside OCI-compatible images
+and <code>urunc</code> launces the unikernel on top of the underlying Virtual Machine or
+seccomp monitors. Thus, developers and administrators can package, deliver,
+deploy and manage unikernels using familiar cloud-native practises.</p>
+<p>For the above purpose <code>urunc</code> acts as any other OCI runtime. The main
+difference of <code>urunc</code> with other container runtimes is that instead of
+spawning a simple process, it uses a Virtual Machine Monitor (VMM) or a sandbox
+monitor to run the unikernel. It is important to note that <code>urunc</code> does not
+require any particular software running alongise the user's application inside
+or outside the unikernel. As a result, <code>urunc</code> is able to support any unikernel
+framework or similar technologies, while maintaining as low overhead as
+possible.</p>
+<h2 id="key-features">Key features</h2>
 <ul>
-<li><code>Containerd</code> unpacks the image into a supported snapshotter (eg <code>devmapper</code>)
-  and invokes <code>urunc</code>.</li>
-<li><code>urunc</code> parses the image's rootfs and annotations, initiating the required
-  setup procedures. These include creating essential pipes for stdio and
-  verifying the availability of the specified VMM.</li>
-<li>Subsequently, <code>urunc</code> spawns a new process within a distinct network
-  namespace and awaits the completion of the setup phase.</li>
-<li>Once the setup is finished, <code>urunc</code> executes the sandbox process, replacing
-  the container's init process with the sandbox process. The parameters for the
-  unikernel are derived from the OCI image annotations and options provided within
-  the unikernel itself. </li>
-<li>Finally, <code>urunc</code> returns the process ID (PID) of the hypervisor process to
-  <code>containerd</code>, effectively enabling it to handle the container's lifecycle
-  management.</li>
+<li>OCI Compatibility: Compatible with the Open Container Initiative (OCI) standards, enabling the use of existing container tools and workflows.</li>
+<li>Container Runtime Interface (CRI) Support: Compatible with Kubernetes and other CRI-based systems for seamless integration into container orchestration platforms.</li>
+<li>Unikernel Support: Run applications and user code as unikernels, unlocking the performance and security advantages of unikernel technology.</li>
+<li>Integration with VMMs and other strong sandboxing mechanisms: Use lightweight VMMs or sandbox monitors to launch unikernels, facilitating efficient resource isolation and management.</li>
+<li>Un-opinionated and Extensible: Straightforward and easy integration of new unikernel frameworks and sandboxing mechanisms without any porting overhead.</li>
 </ul>
-<h2 id="features">Features</h2>
+<h2 id="use-cases">Use cases</h2>
+<p>Unikernels are well known as a good fit for a variety of use cases, such as:</p>
 <ul>
-<li><a href="hypervisor-support">Hypervisor support</a></li>
-<li><a href="unikernel-support">Unikernel support</a></li>
-<li><a href="image-building">Integration with OCI images</a></li>
+<li>Microservices: The lightweight and almost deminished <em>OS noise</em> of unikernels
+  can significantly improve the execution of applications, making unikernels an
+  attractive fit for microservices.</li>
+<li>Serverless and FaaS: The extremely fast instantiation time of unikernels
+  satisfies the event-driven, short-lved and scalable characteristics of
+  serverless computing</li>
+<li>Edge computing: The lightweight notion of unikernels suits very well with edge
+  devices, where resources constraints and performance are critical.</li>
+<li>Sensitive environments: The inherited strong VM-based isolation, along with
+  the minimized attack surface of unikernels, provide strong security guarantees
+  for sensitive application which demand high security standards.</li>
+</ul>
+<p>In all the above use cases, <code>urunc</code> facilitates the seamless integration of
+unikernels with existing cloud-native tools and technologies, enabling the effortless
+distribution and management of applications running as unikernels.</p>
+<h2 id="current-support-of-unikernels-and-vmsandbox-monitors">Current support of unikernels and VM/Sandbox monitors</h2>
+<p>The following table provides an overview of the currently supported VMMs and
+Sandbox monitors, along with the unikernels that can run on top of them.</p>
+<table>
+<thead>
+<tr>
+<th>Unikernel</th>
+<th>VM/Sandbox Monitor</th>
+<th>Arch</th>
+<th>Storage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/unikernel-support/#rumprun">Rumprun</a></td>
+<td><a href="/hypervisor-support/#solo5-hvt">Solo5-hvt</a>, <a href="/hypervisor-support/#solo5-spt">Solo5-spt</a></td>
+<td>x86, aarch64</td>
+<td>Block</td>
+</tr>
+<tr>
+<td><a href="/unikernel-support/#unikraft">Unikraft</a></td>
+<td><a href="/hypervisor-support/#qemu">Qemu</a>, <a href="/hypervisor-support/#aws-firecracker">Firecracker</a></td>
+<td>x86</td>
+<td>Initrd</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quick-links">Quick links</h2>
+<ul>
+<li><a href="developer-guide/contribute/">Contributing</a></li>
+<li><a href="/developer-guide/timestamps">Getting metrics from <code>urunc</code></a></li>
+<li><a href="tutorials/how-to-urunc-on-k8s/">Integration with k8s</a></li>
 </ul>
 
 

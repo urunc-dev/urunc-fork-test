@@ -12,7 +12,7 @@
         <link rel="prev" href="../unikernel-support/">
       
       
-        <link rel="next" href="../design/architecture/">
+        <link rel="next" href="../design/">
       
       
       <link rel="icon" href="../img/urunc-logo.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Container image building - urunc Documentation</title>
+        <title>Packaging unikernels - urunc Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#urunc-compatible-oci-images" class="md-skip">
+        <a href="#packaging-unikernels-in-oci-images-for-urunc" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Container image building
+              Packaging unikernels
             
           </span>
         </div>
@@ -254,7 +254,7 @@
         
   
   <span class="md-ellipsis">
-    Hypervisor Support
+    VMM/Sandbox Support
   </span>
   
 
@@ -303,7 +303,7 @@
           
   
   <span class="md-ellipsis">
-    Container image building
+    Packaging unikernels
   </span>
   
 
@@ -314,7 +314,7 @@
         
   
   <span class="md-ellipsis">
-    Container image building
+    Packaging unikernels
   </span>
   
 
@@ -336,29 +336,98 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#bima-package-a-unikernel-into-an-oci-artifact" class="md-nav__link">
+  <a href="#annotations" class="md-nav__link">
     <span class="md-ellipsis">
-      bima: Package a unikernel into an OCI artifact
+      Annotations
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#tools-to-construct-oci-images-with-uruncs-annotations" class="md-nav__link">
     <span class="md-ellipsis">
-      Usage
+      Tools to construct OCI images with urunc's annotations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools to construct OCI images with urunc's annotations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bima" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bima
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bima">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packaging-a-rumprun-unikernel-with-bima" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packaging a rumprun unikernel with bima
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#build-from-source" class="md-nav__link">
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pun" class="md-nav__link">
     <span class="md-ellipsis">
-      Build from source
+      Pun
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Pun">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packaging-a-unikraft-unikernel-with-pun" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packaging a Unikraft unikernel with pun
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bimanix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bimanix
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bimanix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packaging-a-unikernel-with-bimanix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packaging a unikernel with bimanix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -376,16 +445,67 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../design/architecture/" class="md-nav__link">
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../design/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Design
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/seccomp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seccomp
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -465,7 +585,7 @@
         
   
   <span class="md-ellipsis">
-    Setup a Build environment
+    Setup a Dev environment
   </span>
   
 
@@ -622,29 +742,98 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#bima-package-a-unikernel-into-an-oci-artifact" class="md-nav__link">
+  <a href="#annotations" class="md-nav__link">
     <span class="md-ellipsis">
-      bima: Package a unikernel into an OCI artifact
+      Annotations
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#tools-to-construct-oci-images-with-uruncs-annotations" class="md-nav__link">
     <span class="md-ellipsis">
-      Usage
+      Tools to construct OCI images with urunc's annotations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools to construct OCI images with urunc's annotations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bima" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bima
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bima">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packaging-a-rumprun-unikernel-with-bima" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packaging a rumprun unikernel with bima
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#build-from-source" class="md-nav__link">
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pun" class="md-nav__link">
     <span class="md-ellipsis">
-      Build from source
+      Pun
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Pun">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packaging-a-unikraft-unikernel-with-pun" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packaging a Unikraft unikernel with pun
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bimanix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bimanix
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bimanix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packaging-a-unikernel-with-bimanix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packaging a unikernel with bimanix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -663,113 +852,247 @@
                   
 
 
-<h1 id="urunc-compatible-oci-images"><code>urunc</code>-compatible OCI images</h1>
-<p>To spawn a unikernel as a container, <code>urunc</code> assumes a specific structure for
-the OCI image. To facilitate the process, we built a tool that packages a
-unikernel binary, along with specific annotations into a container image.</p>
-<h2 id="bima-package-a-unikernel-into-an-oci-artifact">bima: Package a unikernel into an OCI artifact</h2>
-<p>bima builds an OCI-compatible Container Image from a special type of containerfile. This special containerfile supports
-a minimal set of "instructions", namely FROM, COPY and LABEL. The images built by bima are intended to be run by urunc,
-so there is no compatibility with other container runtimes.</p>
+<h1 id="packaging-unikernels-in-oci-images-for-urunc">Packaging unikernels in OCI images for <code>urunc</code></h1>
+<p>The <a href="https://github.com/opencontainers/image-spec">OCI (Open Container Initiative) image
+format</a> is a standardized
+specification for packaging and distributing containerized applications across
+different platforms and container runtimes. It defines a common structure for
+container images, including their metadata, layers, and filesystem content.
+Since <code>urunc</code> is a OCI-compatible container runtime, it expects the unikernel to
+be placed inside a OCI container image.</p>
+<p>Nevertheless, in order to differentiate between traditional container images
+and unikernel OCI images, <code>urunc</code> makes use of annotations or a specific file,
+called <code>urunc.json</code>, inside the container's rootfs.</p>
+<p>To facilitate the process, we provide various tools that package a unikernel
+binary, along with the application's necessary files in a container image and
+set the respective annotations. In particular, we can produce an OCI image with
+all <code>urunc</code>'s annotations using:
+1. <a href="https://github.com/nubificus/bima">bima</a> a standalone tool that communicates
+   with <a href="https://github.com/containerd/containerd">containerd</a>,
+2. <a href="https://github.com/nubificus/pun">pun</a> a tool that constructs a LLB or acts
+   as a frontend for
+   <a href="https://github.com/moby/buildkit?tab=readme-ov-file#output">buildkit</a> and
+3. <a href="https://github.com/nubificus/bimanix">bimanix</a> which uses <a href="https://github.com/NixOS/nix">Nix
+   packages</a> to build the image.</p>
+<p>In this document, we will first explain all the annotations that <code>urunc</code> expects
+to handle unikernels and describe each one of the three ways to build such OCI
+images for unikernels.</p>
+<h2 id="annotations">Annotations</h2>
+<p><a href="https://github.com/opencontainers/image-spec/blob/main/annotations.md">OCI
+annotations</a>
+are key-value metadata used to describe and provide additional
+context for container images and runtime configurations within the OCI
+specification. Using these annotations developers can
+embed non-essential information about containers, such as version details,
+licensing, build information, or custom runtime parameters, without affecting
+the core functionality of the container itself.
+The annotations can be placed in several components of the specification.
+However, in the case of <code>urunc</code> we are interested about annotations which can
+reach the container runtime.</p>
+<p>Using these annotations <code>urunc</code> receives information regarding the type of the
+unikernel, the VMM or sandbox mechanism to use and more. 2For the time being, the
+required annotations are the following:</p>
+<ul>
+<li><code>com.urunc.unikernel.unikernelType</code>: The type of the unikernel. Currently
+  supported values: a) unikraft, b) rumprun.</li>
+<li><code>com.urunc.unikernel.hypervisor</code>: The VMM or sandbox monitor to run the
+  unikernel Currently supported values: a) qemu, b) firecracker, c) spt, d) hvt.</li>
+<li><code>com.urunc.unikernel.binary</code>: The path to the unikernel binary inside the
+  container's rootfs</li>
+<li><code>com.urunc.unikernel.cmdline</code>: The application's cmdline to pass to the
+  unikernel.</li>
+</ul>
+<p>Except of the above, <code>urunc</code> accepts the following optional annotations:</p>
+<ul>
+<li><code>com.urunc.unikernel.initrd</code>: The path to the initrd of the unikernel inside
+  the container's rootfs.</li>
+<li><code>com.urunc.unikernel.block</code>: The path to a block image, inside container's
+  rootfs, which will get attached to the unikernel.</li>
+<li><code>com.urunc.unikernel.blkMntPoint</code>: The mount point of the block image to
+  attach in the unikernel.</li>
+<li><code>com.urunc.unikernel.version</code>: The version of the unikernel framework (e.g.
+  0.17.0).</li>
+</ul>
+<p>Due to the fact that <a href="https://www.docker.com/">Docker</a> and some high-level
+container runtimes do not pass the image annotations to the underlying container
+runtime, <code>urunc</code> can also read the above information from a file inside the
+container's rootfs. The file should be named as <code>urunc.json</code>, it should be
+placed in the root directory of the container's rootfs and it should have a JSON
+format with the above information, where the values are base64 encoded.</p>
+<h2 id="tools-to-construct-oci-images-with-uruncs-annotations">Tools to construct OCI images with <code>urunc</code>'s annotations</h2>
+<p>As previously mentioned we currently provide 3 different tools to package
+unikernels in OCI images with <code>urunc</code>'s annotations.</p>
+<h3 id="bima">Bima</h3>
+<p><a href="https://github.com/nubificus/bima">bima</a> uses
+<a href="https://github.com/containerd/containerd">containerd</a> to build OCI images. In
+particular, <a href="https://github.com/nubificus/bima">bima</a> reads the contents of a file
+with a Dokcerfile-like syntax. This
+file can contain a set of <em>instructions</em> that specify how to package an existing
+unikernel binary as an OCI image. The currently supported <em>instructions</em> are:</p>
 <ul>
 <li><code>FROM</code>: this is not taken into account at the current implementation, but we
   plan to add support for.</li>
 <li><code>COPY</code>: this works as in Dockerfiles. At this moment, only a single copy
-  operation per "instruction" (think one copy per line). These files are copied
-  inside the image's <code>rootfs</code>, which is then passed to the unikernel as a block
-  device and mounted under <code>/data</code> directory.</li>
-<li><code>LABEL</code>: all LABEL "instructions" are added as annotations to the Container
-  image. They are also added to a special <code>urunc.json</code> inside the container's
+  operation per <em>instruction</em> (think one copy per line). These files are copied
+  inside the container's image rootfs.</li>
+<li><code>LABEL</code>: all LABEL <em>instructions</em> are added as annotations to the Container
+  image. They are also added to a special <code>urunc.json</code> inside the container's image
   rootfs.</li>
 </ul>
-<p>Due to the tight coupling between <code>bima</code> and <code>urunc</code>, the few annotations that are
-required for urunc to work, are also required by bima.</p>
-<p>The required annotations are the following:</p>
-<ul>
-<li><code>com.urunc.unikernel.unikernelType</code>: The type of the unikernel (can be rumprun, unikraft, etc)</li>
-<li><code>com.urunc.unikernel.hypervisor</code>: The desired hypervisor to run the unikernel (e.g. qemu, hedge, hvt)</li>
-<li><code>com.urunc.unikernel.binary</code>: The unikernel binary to run</li>
-<li><code>com.urunc.unikernel.cmdline</code>: The cmdline used to run the unikernel</li>
-<li><code>com.urunc.unikernel.version</code>: The version of the framework used to build the unikernel (e.g. 0.17.0)</li>
-</ul>
-<p>The produced image's platform OS is always Linux, while the platform
-architecture is automatically extracted from the ELF headers of the file
-defined in <code>com.urunc.unikernel.binary</code> annotation.</p>
-<p>A sample Containerfile should look like this:</p>
+<h4 id="packaging-a-rumprun-unikernel-with-bima">Packaging a rumprun unikernel with bima</h4>
+<p>The main benefit of <a href="https://github.com/nubificus/bima">bima</a> is that it is a
+standalone tool which uses
+<a href="https://github.com/containerd/containerd">containerd</a>. Therefore, there are no
+dependencies on using it. For instructions to build and install
+<a href="https://github.com/nubificus/bima">bima</a> please check <a href="https://github.com/nubificus/bima?tab=readme-ov-file#build-from-source">its
+README</a></p>
+<p>As a result, to package a unikernel inside an OCI image and setting <code>urunc</code>'s
+annotations with <a href="https://github.com/nubificus/bima">bima</a>, we simply need to
+construct the Containerfile with all the necessary <em>instructions</em>. For instance,
+to package a Redis unikernel that uses Rumprun and runs on top of Solo5, we can
+construct the Containerfile as:</p>
 <pre><code class="language-Dockerfile"># the FROM instruction will not be parsed
 FROM scratch
 
 COPY test-redis.hvt /unikernel/test-redis.hvt
 COPY redis.conf /conf/redis.conf
 
-LABEL com.urunc.unikernel.binary=/unikernel/test-redis.hvt
+LABEL &quot;com.urunc.unikernel.binary&quot;=/unikernel/test-redis.hvt
 LABEL &quot;com.urunc.unikernel.cmdline&quot;='redis-server /data/conf/redis.conf'
 LABEL &quot;com.urunc.unikernel.unikernelType&quot;=&quot;rumprun&quot;
-LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;qemu&quot;
-LABEL &quot;com.urunc.unikernel.version&quot;=&quot;0.2.0&quot;
+LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;hvt&quot;
 </code></pre>
 <blockquote>
 <p>Note: For labels, you can use single quotes, double quotes or no quotes at
 all. Defining multiple label key-value pairs in a single LABEL instruction is
 not supported.</p>
 </blockquote>
-<h2 id="usage">Usage</h2>
-<p>Bima mostly follows the Docker build CLI interface, as you can see:</p>
-<pre><code>NAME:
-   bima build - build a container image
-
-USAGE:
-   bima build [command options] [arguments...]
-
-OPTIONS:
-   --namespace NAMESPACE, -n NAMESPACE       NAMESPACE to use when importing image to containerd (default: &quot;default&quot;) [$CONTAINERD_NAMESPACE]
-   --address ADDRESS, -a ADDRESS             ADDRESS for containerd's GRPC server to use when importing image to containerd (default: &quot;/run/containerd/containerd.sock&quot;) [$CONTAINERD_ADDRESS]
-   --snapshotter SNAPSHOTTER                 [Optional] SNAPSHOTTER name. Empty value stands for the default value. Used when importing the produced image to containerd [$CONTAINERD_SNAPSHOTTER]
-   --output OUTPUT, --out OUTPUT, -o OUTPUT  [Optional] OUTPUT format for the produced images. Possible values: [&quot;ctr&quot;, &quot;tar&quot;] (default: &quot;ctr&quot;)
-   --tar                                     [Optional] Shorthand version of --output=tar (default: false)
-   --tag NAME, -t NAME                       Image NAME and optionally a tag (format: &quot;name:tag&quot;)
-   --file CONTAINERFILE, -f CONTAINERFILE    Name of the CONTAINERFILE  (default: &quot;./Containerfile&quot;)
-   --help, -h                                show help
-</code></pre>
-<p>Apart from the command options, <code>bima build</code> only accepts a single argument:
-the context directory for the build.</p>
-<p>In addition to the usual options, there are a few more (non Docker) options,
-namely <code>namespace</code>, <code>address</code>, <code>snapshotter</code> and <code>output</code>. </p>
-<p>By default, bima will import the image to containerd. Namespace, address and
-snapshotter are passed directly to containerd, when importing the produced
-image.</p>
-<p>If you want to inspect the image instead, you can set <code>--output=tar</code> or <code>--tar</code>
-flag to create a local tarball of the container image.</p>
-<p>For example, to create an image based on Containerfile (or Dockerfile) found in
-the current directory:</p>
+<p>As soon as we create the Containerfile we can build the container with:</p>
 <pre><code class="language-bash">bima build -t nubificus/image:tag .
 </code></pre>
-<p>To create an image tarball:</p>
-<pre><code class="language-bash">bima build -t nubificus/image:tag --tar .
-# or
-bima build -t nubificus/image:tag --output tar .
+<p>Please check the <a href="https://github.com/nubificus/bima?tab=readme-ov-file#usage">README
+file</a> of bima for
+more information.</p>
+<h3 id="pun">Pun</h3>
+<p>As an alternative to <a href="https://github.com/nubificus/bima">bima</a>, we built
+<a href="https://github.com/nubificus/pun">pun</a> a tool based on
+<a href="https://github.com/moby/buildkit?tab=readme-ov-file#output">buildkit</a>. The main
+differentiate between <a href="https://github.com/nubificus/bima">bima</a> and
+<a href="https://github.com/nubificus/pun">pun</a> is that
+<a href="https://github.com/nubificus/pun">pun</a> supports using existing OCI images with
+a unikernel inside. An example of such images is <a href="https://github.com/unikraft/catalog">Unikraft's application
+catalog</a>. Therefore, with
+<a href="https://github.com/nubificus/pun">pun</a> a user can simply define an existing
+image to use and <a href="https://github.com/nubificus/pun">pun</a> will add any other
+files inside the container image and of course the necessary annotations.
+Both <a href="https://github.com/nubificus/pun">pun</a> and
+<a href="https://github.com/nubificus/bima">bima</a> support the same set of <em>instructions</em>
+with the difference that <code>FROM</code> is handled properly from
+<a href="https://github.com/nubificus/pun">pun</a>.</p>
+<h4 id="packaging-a-unikraft-unikernel-with-pun">Packaging a Unikraft unikernel with pun</h4>
+<p>Since <a href="https://github.com/nubificus/pun">pun</a> uses
+<a href="https://github.com/moby/buildkit?tab=readme-ov-file#output">buildkit</a> it
+supports two modes of execution. In the first mode it acts as a <a href="https://docs.docker.com/build/buildkit/frontend/">buildkit
+frontend</a> and in the second
+mode it outputs a LLB which can be passed to <code>buildctl</code>.Therefore,
+<a href="https://github.com/nubificus/pun">pun</a> depends on
+<a href="https://github.com/moby/buildkit?tab=readme-ov-file#output">buildkit</a> which
+should be installed. However, if <a href="https://www.docker.com/">docker</a> is already
+installed, the frontend execution mode of <a href="https://github.com/nubificus/pun">pun</a>
+can be used directly without building anything.</p>
+<p>Similarly to <a href="https://github.com/nubificus/bima">bima</a> the first step to build
+the container is to define the Containerfile. It is important to note that if we
+want to use <a href="https://github.com/nubificus/pun">pun</a> as a frontend for buildkit
+we need to start the Containerfile with the following line:</p>
+<pre><code class="language-Dockerfile">#syntax=harbor.nbfc.io/nubificus/urunc/pun/llb:latest
 </code></pre>
-<p>To create an image from a different Containerfile:</p>
-<pre><code class="language-bash">bima build -t nubificus/redis:latest -f Containerfile.redis .
+<p>Therefore, if we want to package a locally built Ngnix Unikraft unikernel, we
+can define the Containerfile as:</p>
+<pre><code class="language-Dockerfile">#syntax=harbor.nbfc.io/nubificus/pun:0.1.0
+FROM scratch
+
+COPY build/app-nginx_qemu-x86_64 /unikernel/kernel
+COPY data.cpio /unikernel/initrd
+
+LABEL com.urunc.unikernel.binary=/unikernel/kernel
+LABEL &quot;com.urunc.unikernel.initrd&quot;=/unikernel/initrd
+LABEL &quot;com.urunc.unikernel.cmdline&quot;='nginx -c /nginx/conf/nginx.conf'
+LABEL &quot;com.urunc.unikernel.unikernelType&quot;=&quot;unikraft&quot;
+LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;qemu&quot;
 </code></pre>
-<p>You can verify that images were properly created:</p>
-<pre><code class="language-bash">sudo ctr image ls
+<p>and we can build it with a docker command:</p>
+<pre><code class="language-bash">docker build -f Containerfile -t nubificus/urunc/nginx-unikraft-qemu:test .
 </code></pre>
-<p>To push the image:</p>
-<pre><code class="language-bash">sudo ctr image push nubificus/redis:latest
+<p>In a similar way, if we want to package an existing Nginx Unikraft unikernel
+form <a href="https://github.com/unikraft/catalog">unikraft's catalog</a>, we should define
+the Containerfile as:</p>
+<pre><code class="language-Dockerfile">#syntax=harbor.nbfc.io/nubificus/pun:0.1.0
+FROM unikraft.org/nginx:1.15
+
+LABEL com.urunc.unikernel.binary=&quot;/unikraft/bin/kernel&quot;
+LABEL &quot;com.urunc.unikernel.cmdline&quot;=&quot;nginx -c /nginx/conf/nginx.conf&quot;
+LABEL &quot;com.urunc.unikernel.unikernelType&quot;=&quot;unikraft&quot;
+LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;qemu&quot;
 </code></pre>
-<h2 id="build-from-source">Build from source</h2>
-<p>To build from source, you can use the Makefile:</p>
-<pre><code class="language-bash">make
+<p>and we can build it with the same docker command:</p>
+<pre><code class="language-bash">docker build -f Containerfile -t nubificus/urunc/nginx-unikraft-qemu:test .
 </code></pre>
-<p>This will build a single binary under <code>./dist</code> directory for your CPU's
-architecture.</p>
-<p>To install the binary:</p>
-<pre><code class="language-bash">sudo make install
+<blockquote>
+<p>Note: For labels, you can use single quotes, double quotes or no quotes at
+all. Defining multiple label key-value pairs in a single LABEL instruction is
+not supported.</p>
+</blockquote>
+<p>For more information check <a href="https://github.com/nubificus/pun">pun's README</a> </p>
+<h3 id="bimanix">Bimanix</h3>
+<p>For the Nix users, we have created a set of Nix scripts that we maintain in the
+<a href="https://github.com/nubificus/bimanix">bimanix</a> repository to build container
+images for <code>urunc</code>. In contrast with the previous tools
+<a href="https://github.com/nubificus/bimanix">bimanix</a> uses a nix file to define the
+files to package as a container image, along with the <code>urunc</code> annotations. In
+particular, this file is the <code>args.nix</code> file, which expects the same fields:</p>
+<ul>
+<li>name: the name of the container image that Nix will build</li>
+<li>tag: the tag of the container image that Nix will build</li>
+<li>files: a list of key-value pairs with all the files to copy inside the
+  container image. The key-value pairs have the following format:
+  <code>"&lt;path-based-on-cwd&gt;" = "&lt;path-inside-container&gt;"</code>.</li>
+<li>annotations: a list will all the <code>urunc</code> annotations.</li>
+</ul>
+<h4 id="packaging-a-unikernel-with-bimanix">Packaging a unikernel with bimanix</h4>
+<p>A necessary requirement to use <a href="https://github.com/nubificus/bimanix">bimanix</a>
+is the presence of <a href="https://github.com/NixOS/nix">Nix package manager</a>. Then
+using <a href="https://github.com/nubificus/bimanix">bimanix</a> is as simple as completing
+the <code>args.nix</code> file.</p>
+<p>For example to package a locally built Rumprun Hello world unikernel running on
+top of SOlo5-hvt, we should set the <code>args.nix</code> file as:</p>
+<pre><code class="language-Nix">{
+  name = &quot;hello-rumprun&quot;;
+  tag = &quot;latest&quot;;
+  files = {
+    &quot;./hello.hvt&quot; = &quot;/unikernel/hello.hvt&quot;;
+  };
+  annotations = {
+    unikernelType = &quot;rumprun&quot;;
+    hypervisor = &quot;hvt&quot;;
+    binary = &quot;/unikernel/hello.hvt&quot;;
+    cmdline = &quot;hello&quot;;
+    unikernelVersion = &quot;&quot;;
+    initrd = &quot;&quot;;
+    block = &quot;&quot;;
+    blkMntPoint = &quot;&quot;;
+  };
+}
 </code></pre>
-<p>If you want to compile for both <code>aarch64</code> and <code>amd64</code>:</p>
-<pre><code class="language-bash">make all
+<p>Then we can build the image by simply running the following command
+inside the repository:</p>
+<pre><code class="language-bash">nix-build default.nix
 </code></pre>
+<p>The above command will create a container image in a tar inside Nix's store. For
+easier access of the tar, Nix creates a symlink of the tar file in the CWD. The
+symlink will be named as <code>result</code>. Therefore, we can load the container image with:</p>
+<pre><code class="language-bash">docker load &lt; result
+</code></pre>
+<p>Please check <a href="https://github.com/nubificus/bimanix">bimanix's README</a> for more information.</p>
 
 
 

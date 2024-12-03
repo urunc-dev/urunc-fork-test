@@ -256,7 +256,7 @@
         
   
   <span class="md-ellipsis">
-    Hypervisor Support
+    VMM/Sandbox Support
   </span>
   
 
@@ -296,7 +296,7 @@
         
   
   <span class="md-ellipsis">
-    Container image building
+    Packaging unikernels
   </span>
   
 
@@ -311,16 +311,67 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../design/architecture/" class="md-nav__link">
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../design/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Design
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/seccomp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seccomp
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -488,6 +539,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#labels-for-the-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Labels for the CI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#style-guide" class="md-nav__link">
     <span class="md-ellipsis">
       Style guide
@@ -549,7 +609,7 @@
         
   
   <span class="md-ellipsis">
-    Setup a Build environment
+    Setup a Dev environment
   </span>
   
 
@@ -773,6 +833,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#labels-for-the-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Labels for the CI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#style-guide" class="md-nav__link">
     <span class="md-ellipsis">
       Style guide
@@ -948,10 +1017,7 @@ Before creating a new PR, please follow the guidelines below:</p>
 <p>Make sure that the changes do not break the building process of <code>urunc</code>.</p>
 </li>
 <li>
-<p>Make sure that the tests run successfully.</p>
-</li>
-<li>
-<p>Use one commit for each new or changed functionality </p>
+<p>Make sure that all the tests run successfully.</p>
 </li>
 <li>
 <p>Make sure that no commit in a PR breaks the building process of <code>urunc</code></p>
@@ -960,7 +1026,7 @@ Before creating a new PR, please follow the guidelines below:</p>
 <p>Make sure to sign-off your commits.</p>
 </li>
 <li>
-<p>Provide meaningful commit messages, describing shortly the changes the commit introduces.</p>
+<p>Provide meaningful commit messages, describing shortly the changes.</p>
 </li>
 <li>
 <p>Provide a meaningful PR message</p>
@@ -968,33 +1034,37 @@ Before creating a new PR, please follow the guidelines below:</p>
 </ul>
 <p>As soon as a new PR is created the following workflow will take place:</p>
 <ol>
-<li>
-<p>One of <code>urunc</code>'s maintainers will check the PR and invoke the tests, by adding the <code>ok-to-test</code> label.</p>
-</li>
-<li>
-<p>If the tests pass, one or more <code>urunc</code>'s maintainers will review the PR.</p>
-</li>
-<li>
-<p>The author of the PR should address all the comments from the reviewers.</p>
-</li>
-<li>
-<p>As soon as a reviewer approves the PR, an action will add the appropriate git trailers in the PR's commits.</p>
-</li>
-<li>
-<p>The PR is now ready to be merged.</p>
-</li>
+<li>The creator of the PR should invoke the tests by adding the <code>ok-to-test</code> label.</li>
+<li>If the tests pass, request from one or more <code>urunc</code>'s maintainers to review the PR.</li>
+<li>The reviewers submit their review.</li>
+<li>The author of the PR should address all the comments from the reviewers.</li>
+<li>As soon as a reviewer approves the PR, an action will add the appropriate git trailers in the PR's commits.</li>
+<li>The reviewer who accepted the changes will merge the new changes.</li>
 </ol>
-<p>To facilitate the development, while keeping tests active, we introduced labeling to PRs. Specifically, our CI supports three labels:</p>
-<ul>
-<li><code>ok-to-test</code>: Runs a full CI workflow</li>
-<li><code>skip-build</code>: Skips the building workflow, doing linting on code and
-  documentation. This is useful when the PR is related to docs,
-  cleanup/polishing text, so no need to run the whole CI workflow.</li>
-<li><code>skip-lint</code>: Skips the linting phase. This is particularly useful on draft
+<h2 id="labels-for-the-ci">Labels for the CI</h2>
+<p>We use github workflows to invoke some tests when a new PR opens for <code>urunc</code>.
+In particulat, we perform the following workflows tests:
+- Linting of the commit message. Please check the <a href="CONTRIBUTING.md#Git-commit-messages">git commit message style</a> below for more info.
+- Spell check, since <code>urunc</code> repository contains its documentation too.
+- License check
+- Code linting for Go.
+- Building artifacts for amd64 and aarch64.
+- Unit tests
+- End-to-end tests</p>
+<p>For a better control over the tests and workflows that run in a PR, we define
+three labels which can be used:
+- <code>ok-to-test</code>: Runs a full CI workflow, meaning all lint tests (commit
+  message, spellcheck, license), Go's linting, building for x86 and aarch64,
+  unit tests and at last end-to-end tests.
+- <code>skip-build</code>: Skips the building workflows along with unit and end-to end tests
+  running all the linting tests. This is useful when
+  the PR is related to docs and it can help for catching spelling errors etc. In
+  addition, if the changes are not related to the codebase, running the
+  end-to-end tests is not required and saves some time.
+- <code>skip-lint</code>: Skips the linting phase. This is particularly useful on draft
   PRs, when we want to just test the functionality of the code (either a bug
   fix, or a new feature) and defer the cleanup/polishing of commits, code, and
-  docs to when the PR will be ready for review.</li>
-</ul>
+  docs to when the PR will be ready for review.</p>
 <p><strong>Note</strong>: Both <code>skip-build</code> and <code>skip-lint</code> assume that the <code>ok-to-test</code> label
 is added.</p>
 <h2 id="style-guide">Style guide</h2>

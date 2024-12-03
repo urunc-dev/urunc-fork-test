@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../design/seccomp/">
-      
-      
-        <link rel="next" href="contribute/">
       
       
       <link rel="icon" href="../img/urunc-logo.png">
@@ -20,7 +16,7 @@
     
     
       
-        <title>Developer Guide - urunc Documentation</title>
+        <title>Sample Unikernel OCI images - urunc Documentation</title>
       
     
     
@@ -73,6 +69,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#sample-unikernel-oci-images" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -104,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Developer Guide
+              Sample Unikernel OCI images
             
           </span>
         </div>
@@ -373,24 +374,22 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../developer-guide/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -401,13 +400,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Developer Guide
@@ -421,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="contribute/" class="md-nav__link">
+      <a href="../developer-guide/contribute/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -442,7 +441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="development/" class="md-nav__link">
+      <a href="../developer-guide/development/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -463,7 +462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="timestamps/" class="md-nav__link">
+      <a href="../developer-guide/timestamps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -593,6 +592,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -607,13 +608,24 @@
                   
 
 
-  <h1>Developer Guide</h1>
-
-<p>In this section we provide useful information regarding the development of
-<code>urunc</code>. In particular, the section contains information about setting up a dev
-environment, checking performance traces and more.</p>
-<p>We kindly ask you to check the <a href="/developer-guide/contribute">contributing</a> page before
-submitting any pull requests, or opening new issues.</p>
+<h1 id="sample-unikernel-oci-images">Sample Unikernel OCI images</h1>
+<p>In this document, you can find the images used to perform <code>urunc</code>'s end-to-end tests.
+This might be helpful for anyone looking to spawn some example unikernels using <code>urunc</code>.</p>
+<p>The naming convention used for these images is $APPLICATION-$HYPERVISOR-$UNIKERNEL-$ADDITIONAL_INFO:tag
+We plan to create and maintain multi-platform images soon, as well as enrich this list with new images.</p>
+<ul>
+<li>harbor.nbfc.io/nubificus/urunc/hello-hvt-rumprun-nonet:latest</li>
+<li>harbor.nbfc.io/nubificus/urunc/hello-spt-rumprun-nonet:latest</li>
+<li>harbor.nbfc.io/nubificus/urunc/nginx-qemu-unikraft-initrd:latest</li>
+<li>harbor.nbfc.io/nubificus/urunc/nginx-firecracker-unikraft-initrd:latest</li>
+<li>harbor.nbfc.io/nubificus/urunc/hello-hvt-rumprun:latest</li>
+<li>harbor.nbfc.io/nubificus/urunc/redis-hvt-rumprun:latest</li>
+<li>harbor.nbfc.io/nubificus/urunc/redis-hvt-rumprun-block:latest</li>
+<li>harbor.nbfc.io/nubificus/urunc/redis-spt-rumprun:latest</li>
+<li>harbor.nbfc.io/nubificus/urunc/redis-qemu-unikraft-initrd:latest</li>
+<li>harbor.nbfc.io/nubificus/urunc/nginx-firecracker-unikraft-initrd:latest</li>
+<li>harbor.nbfc.io/nubificus/urunc/httpreply-firecracker-unikraft:latest</li>
+</ul>
 
 
 
