@@ -1119,6 +1119,26 @@ check the <a href="/installation/#create-a-service-for-thinpool-reloading">insta
 <p>At last, we need to modify
 <a href="https://github.com/containerd/containerd/tree/main">containerd</a> configuration
 for the new demapper snapshotter:</p>
+<ul>
+<li>In containerd v2.x:</li>
+</ul>
+<pre><code class="language-bash">$ sudo sed -i &quot;/\[plugins\.'io\.containerd\.snapshotter\.v1\.devmapper'\]/,/^$/d&quot; /etc/containerd/config.toml
+$ sudo tee -a /etc/containerd/config.toml &gt; /dev/null &lt;&lt;'EOT'
+
+# Customizations for devmapper
+
+[plugins.'io.containerd.snapshotter.v1.devmapper']
+  pool_name = &quot;containerd-pool&quot;
+  root_path = &quot;/var/lib/containerd/io.containerd.snapshotter.v1.devmapper&quot;
+  base_image_size = &quot;10GB&quot;
+  discard_blocks = true
+  fs_type = &quot;ext2&quot;
+EOT
+$ sudo systemctl restart containerd
+</code></pre>
+<ul>
+<li>In containerd v1.x:</li>
+</ul>
 <pre><code class="language-bash">$ sudo sed -i '/\[plugins\.&quot;io\.containerd\.snapshotter\.v1\.devmapper&quot;\]/,/^$/d' /etc/containerd/config.toml
 $ sudo tee -a /etc/containerd/config.toml &gt; /dev/null &lt;&lt;'EOT'
 

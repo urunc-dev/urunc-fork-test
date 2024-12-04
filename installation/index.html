@@ -1254,7 +1254,7 @@ $ rm -f ./runc.$(dpkg --print-architecture)
 high-level runtime and its latest version. For alternative
 installation methods or other information, please check containerd's <a href="https://github.com/containerd/containerd/blob/main/docs/getting-started.md">Getting
 Started</a>
-guide. </p>
+guide.</p>
 <pre><code class="language-bash">$ CONTAINERD_VERSION=$(curl -L -s -o /dev/null -w '%{url_effective}' &quot;https://github.com/containerd/containerd/releases/latest&quot; | grep -oP &quot;v\d+\.\d+\.\d+&quot; | sed 's/v//')
 $ wget -q https://github.com/containerd/containerd/releases/download/v$CONTAINERD_VERSION/containerd-$CONTAINERD_VERSION-linux-$(dpkg --print-architecture).tar.gz
 $ sudo tar Cxzvf /usr/local containerd-$CONTAINERD_VERSION-linux-$(dpkg --print-architecture).tar.gz
@@ -1324,7 +1324,27 @@ $ sudo systemctl daemon-reload
 $ sudo systemctl enable dm_reload.service
 </code></pre>
 <h4 id="configure-containerd-for-devmapper">Configure containerd for devmapper</h4>
+<ul>
+<li>In containerd v2.x:</li>
+</ul>
 <pre><code class="language-bash">$ sudo sed -i &quot;/\[plugins\.'io\.containerd\.snapshotter\.v1\.devmapper'\]/,/^$/d&quot; /etc/containerd/config.toml
+$ sudo tee -a /etc/containerd/config.toml &gt; /dev/null &lt;&lt;'EOT'
+
+# Customizations for devmapper
+
+[plugins.'io.containerd.snapshotter.v1.devmapper']
+  pool_name = &quot;containerd-pool&quot;
+  root_path = &quot;/var/lib/containerd/io.containerd.snapshotter.v1.devmapper&quot;
+  base_image_size = &quot;10GB&quot;
+  discard_blocks = true
+  fs_type = &quot;ext2&quot;
+EOT
+$ sudo systemctl restart containerd
+</code></pre>
+<ul>
+<li>In containerd v1.x:</li>
+</ul>
+<pre><code class="language-bash">$ sudo sed -i '/\[plugins\.&quot;io\.containerd\.snapshotter\.v1\.devmapper&quot;\]/,/^$/d' /etc/containerd/config.toml
 $ sudo tee -a /etc/containerd/config.toml &gt; /dev/null &lt;&lt;'EOT'
 
 # Customizations for devmapper
@@ -1380,8 +1400,23 @@ $ sudo mv containerd-shim-urunc-v2_$(dpkg --print-architecture) /usr/local/bin/c
 </code></pre>
 <h3 id="add-urunc-runtime-to-containerd">Add urunc runtime to containerd</h3>
 <p>We also need to add <code>urunc</code> as a runtime in containerd's configuration:</p>
+<ul>
+<li>In containerd 2.x:</li>
+</ul>
 <pre><code class="language-bash">$ sudo tee -a /etc/containerd/config.toml &gt; /dev/null &lt;&lt;EOT
 [plugins.'io.containerd.cri.v1.runtime'.containerd.runtimes.urunc]
+    runtime_type = &quot;io.containerd.urunc.v2&quot;
+    container_annotations = [&quot;com.urunc.unikernel.*&quot;]
+    pod_annotations = [&quot;com.urunc.unikernel.*&quot;]
+    snapshotter = &quot;devmapper&quot;
+EOT
+$ sudo systemctl restart containerd
+</code></pre>
+<ul>
+<li>In containerd 1.x:</li>
+</ul>
+<pre><code class="language-bash">$ sudo tee -a /etc/containerd/config.toml &gt; /dev/null &lt;&lt;EOT
+[plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd.runtimes.urunc]
     runtime_type = &quot;io.containerd.urunc.v2&quot;
     container_annotations = [&quot;com.urunc.unikernel.*&quot;]
     pod_annotations = [&quot;com.urunc.unikernel.*&quot;]
