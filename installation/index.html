@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../img/urunc-logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -1220,7 +1220,7 @@ on a number of distros.</p>
 <li><a href="https://github.com/containernetworking/plugins">CNI plugins</a></li>
 <li><a href="https://github.com/containerd/nerdctl">nerdctl</a></li>
 <li><a href="https://docs.docker.com/storage/storagedriver/device-mapper-driver/">devmapper</a></li>
-<li><a href="https://go.dev/doc/install">Go 1.20.6</a></li>
+<li><a href="https://go.dev/doc/install">Go 1.23.4</a></li>
 <li><a href="https://github.com/nubificus/urunc">urunc</a></li>
 <li><a href="https://github.com/Solo5/solo5">solo5-{hvt|spt}</a></li>
 <li><a href="https://www.qemu.org/">qemu</a></li>
@@ -1301,7 +1301,6 @@ repo</a>.</p>
 <pre><code class="language-bash">$ git clone https://github.com/nubificus/urunc.git
 $ sudo mkdir -p /usr/local/bin/scripts
 $ sudo mkdir -p /usr/local/lib/systemd/system/
-
 $ sudo cp urunc/script/dm_create.sh /usr/local/bin/scripts/dm_create.sh
 $ sudo cp urunc/script/dm_reload.sh /usr/local/bin/scripts/dm_reload.sh
 $ sudo chmod 755 /usr/local/bin/scripts/dm_create.sh
@@ -1365,14 +1364,16 @@ io.containerd.snapshotter.v1              devmapper                linux/amd64  
 <h2 id="install-urunc">Install urunc</h2>
 <h3 id="option-1-build-from-source">Option 1: Build from source</h3>
 <h4 id="install-go">Install Go</h4>
-<p>In order to build <code>urunc</code> from source, we need to install Go. We will use Go 1.20.6, but feel free to use a newer version.</p>
-<pre><code class="language-bash">$ wget -q https://go.dev/dl/go1.20.6.linux-$(dpkg --print-architecture).tar.gz
-$ sudo mkdir /usr/local/go1.20.6
-$ sudo tar -C /usr/local/go1.20.6 -xzf go1.20.6.linux-$(dpkg --print-architecture).tar.gz
-$ sudo tee -a /etc/profile &gt; /dev/null &lt;&lt; 'EOT'
-export PATH=$PATH:/usr/local/go1.20.6/go/bin
+<p>In order to build <code>urunc</code> from source, we need to install Go.
+Any version earlier than Go 1.20.6 will be sufficient.</p>
+<pre><code class="language-bash">$ GO_VERSION=1.23.4
+$ wget -q https://go.dev/dl/go${GO_VERSION}.linux-$(dpkg --print-architecture).tar.gz
+$ sudo mkdir /usr/local/go${GO_VERSION}
+$ sudo tar -C /usr/local/go${GO_VERSION} -xzf go${GO_VERSION}.linux-$(dpkg --print-architecture).tar.gz
+$ sudo tee -a /etc/profile &gt; /dev/null &lt;&lt; EOT
+export PATH=\$PATH:/usr/local/go$GO_VERSION/go/bin
 EOT
-$ rm -f go1.20.6.linux-$(dpkg --print-architecture).tar.gz
+$ rm -f go${GO_VERSION}.linux-$(dpkg --print-architecture).tar.gz
 </code></pre>
 <blockquote>
 <p>Note: You might need to logout and log back in to the shell, in order to use
@@ -1517,7 +1518,7 @@ everything was installed correctly.</p>
     <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
     
   </body>
