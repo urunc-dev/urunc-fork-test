@@ -6,13 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="The list of urunc maintainers">
       
       
       
-        <link rel="prev" href="../contribute/">
+      
+        <link rel="prev" href="../development/">
       
       
-        <link rel="next" href="../maintainers/">
+        <link rel="next" href="../timestamps/">
       
       
       <link rel="icon" href="../../img/urunc-logo.png">
@@ -20,7 +22,7 @@
     
     
       
-        <title>Setup a Dev environment - urunc Documentation</title>
+        <title>Maintainers - urunc Documentation</title>
       
     
     
@@ -76,6 +78,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#the-current-maintainers-of-urunc" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -107,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Setup a Dev environment
+              Maintainers
             
           </span>
         </div>
@@ -449,16 +456,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../development/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -467,7 +467,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -477,9 +476,18 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../maintainers/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -488,6 +496,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -626,6 +635,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -640,53 +651,37 @@
                   
 
 
-  <h1>Setup a Dev environment</h1>
-
-<hr />
-<p>Most of the steps are covered in the <a href="../../installation">installation</a> document.
-Please refer to it for:</p>
-<ul>
-<li>installing a recent version of Go (&gt; 1.20)</li>
-<li>installing <code>containerd</code> and <code>runc</code></li>
-<li>setting up the devmapper snapshotter</li>
-<li>installing <code>nerdctl</code> and the <code>CNI</code> plugins</li>
-<li>installing the relevant hypervisors</li>
-</ul>
-<p>In addition to the above, we strongly suggest to install
-<a href="https://github.com/kubernetes-sigs/cri-tools/tree/master">crictl</a> which <code>urunc</code>
-uses for its end-to-end tests. The following commands will install <code>crictl</code></p>
-<pre><code class="language-bash">$ VERSION=&quot;v1.30.0&quot; # check latest version in /releases page
-$ wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz
-$ sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
-$ rm -f crictl-$VERSION-linux-amd64.tar.gz
-</code></pre>
-<p>Since default endpoints for <code>crictl</code> are now deprecated, we need to set them up:</p>
-<pre><code>$ sudo tee -a /etc/crictl.yaml &gt; /dev/null &lt;&lt;'EOT'
-runtime-endpoint: unix:///run/containerd/containerd.sock
-image-endpoint: unix:///run/containerd/containerd.sock
-timeout: 20
-EOT
-</code></pre>
-<p>The next step is to clone and build <code>urunc</code>:</p>
-<pre><code class="language-bash">$ git clone https://github.com/nubificus/urunc.git
-$ cd urunc
-$ make &amp;&amp; sudo make install
-</code></pre>
-<p>At last, please  validate that the dev environment has been set correctly
-by running the:</p>
-<ul>
-<li>
-<p>unit tests: <code>make unittest</code> and</p>
-</li>
-<li>
-<p>end-to-end tests: <code>sudo make e2etest</code></p>
-</li>
-</ul>
-<blockquote>
-<p>Note: When running <code>make</code> commands for <code>urunc</code> that will use go (i.e. build,
-unitest, e2etest) you might need to specify the path to the go binary
-with <code>sudo GO=$(which go) make</code>.</p>
-</blockquote>
+<h1 id="the-current-maintainers-of-urunc">The current maintainers of <code>urunc</code></h1>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>GitHub Username</th>
+<th>Email</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Charalampos Mainas</td>
+<td><a href="https://github.com/cmainas">@cmainas</a></td>
+<td>cmainas@nubificus.co.uk</td>
+<td>Core Maintainer</td>
+</tr>
+<tr>
+<td>Georgios Ntoutsos</td>
+<td><a href="https://github.com/gntouts">@gntouts</a></td>
+<td>gntouts@nubificus.co.uk</td>
+<td>Core Maintainer</td>
+</tr>
+<tr>
+<td>Anastassios Nanos</td>
+<td><a href="https://github.com/ananos">@ananos</a></td>
+<td>ananos@nubificus.co.uk</td>
+<td>Core Maintainer</td>
+</tr>
+</tbody>
+</table>
 
 
 
