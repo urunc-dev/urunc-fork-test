@@ -1,0 +1,1525 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Packaging and creating unikernel's rootfs">
+      
+      
+      
+      
+        <link rel="prev" href="../reuse/">
+      
+      
+        <link rel="next" href="../../design/">
+      
+      
+      <link rel="icon" href="../../img/urunc-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+    
+    
+      
+        <title>Creating rootfs for unikernels - urunc Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#packaging-and-creating-unikernels-rootfs-for-urunc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="urunc Documentation" class="md-header__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
+      
+  <img src="../../img/urunc-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            urunc Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Creating rootfs for unikernels
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="urunc Documentation" class="md-nav__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
+      
+  <img src="../../img/urunc-logo.png" alt="logo">
+
+    </a>
+    urunc Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quickstart
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hypervisor-support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VMM/Sandbox Support
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unikernel-support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unikernel Support
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Building/Packaging unikernels
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Building/Packaging unikernels
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pre-built/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pre-built unikernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reuse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reusing unikernels from OCI images
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Creating rootfs for unikernels
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Creating rootfs for unikernels
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-an-initrd-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating an initrd file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-an-oci-image-to-be-used-as-a-rootfs-for-the-unikernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing an OCI image to be used as a rootfs for the unikernel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing an OCI image to be used as a rootfs for the unikernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-bunny" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using bunny
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using bunny">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-a-bunnyfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a bunnyfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-a-dockerfile-like-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a Dockerfile-like syntax
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-bunix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using bunix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packaging-a-pre-built-rootfs-along-with-the-unikernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packaging a pre-built rootfs along with the unikernel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Packaging a pre-built rootfs along with the unikernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-bunny_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using bunny
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using bunny">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-a-bunnyfile_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a bunnyfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-a-dockerfile-like-syntax_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a Dockerfile-like syntax
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-bunix_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using bunix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../design/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Design
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/seccomp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Seccomp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../developer-guide/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/Code-of-Conduct/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Code of Conduct
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup a Dev environment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/maintainers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maintainers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/timestamps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Execution time breakdown
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://pkg.go.dev/github.com/nubificus/urunc@v0.3.0/pkg/unikontainers" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tutorials/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/How-to-urunc-on-k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to use urunc with k8s
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Non-root-monitor-execution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Non-root execution of monitor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/eks-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EKS Setup for urunc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/knative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Knative + urunc: Deploying Serverless Unikernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-an-initrd-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating an initrd file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-an-oci-image-to-be-used-as-a-rootfs-for-the-unikernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing an OCI image to be used as a rootfs for the unikernel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing an OCI image to be used as a rootfs for the unikernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-bunny" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using bunny
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using bunny">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-a-bunnyfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a bunnyfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-a-dockerfile-like-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a Dockerfile-like syntax
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-bunix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using bunix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packaging-a-pre-built-rootfs-along-with-the-unikernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packaging a pre-built rootfs along with the unikernel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Packaging a pre-built rootfs along with the unikernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-bunny_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using bunny
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using bunny">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-a-bunnyfile_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a bunnyfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-a-dockerfile-like-syntax_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a Dockerfile-like syntax
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-bunix_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using bunix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="packaging-and-creating-unikernels-rootfs-for-urunc">Packaging and creating unikernel's rootfs for <code>urunc</code></h1>
+<p>The unikernel and libOS ecosystem is highly diverse, with each framework
+offering its own approach to storage. The users can easily get lost on the
+various storage technologies that each framework supports.  This challenge was
+one of the key reasons we created <a href="https://github.com/nubificus/bunny">bunny</a> and <a href="https://github.com/nubificus/bunix">bunix</a>, in an effort to simplify the
+process and provide a unified interface for managing storage across all
+unikernel frameworks. On this page, we will explore the current state of our
+tools and explain how to use them to create and package a root filesystem
+(rootfs) for a unikernel.</p>
+<p>For the time being, <code>urunc</code> supports two ways for passing the rootfs to the
+unikernel: a) through initrd and b) as a virtio-block. In the latter case,
+<code>urunc</code> can either levarage the container's snapshot and pass the whole
+container's rootfs as the rootfs, or <code>urunc</code> can make use of
+a user-created file inside the OCI image to pass as a virtio-block device
+to the unikernel.</p>
+<p>Therefore, the users have the following options:</p>
+<ol>
+<li>Manually create a rootfs (either initrd or block) and package it along with
+   the unikernel.</li>
+<li>Directly copy all the files to the container's rootfs and use devmapper
+   snapshotter, in order to allow <code>urunc</code> to pass the snapshot as a virtio-block
+   to the unikernel.</li>
+<li>Let <a href="https://github.com/nubificus/bunny">bunny</a> and <a href="https://github.com/nubificus/bunix">bunix</a> create the rootfs file.</li>
+</ol>
+<blockquote>
+<p><strong>NOTE</strong>: For the time being, <a href="https://github.com/nubificus/bunny">bunny</a> supports the creation of initrd files and <a href="https://github.com/nubificus/bunix">bunix</a> does not provide any support for creating the rootfs.</p>
+</blockquote>
+<h2 id="creating-an-initrd-file">Creating an initrd file</h2>
+<p>Some unikernel frameworks and guests support an in-memory ramfs as a rootfs. In
+these cases, we can use <a href="https://github.com/nubificus/bunny">bunny</a> and instruct it to create the rootfs for
+us with all the specified files.
+This feature is only supported using a <code>bunnyfile</code> and not a Dockerfile-like
+syntax file.</p>
+<p>Let's take a look at it using a Redis <a href="https://unikraft.org">Unikraft</a> unikernel as an example, targeting
+<a href="https://qemu.org">Qemu</a>. We will define the <code>bunnyfile</code> as:</p>
+<pre><code>#syntax=harbor.nbfc.io/nubificus/bunny:0.0.2
+version: v0.1
+
+platforms:
+  framework: unikraft
+  monitor: qemu
+  architecture: x86
+
+rootfs:
+  from: scratch
+  type: initrd
+  include:
+  - redis.conf:/conf/redis.conf
+
+kernel:
+  from: local
+  path: redis-qemu-x86_64-initrd_qemu-x86_64
+
+cmdline: &quot;redis-server /conf/redis.conf&quot;
+</code></pre>
+<p>In the above file we specify the following:</p>
+<ul>
+<li>We want to package a <a href="https://unikraft.org">Unikraft</a> unikernel that will execute on top of <a href="https://qemu.org">Qemu</a> over
+  x86 architecture.</li>
+<li>We want to create from <code>scratch</code> a rootfs with <code>initrd</code> as its type. In
+  particular, we want a initrd file that contains the file <code>redis.conf</code> in
+  <code>/data/conf/redis.conf</code>. In that way, <a href="https://github.com/nubificus/bunny">bunny</a> creates the initrd file for us
+  and sets up the respective <code>urunc</code> annotations to attach this initrd file
+  when we boot the unikernel.</li>
+<li>We want to use the <code>redis-qemu-x86_64-initrd_qemu-x86_64</code> binary from the local build context as the unikernel to boot.</li>
+<li>We specify the cmdline for the unikernel as <code>redis-server /conf/redis.conf</code></li>
+</ul>
+<p>We can build the OCI image with the following command:</p>
+<pre><code>docker build -f bunnyfile -t urunc/prebuilt/redis-unikraft-qemu:test .
+</code></pre>
+<h2 id="preparing-an-oci-image-to-be-used-as-a-rootfs-for-the-unikernel">Preparing an OCI image to be used as a rootfs for the unikernel</h2>
+<p>As previously mentioned, <code>urunc</code> is able to pass the whole container's rootfs as
+the rootfs for the unikernels that support virtio-block. In that scenario, we
+simply need to copy any local files to the OCI image's rootfs. For this scenario
+we can use both <a href="https://github.com/nubificus/bunny">bunny</a> and <a href="https://github.com/nubificus/bunix">bunix</a>. It is important to note that we need to create
+the unikernel container using devmapper as a snapshotter. In that way,<code>urunc</code>
+will use the snapshot of the container and directly attach it to the unikernel
+as  a virtio-block device.</p>
+<p>As an example, we will use a Redis
+<a href="https://github.com/cloudkernels/rumprun">Rumprun</a> unikernel from
+<a href="https://github.com/cloudkernels/rumprun-packages">Rumprun-packages</a> targeting
+<a href="https://github.com/Solo5/solo5">Solo5-hvt</a>.</p>
+<blockquote>
+<p><strong>NOTE</strong>: <a href="https://github.com/nubificus/rumprun">Rumprun</a> does not support
+attaching a virtio-block directly to <code>/</code>, hence <code>urunc</code> will instruct
+<a href="https://github.com/nubificus/rumprun">Rumprun</a> to mount it at <code>/data</code>.</p>
+</blockquote>
+<h3 id="using-bunny">Using <code>bunny</code></h3>
+<p>In the case of <a href="https://github.com/nubificus/bunny">bunny</a>, we can use both supported
+file syntaxes: a) <code>bunnyfile</code> and b) the Dockerfile-like syntax.</p>
+<h4 id="using-a-bunnyfile">Using a <code>bunnyfile</code></h4>
+<p>In order to package an existing pre-built unikernel image and any other files
+with <a href="https://github.com/nubificus/bunny">bunny</a> and a <code>bunnyfile</code> we can define the <code>bunnyfile</code> as:</p>
+<pre><code>#syntax=harbor.nbfc.io/nubificus/bunny:0.0.2
+version: v0.1
+
+platforms:
+  framework: rumprun
+  monitor: hvt
+  architecture: x86
+
+rootfs:
+  from: scratch
+  type: raw
+  include:
+  - redis.conf:/conf/redis.conf
+
+kernel:
+  from: local
+  path: redis.hvt
+
+cmdline: &quot;redis-server /data/conf/redis.conf&quot;
+</code></pre>
+<p>In the above file we specify the following:</p>
+<ul>
+<li>We want to package a <a href="https://github.com/nubificus/rumprun">Rumprun</a> unikernel
+  that will execute on top of <a href="https://github.com/Solo5/solo5">Solo5-hvt</a> over x86
+  architecture.</li>
+<li>We want to create a rootfs from <code>scratch</code> with a <code>raw</code> type, meaning that
+  we will just copy the
+  specified files directly to the OCI image's rootfs. In particular, we copy the
+  file <code>redis.conf</code> and place it at <code>/conf/redis.conf</code>.This is similar to
+  <code>COPY</code> in Dockerfile.  Because of this type selection, <a href="https://github.com/nubificus/bunny">bunny</a> will also set up
+  the respective annotations to mount the OCI images rootfs directly to the
+  unikernel.</li>
+<li>We want to use the <code>redis.hvt</code> binary as the unikernel to boot.</li>
+<li>We specify the cmdline for the unikernel as <code>redis-server  /data/conf/redis.conf</code></li>
+</ul>
+<p>We can build the OCI image with the following command:</p>
+<pre><code>docker build -f bunnyfile -t urunc/prebuilt/redis-rumprun-hvt:test .
+</code></pre>
+<h4 id="using-a-dockerfile-like-syntax">Using a Dockerfile-like syntax</h4>
+<p>In order to package an existing pre-built unikernel image and any other files
+with <a href="https://github.com/nubificus/bunny">bunny</a> using a Dockerfile-like syntax file,
+we can define the <code>Containerfile</code> as:</p>
+<pre><code>#syntax=harbor.nbfc.io/nubificus/bunny:0.2.0
+FROM scratch
+
+COPY redis.hvt /unikernel/redis.hvt
+COPY redis.conf /conf/redis.conf
+
+LABEL com.urunc.unikernel.binary=/unikernel/redis.hvt
+LABEL &quot;com.urunc.unikernel.cmdline&quot;=&quot;redis-server /data/conf/redis.conf&quot;
+LABEL &quot;com.urunc.unikernel.unikernelType&quot;=&quot;rumprun&quot;
+LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;hvt&quot;
+LABEL &quot;com.urunc.unikernel.useDMBlock&quot;=&quot;true&quot;
+
+</code></pre>
+<p>In the above file:</p>
+<ul>
+<li>We directly copy the unikernel binary and any files that we want to have in
+  the OCI's image rootfs.</li>
+<li>We manually specify through labels the necessary <code>urunc</code> annotations,
+  including the <code>com.urunc.unikernel.useDMBlock</code> which instructs <code>urunc</code> to
+  attach the container snapshot as a virtio-block device for the unikernel.</li>
+</ul>
+<p>We can build the OCI image with the following command:</p>
+<pre><code>docker build -f Containerfile -t urunc/prebuilt/redis-rumprun-hvt:test .
+</code></pre>
+<h3 id="using-bunix">Using <code>bunix</code></h3>
+<p>In the case of <a href="https://github.com/nubificus/bunix">bunix</a> we need the whole repository in the same directly as
+the unikernel. Then, we simply need to edit the <code>args.nix</code> file. For our
+pre-built Redis <a href="https://github.com/nubificus/rumprun">Rumprun</a> unikernel we can define the files as:</p>
+<pre><code class="language-Nix">{
+  name = &quot;urunc/prebuilt/redis-rumprun-hvt&quot;;
+  tag = &quot;test&quot;;
+  files = {
+    &quot;./redis.hvt&quot; = &quot;/unikernel/redis.hvt&quot;;
+    &quot;./redis.conf&quot; = &quot;/conf/redis.conf&quot;;
+  };
+  annotations = {
+    unikernelType = &quot;rumprun&quot;;
+    hypervisor = &quot;hvt&quot;;
+    binary = &quot;/unikernel/redis.hvt&quot;;
+    cmdline = &quot;hello&quot;;
+    unikernelVersion = &quot;&quot;;
+    initrd = &quot;&quot;;
+    block = &quot;&quot;;
+    blkMntPoint = &quot;&quot;;
+    useDMBlock = &quot;true&quot;;
+  };
+}
+</code></pre>
+<p>In the above file:</p>
+<ul>
+<li>We directly specify the files to copy inside the OCI's image rootfs.</li>
+<li>We manually specify through labels the necessary <code>urunc</code> annotations,
+  including the <code>com.urunc.unikernel.useDMBlock</code> which instructs <code>urunc</code> to
+  attach the container snapshot as a virtio-block device for the unikernel.</li>
+</ul>
+<p>We can build the OCI image by simply running the following command:</p>
+<pre><code class="language-bash">nix-build default.nix
+</code></pre>
+<p>The above command will create a container image in a tar inside Nix's store. For
+easier access of the tar, Nix creates a symlink of the tar file in the CWD. The
+symlink will be named as <code>result</code>. Therefore, we can load the container image with:</p>
+<pre><code class="language-bash">docker load &lt; result
+</code></pre>
+<h2 id="packaging-a-pre-built-rootfs-along-with-the-unikernel">Packaging a pre-built rootfs along with the unikernel</h2>
+<p>At last, there is always the option to manually create the rootfs file for the
+unikernel and then package the unikernel binary and the rootfs file setting up
+the respective annotations.</p>
+<p>As an example, we will use a simple  <a href="https://github.com/unikraft/catalog/tree/main/examples/http-c">C HTTP Web
+Server</a> from
+<a href="https://github.com/unikraft/catalog">Unikraft's catalog</a>.</p>
+<h3 id="using-bunny_1">Using <code>bunny</code></h3>
+<p>In the case of <a href="https://github.com/nubificus/bunny">bunny</a>, we can use both supported
+file syntaxes: a) <code>bunnyfile</code> and b) the Dockerfile-like syntax.</p>
+<h4 id="using-a-bunnyfile_1">Using a <code>bunnyfile</code></h4>
+<p>In order to package an existing pre-built unikernel and its rootfs
+with <a href="https://github.com/nubificus/bunny">bunny</a> and a <code>bunnyfile</code> we can define the <code>bunnyfile</code> as:</p>
+<pre><code>#syntax=harbor.nbfc.io/nubificus/bunny:0.0.2
+version: v0.1
+
+platforms:
+  framework: unikraft
+  monitor: qemu
+  architecture: x86
+
+rootfs:
+  from: local
+  path: rootfs.cpio
+
+kernel:
+  from: local
+  path: app-elfloader-qemu-x86_64-initrd_qemu-x86_64
+
+cmdline: &quot;/chttp&quot;
+</code></pre>
+<p>In the above file we specify the following:</p>
+<ul>
+<li>We want to package a <a href="https://unikraft.org">Unikraft</a> unikernel that will execute
+  on top of <a href="https://qemu.org">Qemu</a> over x86 architecture.</li>
+<li>We want to use a local file as a rootfs, specifically the <code>rootfs.cpio</code> file
+  in the local build context.</li>
+<li>We want to use the <code>app-elfloader-qemu-x86_64-initrd_qemu-x86_64</code> binary as
+  the unikernel to boot.</li>
+<li>We specify the cmdline for the unikernel as <code>/chttp</code></li>
+</ul>
+<p>We can build the OCI image with the following command:</p>
+<pre><code>docker build -f bunnyfile -t urunc/prebuilt/chttp-unikraft-qemu:test .
+</code></pre>
+<h4 id="using-a-dockerfile-like-syntax_1">Using a Dockerfile-like syntax</h4>
+<p>We can do all the above using a Dockerfile-like syntax file as:</p>
+<pre><code>#syntax=harbor.nbfc.io/nubificus/bunny:0.0.2
+FROM scratch
+
+COPY app-elfloader-qemu-x86_64-initrd_qemu-x86_64 /unikernel/kernel
+COPY rootfs.cpio /unikernel/rootfs.cpio
+
+LABEL &quot;com.urunc.unikernel.binary&quot;=/unikernel/kernel
+LABEL &quot;com.urunc.unikernel.initrd&quot;=&quot;/unikernel/rootfs.cpio&quot;
+LABEL &quot;com.urunc.unikernel.cmdline&quot;=&quot;/chttp&quot;
+LABEL &quot;com.urunc.unikernel.unikernelType&quot;=&quot;unikraft&quot;
+LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;qemu&quot;
+</code></pre>
+<p>In the above file:</p>
+<ul>
+<li>We directly copy the unikernel binary and the cpio file in
+  the OCI's image rootfs.</li>
+<li>We manually specify all <code>urunc</code> annotations, including the initrd one to
+  specify the file to use as initrd for the unikernel.</li>
+</ul>
+<p>We can build the OCI image with the following command:</p>
+<pre><code>docker build -f Containerfile -t urunc/prebuilt/chttp-unikraft-qemu:test .
+</code></pre>
+<h3 id="using-bunix_1">Using <code>bunix</code></h3>
+<p>In the case of <a href="https://github.com/nubificus/bunix">bunix</a> we need the whole repository in the same directory as
+the unikernel and the cpio file. Then, we simply need to edit the <code>args.nix</code> file as:</p>
+<pre><code class="language-Nix">{
+  name = &quot;urunc/prebuilt/chttp-unikraft-qemu&quot;;
+  tag = &quot;test&quot;;
+  files = {
+    &quot;./app-elfloader-qemu-x86_64-initrd_qemu-x86_64&quot; = &quot;/unikernel/kernel&quot;;
+    &quot;./rootfs.cpio&quot; = &quot;/unikernel/rootfs.cpio&quot;;
+  };
+  annotations = {
+    unikernelType = &quot;unikraft&quot;;
+    hypervisor = &quot;qemu&quot;;
+    binary = &quot;/unikernel/kernel&quot;;
+    cmdline = &quot;/chttp&quot;;
+    unikernelVersion = &quot;&quot;;
+    initrd = &quot;/unikernel/rootfs.cpio&quot;;
+    block = &quot;&quot;;
+    blkMntPoint = &quot;&quot;;
+    useDMBlock = &quot;&quot;;
+  };
+}
+</code></pre>
+<p>In the above file:</p>
+<ul>
+<li>We directly specify the files to copy inside the OCI's image rootfs.</li>
+<li>We manually specify all <code>urunc</code> annotations, including the initrd one to
+  specify the file to use as initrd for the unikernel.</li>
+</ul>
+<p>We can build the OCI image by simply running the following command:</p>
+<pre><code class="language-bash">nix-build default.nix
+</code></pre>
+<p>The above command will create a container image in a tar inside Nix's store. For
+easier access of the tar, Nix creates a symlink of the tar file in the CWD. The
+symlink will be named as <code>result</code>. Therefore, we can load the container image with:</p>
+<pre><code class="language-bash">docker load &lt; result
+</code></pre>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 - 2025 Nubificus LTD
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

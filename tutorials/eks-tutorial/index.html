@@ -1,0 +1,2049 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Non-root-monitor-execution/">
+      
+      
+        <link rel="next" href="../knative/">
+      
+      
+      <link rel="icon" href="../../img/urunc-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+    
+    
+      
+        <title>EKS Setup for urunc - urunc Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#eks-setup-for-urunc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="urunc Documentation" class="md-header__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
+      
+  <img src="../../img/urunc-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            urunc Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              EKS Setup for urunc
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="urunc Documentation" class="md-nav__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
+      
+  <img src="../../img/urunc-logo.png" alt="logo">
+
+    </a>
+    urunc Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quickstart
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hypervisor-support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VMM/Sandbox Support
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unikernel-support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unikernel Support
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../package/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Building/Packaging unikernels
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Building/Packaging unikernels
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../package/pre-built/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pre-built unikernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../package/reuse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reusing unikernels from OCI images
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../package/rootfs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Creating rootfs for unikernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../design/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Design
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/seccomp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Seccomp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../developer-guide/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/Code-of-Conduct/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Code of Conduct
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup a Dev environment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/maintainers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maintainers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/timestamps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Execution time breakdown
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://pkg.go.dev/github.com/nubificus/urunc@v0.3.0/pkg/unikontainers" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../How-to-urunc-on-k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to use urunc with k8s
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Non-root-monitor-execution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Non-root execution of monitor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    EKS Setup for urunc
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    EKS Setup for urunc
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tooling-setup-for-eks-cluster-provisioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tooling Setup for EKS Cluster Provisioning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tooling Setup for EKS Cluster Provisioning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. AWS CLI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-eksctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. eksctl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-kubectl" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. kubectl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-jq" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. jq
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-ssh-keypair-for-node-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. SSH Keypair (for Node Access)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cluster-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vpc-with-private-subnets" class="md-nav__link">
+    <span class="md-ellipsis">
+      VPC with Private Subnets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-iam-role-for-the-eks-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create IAM Role for the EKS Cluster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extract-public-subnet-ids-if-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extract Public Subnet IDs (if needed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extract Public Subnet IDs (if needed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-the-eks-cluster-with-calico-cni" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create the EKS Cluster with Calico CNI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create the EKS Cluster with Calico CNI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-eks-control-plane-with-private-subnets-and-no-initial-node-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create EKS control plane with private subnets and no initial node group
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-remove-aws-cni" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Remove AWS CNI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-add-calico-cni" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Add Calico CNI:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-provision-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Provision nodes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-enable-ssh-access-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Enable SSH access (optional)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-the-cluster-is-operational" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify the cluster is operational
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urunc-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      urunc setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="urunc setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-clone-the-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Clone the repo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-apply-the-manifests" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Apply the manifests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-a-unikernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run a unikernel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../knative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Knative + urunc: Deploying Serverless Unikernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tooling-setup-for-eks-cluster-provisioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tooling Setup for EKS Cluster Provisioning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tooling Setup for EKS Cluster Provisioning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. AWS CLI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-eksctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. eksctl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-kubectl" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. kubectl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-jq" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. jq
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-ssh-keypair-for-node-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. SSH Keypair (for Node Access)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cluster-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vpc-with-private-subnets" class="md-nav__link">
+    <span class="md-ellipsis">
+      VPC with Private Subnets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-iam-role-for-the-eks-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create IAM Role for the EKS Cluster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extract-public-subnet-ids-if-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extract Public Subnet IDs (if needed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extract Public Subnet IDs (if needed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-the-eks-cluster-with-calico-cni" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create the EKS Cluster with Calico CNI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create the EKS Cluster with Calico CNI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-eks-control-plane-with-private-subnets-and-no-initial-node-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create EKS control plane with private subnets and no initial node group
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-remove-aws-cni" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Remove AWS CNI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-add-calico-cni" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Add Calico CNI:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-provision-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Provision nodes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-enable-ssh-access-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Enable SSH access (optional)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-the-cluster-is-operational" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify the cluster is operational
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urunc-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      urunc setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="urunc setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-clone-the-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Clone the repo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-apply-the-manifests" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Apply the manifests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-a-unikernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run a unikernel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="eks-setup-for-urunc">EKS Setup for <code>urunc</code></h1>
+<p>In this tutorial, we’ll walk through the complete process of provisioning an Amazon EKS (Elastic Kubernetes Service) cluster from scratch using the AWS CLI, <code>eksctl</code>, and a few supporting tools.</p>
+<p>Our goal is to create a Kubernetes-native environment capable of securely running containers with <a href="https://github.com/nubificus/urunc"><code>urunc</code></a> — a unikernel container runtime. This tutorial sets up a production-grade EKS cluster, complete with custom networking, Calico CNI plugin for fine-grained pod networking, and node groups ready to schedule unikernel workloads.</p>
+<p>We’ll cover:</p>
+<ul>
+<li>Tooling prerequisites</li>
+<li>VPC and networking setup</li>
+<li>Cluster bootstrapping with <code>eksctl</code></li>
+<li>Calico installation and configuration</li>
+<li>Managed node group provisioning</li>
+<li><code>urunc</code> installation</li>
+<li>Example deployment of unikernels</li>
+</ul>
+<h2 id="tooling-setup-for-eks-cluster-provisioning">Tooling Setup for EKS Cluster Provisioning</h2>
+<p>This section ensures your local environment is equipped with all the required tools to interact with AWS and provision your EKS cluster.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>You'll need the following CLI tools installed and configured:</p>
+<h4 id="1-aws-cli">1. AWS CLI</h4>
+<p>Used to interact with AWS services like IAM, EC2, CloudFormation, etc.</p>
+<p>Install AWS CLI (v2 recommended)</p>
+<pre><code class="language-bash">$ curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o &quot;awscliv2.zip&quot;
+$ unzip awscliv2.zip
+$ sudo ./aws/install
+</code></pre>
+<p>Verify installation:</p>
+<pre><code class="language-console">$ aws --version
+</code></pre>
+<p>Configure it with your credentials:</p>
+<pre><code class="language-console">$ aws configure
+</code></pre>
+<p>You'll be prompted to enter:</p>
+<ul>
+<li>AWS Access Key ID </li>
+<li>AWS Secret Access Key</li>
+<li>Default region (e.g., <code>eu-central-1</code>)</li>
+<li>Default output format (e.g., <code>json</code>)</li>
+</ul>
+<h4 id="2-eksctl">2. eksctl</h4>
+<p>The official CLI tool for managing EKS clusters.</p>
+<p>Download and install eksctl:</p>
+<pre><code class="language-bash">$ curl --silent --location &quot;https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz&quot; | tar xz -C /tmp
+$ sudo mv /tmp/eksctl /usr/local/bin
+</code></pre>
+<p>Verify the installation:</p>
+<pre><code class="language-console">eksctl version
+</code></pre>
+<h4 id="3-kubectl">3. kubectl</h4>
+<p>The Kubernetes CLI used to interact with your EKS cluster.</p>
+<p>Install kubectl (replace version as needed):</p>
+<pre><code class="language-console">$ curl -LO &quot;https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubectl&quot;
+$ chmod +x kubectl
+$ sudo mv kubectl /usr/local/bin/
+</code></pre>
+<p>Verify the installation:</p>
+<pre><code class="language-console">$ kubectl version --client
+</code></pre>
+<h4 id="4-jq">4. jq</h4>
+<p>A lightweight and flexible command-line JSON processor, used in helper scripts.</p>
+<pre><code class="language-console">$ sudo apt-get update
+$ sudo apt-get install -y jq
+</code></pre>
+<h4 id="5-ssh-keypair-for-node-access">5. SSH Keypair (for Node Access)</h4>
+<p>Ensure you have a key pair uploaded to AWS for SSH access to EC2 instances.</p>
+<p>Generate an SSH key if you don’t have one:</p>
+<pre><code class="language-console">ssh-keygen -t rsa -b 4096 -f ~/.ssh/awseks -N &quot;&quot;
+</code></pre>
+<p>Import the public key into AWS (or use an existing one)</p>
+<pre><code class="language-console">aws ec2 import-key-pair \
+  --key-name awseks \
+  --public-key-material fileb://~/.ssh/awseks.pub
+</code></pre>
+<h2 id="cluster-setup">Cluster Setup</h2>
+<p>We begin by provisioning an Amazon EKS cluster with private subnets and Calico as the CNI instead of the default AWS CNI.</p>
+<h3 id="vpc-with-private-subnets">VPC with Private Subnets</h3>
+<p>We use the official EKS CloudFormation template to create a VPC with private subnets.</p>
+<pre><code class="language-bash">$ export STACK_NAME=&quot;urunc-tutorial&quot;
+$ export REGION=&quot;eu-central-1&quot;
+$ aws cloudformation create-stack \
+  --region $REGION \
+  --stack-name $STACK_NAME \
+  --template-url https://s3.us-west-2.amazonaws.com/amazon-eks/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml
+</code></pre>
+<p>The output of the above command would verify the successful creation of the VPC:</p>
+<pre><code class="language-console">{
+    &quot;StackId&quot;: &quot;arn:aws:cloudformation:eu-central-1:058264306458:stack/urunc-tutorial/ec8ae800-0fbc-11f0-bda2-0a29df3fde61&quot;
+}
+</code></pre>
+<h3 id="create-iam-role-for-the-eks-cluster">Create IAM Role for the EKS Cluster</h3>
+<p>We define a trust policy allowing EKS to assume a role. Create a json file
+(e.g. <code>eks-cluster-role-trust-policy.json</code>) with the following contents:</p>
+<pre><code class="language-json">{
+  &quot;Version&quot;: &quot;2012-10-17&quot;,
+  &quot;Statement&quot;: [
+    {
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Principal&quot;: {
+        &quot;Service&quot;: &quot;eks.amazonaws.com&quot;
+      },
+      &quot;Action&quot;: &quot;sts:AssumeRole&quot;
+    }
+  ]
+}
+</code></pre>
+<p>Create the role:</p>
+<pre><code class="language-console">$ aws iam create-role \
+  --role-name uruncTutorialRole \
+  --assume-role-policy-document file://eks-cluster-role-trust-policy.json
+</code></pre>
+<p>Attach the required EKS policy:</p>
+<pre><code class="language-console">$ aws iam attach-role-policy \
+  --policy-arn arn:aws:iam::aws:policy/AmazonEKSClusterPolicy \
+  --role-name uruncTutorialRole
+</code></pre>
+<h3 id="extract-public-subnet-ids-if-needed">Extract Public Subnet IDs (if needed)</h3>
+<p>This helper script (<code>get_pub_subnets.sh</code>) identifies public subnets in the current region by checking for routes to an Internet Gateway:</p>
+<pre><code class="language-bash">#!/bin/bash
+
+REGION=&quot;eu-central-1&quot;
+subnets=$(aws ec2 describe-subnets --query 'Subnets[*].{ID:SubnetId}' --output text --region $REGION)
+route_tables=$(aws ec2 describe-route-tables --query 'RouteTables[*].{ID:RouteTableId,Associations:Associations[*].SubnetId,Routes:Routes[*]}' --output json --region $REGION)
+
+public_subnets=()
+
+for subnet in $subnets; do
+  associated_route_table=$(echo $route_tables | jq -r --arg SUBNET &quot;$subnet&quot; '.[] | select(.Associations[]? == $SUBNET) | .ID')
+  if [ -n &quot;$associated_route_table&quot; ]; then
+    has_igw=$(echo $route_tables | jq -r --arg RTID &quot;$associated_route_table&quot; '.[] | select(.ID == $RTID) | .Routes[] | select(.GatewayId != null) | .GatewayId' | grep 'igw-')
+    if [ -n &quot;$has_igw&quot; ]; then
+      public_subnets+=(&quot;$subnet&quot;)
+    fi
+  fi
+done
+
+public_subnets_str=$(IFS=,; echo &quot;${public_subnets[*]}&quot;)
+echo &quot;$public_subnets_str&quot;
+</code></pre>
+<p>Run it to retrieve subnet IDs:</p>
+<pre><code class="language-console">$ bash get_pub_subnets.sh
+</code></pre>
+<p>Example output:</p>
+<pre><code class="language-console">subnet-02bcaca5ac39eca7a,subnet-0d0667e2156169998
+</code></pre>
+<h4 id="create-the-eks-cluster-with-calico-cni">Create the EKS Cluster with Calico CNI</h4>
+<p>It is time to set up the cluster and managed node groups with Calico networking.</p>
+<h5 id="step-1-create-eks-control-plane-with-private-subnets-and-no-initial-node-group">Step 1: Create EKS control plane with private subnets and no initial node group</h5>
+<p>Use the subnets from the command above.</p>
+<pre><code class="language-console">$ export CLUSTER_NAME=&quot;urunc-tutorial&quot;
+$ export REGION=&quot;eu-central-1&quot;
+$ export SUBNETS=&quot;subnet-02bcaca5ac39eca7a,subnet-0d0667e2156169998&quot;
+$ eksctl create cluster \
+  --name ${CLUSTER_NAME} \
+  --region $REGION \
+  --version 1.30 \
+  --vpc-private-subnets $SUBNETS \
+  --without-nodegroup
+</code></pre>
+<p>Example output:</p>
+<pre><code class="language-console">2 sequential tasks: { create cluster control plane &quot;urunc-tutorial&quot;, wait for control plane to become ready
+}
+2025-04-02 12:29:16 [ℹ]  building cluster stack &quot;eksctl-urunc-tutorial-cluster&quot;
+2025-04-02 12:29:19 [ℹ]  deploying stack &quot;eksctl-urunc-tutorial-cluster&quot;
+2025-04-02 12:29:49 [ℹ]  waiting for CloudFormation stack &quot;eksctl-urunc-tutorial-cluster&quot;
+[...]
+2025-04-02 12:39:26 [ℹ]  waiting for the control plane to become ready
+2025-04-02 12:39:27 [✔]  saved kubeconfig as &quot;~/.kube/config&quot;
+2025-04-02 12:39:27 [ℹ]  no tasks
+2025-04-02 12:39:27 [✔]  all EKS cluster resources for &quot;urunc-tutorial&quot; have been created
+2025-04-02 12:39:27 [✔]  created 0 nodegroup(s) in cluster &quot;urunc-tutorial&quot;
+2025-04-02 12:39:27 [✔]  created 0 managed nodegroup(s) in cluster &quot;urunc-tutorial&quot;
+2025-04-02 12:39:35 [ℹ]  kubectl command should work with &quot;~/.kube/config&quot;, try 'kubectl get nodes'
+2025-04-02 12:39:35 [✔]  EKS cluster &quot;urunc-tutorial&quot; in &quot;eu-central-1&quot; region is ready
+</code></pre>
+<p>Now, you should have the control-plane deployed and ready. The first thing to do is to remove the AWS CNI, as gateway ARP entries are <a href="https://github.com/aws/amazon-vpc-cni-k8s/blob/dce8a9c47de31fd682e35e7a0a698a1b9b2eb2f2/cmd/routed-eni-cni-plugin/driver/driver.go#L202">statically populated</a>.</p>
+<h5 id="step-2-remove-aws-cni">Step 2: Remove AWS CNI</h5>
+<pre><code class="language-console">$ kubectl delete daemonset -n kube-system aws-node
+</code></pre>
+<p>Expected output:</p>
+<pre><code class="language-console">daemonset.apps &quot;aws-node&quot; deleted
+</code></pre>
+<h5 id="step-3-add-calico-cni">Step 3: Add Calico CNI:</h5>
+<pre><code class="language-bash">$ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
+</code></pre>
+<blockquote>
+<p>Note: There are cases where a large set of manifests can cause a failure to
+the above command. If it does, try to re-issue the command.</p>
+</blockquote>
+<p>Expected output:</p>
+<pre><code class="language-console">namespace/tigera-operator created
+customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/bgpfilters.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/caliconodestatuses.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/ipreservations.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/kubecontrollersconfigurations.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/apiservers.operator.tigera.io created
+customresourcedefinition.apiextensions.k8s.io/imagesets.operator.tigera.io created
+customresourcedefinition.apiextensions.k8s.io/installations.operator.tigera.io created
+customresourcedefinition.apiextensions.k8s.io/tigerastatuses.operator.tigera.io created
+serviceaccount/tigera-operator created
+clusterrole.rbac.authorization.k8s.io/tigera-operator created
+clusterrolebinding.rbac.authorization.k8s.io/tigera-operator created
+deployment.apps/tigera-operator created
+</code></pre>
+<p>Create an installation resource to provision the <code>calico-node</code> daemonset:</p>
+<pre><code class="language-console">$ kubectl create -f - &lt;&lt;EOF
+kind: Installation
+apiVersion: operator.tigera.io/v1
+metadata:
+  name: default
+spec:
+  kubernetesProvider: EKS
+  cni:
+    type: Calico
+  calicoNetwork:
+    bgp: Disabled
+EOF
+</code></pre>
+<p>Expected output:</p>
+<pre><code class="language-console">installation.operator.tigera.io/default created
+</code></pre>
+<h5 id="step-4-provision-nodes">Step 4: Provision nodes</h5>
+<p>Now, you are ready to provision nodes for the cluster. Use the following description to create two bare-metal nodes, one for each supported architecture (<code>amd64</code> and <code>arm64</code>):</p>
+<blockquote>
+<p>Note: Make sure the <code>metadata.name</code> entry corresponds to the name you specified for your cluster above, and that the managedNodeGroups.[].subnets entry correspond to the ones specified above.</p>
+</blockquote>
+<pre><code class="language-console">$ eksctl create nodegroup -f - &lt;&lt;EOF
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: urunc-tutorial
+  region: eu-central-1
+
+managedNodeGroups:
+  - name: a1-metal
+    instanceType: a1.metal
+    amiFamily: Ubuntu2204
+    desiredCapacity: 1
+    minSize: 1
+    maxSize: 1
+    volumeSize: 150
+    volumeType: gp3
+    volumeEncrypted: true
+    privateNetworking: true
+    ssh:
+      allow: true
+      publicKeyName: awseks
+    subnets: [&quot;subnet-02bcaca5ac39eca7a&quot;,&quot;subnet-0d0667e2156169998&quot;]
+    iam:
+      withAddonPolicies:
+        cloudWatch: true
+  - name: c5-metal
+    instanceType: c5.metal
+    amiFamily: Ubuntu2204
+    desiredCapacity: 1
+    minSize: 1
+    maxSize: 1
+    volumeSize: 150
+    volumeType: gp3
+    volumeEncrypted: true
+    privateNetworking: true
+    ssh:
+      allow: true
+      publicKeyName: awseks
+    subnets: [&quot;subnet-02bcaca5ac39eca7a&quot;,&quot;subnet-0d0667e2156169998&quot;]
+    iam:
+      withAddonPolicies:
+        cloudWatch: true
+EOF
+</code></pre>
+<p>Example output:</p>
+<pre><code class="language-console">2025-04-02 12:39:44 [ℹ]  will use version 1.30 for new nodegroup(s) based on control plane version
+2025-04-02 12:39:46 [!]  &quot;aws-node&quot; was not found
+2025-04-02 12:39:48 [ℹ]  nodegroup &quot;a1-metal-cni&quot; will use &quot;ami-0eb5f4a5031f47d7b&quot; [Ubuntu2204/1.30]
+2025-04-02 12:39:49 [ℹ]  using EC2 key pair &quot;awseks&quot;
+2025-04-02 12:39:49 [ℹ]  nodegroup &quot;c5-metal-cni&quot; will use &quot;ami-0375252546bcbdbfa&quot; [Ubuntu2204/1.30]
+2025-04-02 12:39:49 [ℹ]  using EC2 key pair &quot;awseks&quot;
+2025-04-02 12:39:50 [ℹ]  2 nodegroups (a1-metal-cni, c5-metal-cni) were included (based on the include/exclude rules)
+2025-04-02 12:39:50 [ℹ]  will create a CloudFormation stack for each of 2 managed nodegroups in cluster &quot;urunc-tutorial&quot;
+2025-04-02 12:39:50 [ℹ]
+2 sequential tasks: { fix cluster compatibility, 1 task: {
+2 parallel tasks: { create managed nodegroup &quot;a1-metal&quot;, create managed nodegroup &quot;c5-metal&quot;
+} }
+}
+2025-04-02 12:39:50 [ℹ]  checking cluster stack for missing resources
+2025-04-02 12:39:50 [ℹ]  cluster stack has all required resources
+2025-04-02 12:39:51 [ℹ]  building managed nodegroup stack &quot;eksctl-urunc-tutorial-nodegroup-a1-metal-cni&quot;
+2025-04-02 12:39:51 [ℹ]  building managed nodegroup stack &quot;eksctl-urunc-tutorial-nodegroup-c5-metal-cni&quot;
+2025-04-02 12:39:51 [ℹ]  deploying stack &quot;eksctl-urunc-tutorial-nodegroup-c5-metal&quot;
+2025-04-02 12:39:51 [ℹ]  deploying stack &quot;eksctl-urunc-tutorial-nodegroup-a1-metal&quot;
+2025-04-02 12:39:51 [ℹ]  waiting for CloudFormation stack &quot;eksctl-urunc-tutorial-nodegroup-c5-metal&quot;
+2025-04-02 12:39:51 [ℹ]  waiting for CloudFormation stack &quot;eksctl-urunc-tutorial-nodegroup-a1-metal&quot;
+[...]
+2025-04-02 12:44:05 [ℹ]  no tasks
+2025-04-02 12:44:05 [✔]  created 0 nodegroup(s) in cluster &quot;urunc-tutorial&quot;
+2025-04-02 12:44:06 [ℹ]  nodegroup &quot;a1-metal&quot; has 1 node(s)
+2025-04-02 12:44:06 [ℹ]  node &quot;ip-192-168-103-211.eu-central-1.compute.internal&quot; is ready
+2025-04-02 12:44:06 [ℹ]  waiting for at least 1 node(s) to become ready in &quot;a1-metal&quot;
+2025-04-02 12:44:06 [ℹ]  nodegroup &quot;a1-metal&quot; has 1 node(s)
+2025-04-02 12:44:06 [ℹ]  node &quot;ip-192-168-103-211.eu-central-1.compute.internal&quot; is ready
+2025-04-02 12:44:06 [ℹ]  nodegroup &quot;c5-metal&quot; has 1 node(s)
+2025-04-02 12:44:06 [ℹ]  node &quot;ip-192-168-32-137.eu-central-1.compute.internal&quot; is ready
+2025-04-02 12:44:06 [ℹ]  waiting for at least 1 node(s) to become ready in &quot;c5-metal&quot;
+2025-04-02 12:44:06 [ℹ]  nodegroup &quot;c5-metal&quot; has 1 node(s)
+2025-04-02 12:44:06 [ℹ]  node &quot;ip-192-168-32-137.eu-central-1.compute.internal&quot; is ready
+2025-04-02 12:44:06 [✔]  created 2 managed nodegroup(s) in cluster &quot;urunc-tutorial&quot;
+2025-04-02 12:44:07 [ℹ]  checking security group configuration for all nodegroups
+2025-04-02 12:44:07 [ℹ]  all nodegroups have up-to-date cloudformation templates
+</code></pre>
+<h5 id="step-5-enable-ssh-access-optional">Step 5: Enable SSH access (optional)</h5>
+<p>Finally, for debug purposes, enable external SSH access to the nodes:</p>
+<blockquote>
+<p>Note: Example for one of the two security groups</p>
+</blockquote>
+<pre><code class="language-console">$ aws ec2 authorize-security-group-ingress --group-id sg-0d655f9002aec154e --protocol tcp --port 22 --cidr 0.0.0.0/0 --region eu-central-1
+</code></pre>
+<p>Example output:</p>
+<pre><code class="language-console">{
+    &quot;Return&quot;: true,
+    &quot;SecurityGroupRules&quot;: [
+        {
+            &quot;SecurityGroupRuleId&quot;: &quot;sgr-09634d2d1eb260e7a&quot;,
+            &quot;GroupId&quot;: &quot;sg-0d655f9002aec154e&quot;,
+            &quot;GroupOwnerId&quot;: &quot;058264306458&quot;,
+            &quot;IsEgress&quot;: false,
+            &quot;IpProtocol&quot;: &quot;tcp&quot;,
+            &quot;FromPort&quot;: 22,
+            &quot;ToPort&quot;: 22,
+            &quot;CidrIpv4&quot;: &quot;0.0.0.0/0&quot;,
+            &quot;SecurityGroupRuleArn&quot;: &quot;arn:aws:ec2:eu-central-1:058264306458:security-group-rule/sgr-09634d2d1eb260e7a&quot;
+        }
+    ]
+}
+</code></pre>
+<p>Below is a script to enable external SSH access to all security groups:</p>
+<blockquote>
+<p>Note: Careful, this exposes SSH access to all of your nodes!
+</p>
+</blockquote>
+<pre><code class="language-bash">#!/bin/bash
+aws ec2 describe-security-groups --region eu-central-1 --query &quot;SecurityGroups[*].GroupId&quot; --output text | tr '\t' '\n' | \
+while read sg_id; do
+    echo &quot;Enabling SSH access for $sg_id...&quot;
+    aws ec2 authorize-security-group-ingress \
+        --group-id &quot;$sg_id&quot; \
+        --protocol tcp \
+        --port 22 \
+        --cidr 0.0.0.0/0 \
+        --region eu-central-1 2&gt;&amp;1 | grep -v &quot;InvalidPermission.Duplicate&quot;
+done
+</code></pre>
+<h4 id="verify-the-cluster-is-operational">Verify the cluster is operational</h4>
+<p>We have successfully setup the cluster. Let's see what we have using a simple <code>kubectl get pods -o wide -A</code>:</p>
+<pre><code class="language-console">NAMESPACE         NAME                                       READY   STATUS    RESTARTS   AGE     IP                NODE                                               NOMINATED NODE   READINESS GATES
+calico-system     calico-kube-controllers-64cf794c44-jnggx   1/1     Running   0          3m52s   172.16.50.196     ip-192-168-32-137.eu-central-1.compute.internal    &lt;none&gt;           &lt;none&gt;
+calico-system     calico-node-xcqrj                          1/1     Running   0          3m47s   192.168.32.137    ip-192-168-32-137.eu-central-1.compute.internal    &lt;none&gt;           &lt;none&gt;
+calico-system     calico-node-xn6fc                          1/1     Running   0          3m48s   192.168.103.211   ip-192-168-103-211.eu-central-1.compute.internal   &lt;none&gt;           &lt;none&gt;
+calico-system     calico-typha-84546c84b6-86wfx              1/1     Running   0          3m52s   192.168.32.137    ip-192-168-32-137.eu-central-1.compute.internal    &lt;none&gt;           &lt;none&gt;
+calico-system     csi-node-driver-jzs7g                      2/2     Running   0          3m52s   172.16.139.1      ip-192-168-103-211.eu-central-1.compute.internal   &lt;none&gt;           &lt;none&gt;
+calico-system     csi-node-driver-sstkj                      2/2     Running   0          3m52s   172.16.50.193     ip-192-168-32-137.eu-central-1.compute.internal    &lt;none&gt;           &lt;none&gt;
+kube-system       coredns-6f6d89bcc9-dkn6z                   1/1     Running   0          10m     172.16.50.195     ip-192-168-32-137.eu-central-1.compute.internal    &lt;none&gt;           &lt;none&gt;
+kube-system       coredns-6f6d89bcc9-ld454                   1/1     Running   0          10m     172.16.50.194     ip-192-168-32-137.eu-central-1.compute.internal    &lt;none&gt;           &lt;none&gt;
+kube-system       kube-proxy-7mnbs                           1/1     Running   0          4m3s    192.168.103.211   ip-192-168-103-211.eu-central-1.compute.internal   &lt;none&gt;           &lt;none&gt;
+kube-system       kube-proxy-nx5wk                           1/1     Running   0          4m4s    192.168.32.137    ip-192-168-32-137.eu-central-1.compute.internal    &lt;none&gt;           &lt;none&gt;
+tigera-operator   tigera-operator-76ff79f7fd-z7t7d           1/1     Running   0          7m17s   192.168.32.137    ip-192-168-32-137.eu-central-1.compute.internal    &lt;none&gt;           &lt;none&gt;
+</code></pre>
+<p>Also, let's check out the nodes using <code>kubectl get nodes --show-labels</code>:</p>
+<pre><code class="language-console">$ kubectl get nodes --show-labels
+NAME                                               STATUS   ROLES    AGE   VERSION   LABELS
+ip-192-168-103-211.eu-central-1.compute.internal   Ready    &lt;none&gt;   10m   v1.30.6   alpha.eksctl.io/cluster-name=urunc-tutorial,alpha.eksctl.io/instance-id=i-0f1dc1ede23d8e5a7,alpha.eksctl.io/nodegroup-name=a1-metal-cni,beta.kubernetes.io/arch=arm64,beta.kubernetes.io/instance-type=a1.metal,beta.kubernetes.io/os=linux,eks.amazonaws.com/capacityType=ON_DEMAND,eks.amazonaws.com/nodegroup-image=ami-0eb5f4a5031f47d7b,eks.amazonaws.com/nodegroup=a1-metal-cni,eks.amazonaws.com/sourceLaunchTemplateId=lt-0a89f4d0e008cf6f6,eks.amazonaws.com/sourceLaunchTemplateVersion=1,failure-domain.beta.kubernetes.io/region=eu-central-1,failure-domain.beta.kubernetes.io/zone=eu-central-1b,k8s.io/cloud-provider-aws=8c600fe081bc4d4e16d89383ee5c2ac7,kubernetes.io/arch=arm64,kubernetes.io/hostname=ip-192-168-103-211.eu-central-1.compute.internal,kubernetes.io/os=linux,node-lifecycle=on-demand,node.kubernetes.io/instance-type=a1.metal,topology.k8s.aws/zone-id=euc1-az3,topology.kubernetes.io/region=eu-central-1,topology.kubernetes.io/zone=eu-central-1b
+ip-192-168-32-137.eu-central-1.compute.internal    Ready    &lt;none&gt;   10m   v1.30.6   alpha.eksctl.io/cluster-name=urunc-tutorial,alpha.eksctl.io/instance-id=i-033fcef7c9cf7b5aa,alpha.eksctl.io/nodegroup-name=c5-metal-cni,beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=c5.metal,beta.kubernetes.io/os=linux,eks.amazonaws.com/capacityType=ON_DEMAND,eks.amazonaws.com/nodegroup-image=ami-0375252546bcbdbfa,eks.amazonaws.com/nodegroup=c5-metal-cni,eks.amazonaws.com/sourceLaunchTemplateId=lt-0894d82a5833f577b,eks.amazonaws.com/sourceLaunchTemplateVersion=1,failure-domain.beta.kubernetes.io/region=eu-central-1,failure-domain.beta.kubernetes.io/zone=eu-central-1a,k8s.io/cloud-provider-aws=8c600fe081bc4d4e16d89383ee5c2ac7,kubernetes.io/arch=amd64,kubernetes.io/hostname=ip-192-168-32-137.eu-central-1.compute.internal,kubernetes.io/os=linux,node-lifecycle=on-demand,node.kubernetes.io/instance-type=c5.metal,topology.k8s.aws/zone-id=euc1-az2,topology.kubernetes.io/region=eu-central-1,topology.kubernetes.io/zone=eu-central-1a
+</code></pre>
+<p>Let's do a test deployment. Create a file called <code>nginx-test-deployment.yaml</code> with the following content:</p>
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-stock
+  labels:
+    app: nginx-stock
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-stock
+  template:
+    metadata:
+      labels:
+        app: nginx-stock
+    spec:
+      containers:
+      - name: nginx-stock
+        image: nginx
+        imagePullPolicy: IfNotPresent
+        resources:
+          #limits:
+            #memory: 768Mi
+          requests:
+            memory: 60Mi
+</code></pre>
+<p>And deploy it:</p>
+<pre><code class="language-console">$ kubectl apply -f nginx-test-deployment.yaml
+</code></pre>
+<p>This should deploy 2 replicas of NGINX. Check the status:</p>
+<pre><code class="language-console">$ kubectl get pods -o wide
+</code></pre>
+<p>Example output:</p>
+<pre><code class="language-console">NAME                           READY   STATUS    RESTARTS   AGE     IP                NODE                                               NOMINATED NODE   READINESS GATES
+nginx-stock-7d54d66484-k9rj5   1/1     Running   0          42s     172.16.50.197     ip-192-168-32-137.eu-central-1.compute.internal    &lt;none&gt;           &lt;none&gt;
+nginx-stock-7d54d66484-nn696   1/1     Running   0          42s     172.16.139.2      ip-192-168-103-211.eu-central-1.compute.internal   &lt;none&gt;           &lt;none&gt;
+</code></pre>
+<p>And let's try to check network connectivity between pods. Let's run a simple network debug container as a pod:</p>
+<pre><code class="language-console">$ kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash
+</code></pre>
+<p>Expected output:</p>
+<pre><code class="language-console">If you don't see a command prompt, try pressing enter.
+tmp-shell:~# 
+</code></pre>
+<p>If we issue a simple <code>curl</code> command to one of the pods IPs, we should get a response from the NGINX server:</p>
+<pre><code class="language-console">tmp-shell:~# curl 172.16.139.2
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>There we go! We have a working EKS cluster, with Calico and two bare-metal nodes. Time to setup urunc! </p>
+<h3 id="urunc-setup"><code>urunc</code> setup</h3>
+<p>The easiest way to setup <code>urunc</code> in such a setting is to use <code>urunc-deploy</code>. This process follows the principles of <code>kata-deploy</code> and is build to work on <code>k8s</code> and <code>k3s</code>. The process is as follows:</p>
+<h4 id="1-clone-the-repo">1. Clone the repo</h4>
+<pre><code class="language-console">$ git clone https://github.com/nubificus/urunc
+</code></pre>
+<h4 id="2-apply-the-manifests">2.  Apply the manifests</h4>
+<p>First we need to create the RBAC</p>
+<pre><code class="language-console">$ kubectl apply -f deployment/urunc-deploy/urunc-rbac/urunc-rbac.yaml
+</code></pre>
+<p>Then, we create the <code>urunc-deploy</code> daemonset:</p>
+<pre><code class="language-console">$ kubectl apply -f deployment/urunc-deploy/urunc-deploy/base/urunc-deploy.yaml
+</code></pre>
+<p>Finally, we need to create the appropriate k8s runtime class:</p>
+<pre><code class="language-console">$ kubectl apply -f deployment/urunc-deploy/runtimeclasses/runtimeclass.yaml
+</code></pre>
+<p>Example output:</p>
+<pre><code class="language-bash">serviceaccount/urunc-deploy-sa created
+clusterrole.rbac.authorization.k8s.io/urunc-deploy-role created
+clusterrolebinding.rbac.authorization.k8s.io/urunc-deploy-rb created
+daemonset.apps/urunc-deploy created
+runtimeclass.node.k8s.io/urunc created
+</code></pre>
+<p>Monitor the deploy pods once they change their status to <code>Running</code>:</p>
+<pre><code class="language-console">$ kubectl logs -f -n kube-system -l name=urunc-deploy
+</code></pre>
+<p>Example output:</p>
+<pre><code class="language-console">Installing qemu
+Installing solo5-hvt
+Installing solo5-spt
+Add urunc as a supported runtime for containerd
+Containerd conf file: /etc/containerd/config.toml
+Plugin ID: &quot;io.containerd.grpc.v1.cri&quot;
+Once again, configuration file is /etc/containerd/config.toml
+reloading containerd
+node/ip-192-168-103-211.eu-central-1.compute.internal labeled
+urunc-deploy completed successfully
+Installing qemu
+Installing solo5-hvt
+Installing solo5-spt
+Add urunc as a supported runtime for containerd
+Containerd conf file: /etc/containerd/config.toml
+Plugin ID: &quot;io.containerd.grpc.v1.cri&quot;
+Once again, configuration file is /etc/containerd/config.toml
+reloading containerd
+node/ip-192-168-32-137.eu-central-1.compute.internal labeled
+urunc-deploy completed successfully
+</code></pre>
+<p>Now we've got urunc installed on each node, along with the supported hypervisors! Let's try to deploy a unikernel! </p>
+<h3 id="run-a-unikernel">Run a unikernel</h3>
+<p>Create a YAML file (e.g. <code>nginx-urunc.yaml</code>) with the following contents:</p>
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: nginx-urunc
+  name: nginx-urunc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: nginx-urunc
+  template:
+    metadata:
+      labels:
+        run: nginx-urunc
+    spec:
+      runtimeClassName: urunc
+      containers:
+      - image: harbor.nbfc.io/nubificus/urunc/nginx-qemu-unikraft-initrd:latest
+        imagePullPolicy: Always
+        name: nginx-urunc
+        command: [&quot;sleep&quot;]
+        args: [&quot;infinity&quot;]
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 10m
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-urunc
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: nginx-urunc
+  sessionAffinity: None
+  type: ClusterIP
+</code></pre>
+<p>Issuing the command below:</p>
+<pre><code class="language-console">$ kubectl apply -f nginx-urunc.yaml
+</code></pre>
+<p>will produce the following output:</p>
+<pre><code class="language-console">deployment.apps/nginx-urunc created
+service/nginx-urunc created
+</code></pre>
+<p>and will create a deployment of an NGINX unikernel, from the container image pushed at <code>harbor.nbfc.io/nubificus/urunc/nginx-hvt-rumprun-block:latest</code></p>
+<p>Inspecting the pods with <code>kubectl get pods -o wide</code> reveals the status:</p>
+<pre><code class="language-console">default           nginx-urunc-998b889c4-x798f                1/1     Running             0          2s      172.16.50.225     ip-192-168-32-137.eu-central-1.compute.internal    &lt;none&gt;           &lt;none&gt;
+</code></pre>
+<p>and following up on the previous test, we do:</p>
+<pre><code class="language-console">$ kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash
+</code></pre>
+<p>To get a shell in a pod in the cluster:</p>
+<pre><code class="language-console">If you don't see a command prompt, try pressing enter.
+tmp-shell:~# 
+</code></pre>
+<p>and we <code>curl</code> the pod's IP:</p>
+<pre><code class="language-console">tmp-shell:~# curl 172.16.50.225
+&lt;html&gt;
+&lt;body style=&quot;font-size: 14pt;&quot;&gt;
+    &lt;img src=&quot;logo150.png&quot;/&gt;
+    Served to you by &lt;a href=&quot;http://nginx.org/&quot;&gt;nginx&lt;/a&gt;, running on a
+    &lt;a href=&quot;http://rumpkernel.org&quot;&gt;rump kernel&lt;/a&gt;...
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="conclusions">Conclusions</h2>
+<p>You now have a fully functional EKS cluster with custom VPC networking and Calico CNI, all set up to run unikernel containers via <code>urunc</code>.</p>
+<p>We have covered how to:</p>
+<ul>
+<li>Provision foundational infrastructure on AWS  </li>
+<li>Deploy a secure and customizable Kubernetes cluster   </li>
+<li>Configure networking via Calico  </li>
+<li>Prepare node groups with SSH access for hands-on debugging or remote setup</li>
+<li>Install <code>urunc</code> via <code>urunc-deploy</code></li>
+<li>Deploy an example unikernel</li>
+</ul>
+<p>With your EKS cluster up and running, equipped with Calico networking and ready for <code>urunc</code>, you now have a powerful, Kubernetes-native foundation for exploring the next generation of lightweight, secure container runtimes!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 - 2025 Nubificus LTD
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

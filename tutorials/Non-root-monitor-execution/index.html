@@ -9,21 +9,25 @@
       
       
       
+        <link rel="prev" href="../How-to-urunc-on-k8s/">
       
       
-      <link rel="icon" href="/img/urunc-logo.png">
+        <link rel="next" href="../eks-tutorial/">
+      
+      
+      <link rel="icon" href="../../img/urunc-logo.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
     
     
       
-        <title>urunc Documentation</title>
+        <title>Non-root execution of monitor - urunc Documentation</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,9 +46,9 @@
       
     
     
-      <link rel="stylesheet" href="/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#non-root-execution-of-monitor" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -81,9 +90,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="urunc Documentation" class="md-header__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
+    <a href="../.." title="urunc Documentation" class="md-header__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
       
-  <img src="/img/urunc-logo.png" alt="logo">
+  <img src="../../img/urunc-logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Non-root execution of monitor
             
           </span>
         </div>
@@ -164,9 +173,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="urunc Documentation" class="md-nav__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
+    <a href="../.." title="urunc Documentation" class="md-nav__button md-logo" aria-label="urunc Documentation" data-md-component="logo">
       
-  <img src="/img/urunc-logo.png" alt="logo">
+  <img src="../../img/urunc-logo.png" alt="logo">
 
     </a>
     urunc Documentation
@@ -181,7 +190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -203,7 +212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/quickstart/" class="md-nav__link">
+      <a href="../../quickstart/" class="md-nav__link">
         
   
   
@@ -225,7 +234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/installation/" class="md-nav__link">
+      <a href="../../installation/" class="md-nav__link">
         
   
   
@@ -247,7 +256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hypervisor-support/" class="md-nav__link">
+      <a href="../../hypervisor-support/" class="md-nav__link">
         
   
   
@@ -269,7 +278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/unikernel-support/" class="md-nav__link">
+      <a href="../../unikernel-support/" class="md-nav__link">
         
   
   
@@ -303,7 +312,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="/package/" class="md-nav__link ">
+            <a href="../../package/" class="md-nav__link ">
               
   
   
@@ -336,7 +345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/package/pre-built/" class="md-nav__link">
+      <a href="../../package/pre-built/" class="md-nav__link">
         
   
   
@@ -359,7 +368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/package/reuse/" class="md-nav__link">
+      <a href="../../package/reuse/" class="md-nav__link">
         
   
   
@@ -382,7 +391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/package/rootfs/" class="md-nav__link">
+      <a href="../../package/rootfs/" class="md-nav__link">
         
   
   
@@ -424,7 +433,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="/design/" class="md-nav__link ">
+            <a href="../../design/" class="md-nav__link ">
               
   
   
@@ -457,7 +466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/design/seccomp/" class="md-nav__link">
+      <a href="../../design/seccomp/" class="md-nav__link">
         
   
   
@@ -499,7 +508,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="/developer-guide/" class="md-nav__link ">
+            <a href="../../developer-guide/" class="md-nav__link ">
               
   
   
@@ -532,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/developer-guide/Code-of-Conduct/" class="md-nav__link">
+      <a href="../../developer-guide/Code-of-Conduct/" class="md-nav__link">
         
   
   
@@ -555,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/developer-guide/contribute/" class="md-nav__link">
+      <a href="../../developer-guide/contribute/" class="md-nav__link">
         
   
   
@@ -578,7 +587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/developer-guide/development/" class="md-nav__link">
+      <a href="../../developer-guide/development/" class="md-nav__link">
         
   
   
@@ -601,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/developer-guide/maintainers/" class="md-nav__link">
+      <a href="../../developer-guide/maintainers/" class="md-nav__link">
         
   
   
@@ -624,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/developer-guide/timestamps/" class="md-nav__link">
+      <a href="../../developer-guide/timestamps/" class="md-nav__link">
         
   
   
@@ -674,22 +683,24 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="/tutorials/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -708,7 +719,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
@@ -722,7 +733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/tutorials/How-to-urunc-on-k8s/" class="md-nav__link">
+      <a href="../How-to-urunc-on-k8s/" class="md-nav__link">
         
   
   
@@ -742,10 +753,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/tutorials/Non-root-monitor-execution/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Non-root execution of monitor
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -756,6 +789,77 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-monitor-as-non-root-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the monitor as non-root user
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the monitor as non-root user">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-and-nerdctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker and Nerdctl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-a-k8s-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      In a k8s deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caveats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caveats
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -768,7 +872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/tutorials/eks-tutorial/" class="md-nav__link">
+      <a href="../eks-tutorial/" class="md-nav__link">
         
   
   
@@ -791,7 +895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/tutorials/knative/" class="md-nav__link">
+      <a href="../knative/" class="md-nav__link">
         
   
   
@@ -831,6 +935,67 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-monitor-as-non-root-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the monitor as non-root user
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the monitor as non-root user">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-and-nerdctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker and Nerdctl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-a-k8s-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      In a k8s deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caveats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caveats
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -842,8 +1007,104 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+
+<h1 id="non-root-execution-of-monitor">Non-root execution of monitor</h1>
+<p>To enhance security, <code>urunc</code> supports running the monitor process (VMM or
+seccomp monitor) as a non-root user. In this tutorial, we will walk through the
+necessary steps to set up the environment and successfully execute the monitor
+as a non-root user.</p>
+<h2 id="requirements">Requirements</h2>
+<p>The vast majority of supported monitors use KVM and therefore require access to
+<code>/dev/kvm</code>. This includes monitors like
+<a href="https://github.com/Solo5/solo5">Solo5-hvt</a>, <a href="https://www.qemu.org">Qemu</a>, and
+<a href="https://github.com/firecracker-microvm/firecracker">Firecracker</a>. In contrast,
+<a href="https://github.com/Solo5/solo5">Solo5-spt</a> does not require access to
+<code>/dev/kvm</code>. As such, when spawning the monitor process, we must ensure that it
+has the necessary permissions to access <code>/dev/kvm</code>.</p>
+<p>Usually <code>/dev/kvm</code> has the following filesystem permissions:</p>
+<pre><code>$ ls -l /dev/kvm
+crw-rw---- 1 root kvm 10, 232 Apr  3 08:10 /dev/kvm
+</code></pre>
+<p>In case the above permissions are different in your system, we strongly
+recommend to perform the following steps:</p>
+<pre><code>$ sudo groupadd kvm -r
+$ sudo chown root:kvm /dev/kvm
+$ sudo chmod 660 /dev/kvm
+</code></pre>
+<p>An important information we need to obtain is the group ID of <code>kvm</code> group:</p>
+<pre><code>$ getent group kvm
+kvm:x:108:ubuntu
+</code></pre>
+<h2 id="running-the-monitor-as-non-root-user">Running the monitor as non-root user</h2>
+<p>By default <code>urunc</code> will execute the monitor setting up the <code>uid</code>, <code>gid</code> and
+<code>additionalGids</code> from the <a href="https://github.com/opencontainers/runtime-spec/blob/main/config.md#posix-platform-user">container's OCI
+configuration</a>.
+As a result, we simply need to instruct <code>urunc</code> to run a container as the desired
+user. However, since most monitors require access to <code>/dev/kvm</code>, we must ensure
+that the container is a member of the <code>kvm</code> group to grant the necessary
+permissions.</p>
+<h3 id="docker-and-nerdctl">Docker and Nerdctl</h3>
+<p>In the case of docker and nerdctl, we can set the user and the groups of the
+container with the <code>--user &lt;uid&gt;:&lt;gid&gt;</code> option and the additional groups using
+<code>--group-add &lt;gid&gt;</code> for each additional group. Therefore, to run a KVM-enabled
+monitor with <code>urunc</code> as <code>nobody</code>, we use the following command:</p>
+<pre><code>$ sudo nerdctl run  --user 65534:65534 --group-add 108 --runtime &quot;io.containerd.urunc.v2&quot; --rm -it harbor.nbfc.io/nubificus/urunc/nginx-firecracker-unikraft-initrd:latest
+</code></pre>
+<p>Pay attention to the <code>--group-add 108</code> option which instructs <code>urunc</code> to add
+the group with id <code>108</code> as an additional group for the container. The
+<code>108</code> id is the group id of <code>kvm</code> that we found previously.</p>
+<p>On the other hand, if we are using a monitor that does not require access to
+<code>/dev/kvm</code>, such as <a href="https://github.com/Solo5/solo5">Solo5-spt</a>, then we can
+omit the <code>--group-add</code> command.  As a result, the command will transform to:</p>
+<pre><code>$ sudo nerdctl run  --user 65534:65534 --runtime &quot;io.containerd.urunc.v2&quot; --rm -it harbor.nbfc.io/nubificus/urunc/net-spt-mirage:latest
+</code></pre>
+<blockquote>
+<p>Note The commands are the same for docker.</p>
+</blockquote>
+<h3 id="in-a-k8s-deployment">In a k8s deployment</h3>
+<p>Similarly, in the case of Kubernetes, we can specify the monitor's process user
+and groups by defining the container's user and groups. We can do that in
+the <code>securityContext</code> field of the deployment yaml:</p>
+<pre><code>securityContext:
+  runAsUser: 65534
+  runAsGroup: 65534
+  supplementalGroups: [108]
+</code></pre>
+<p>As previously mentioned, if we want to run a monitor that requires access to
+<code>/dev/kvm</code>, we need to add the <code>kvm</code>'s groupid in the <code>supplementalGroups</code>.
+Otherwise, we do not have to specify any supplementary group.</p>
+<p>For more information regarding the Security Context of a Pod / Container take a
+look at <a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/">Kubernetes's
+documentation</a>.</p>
+<h2 id="caveats">Caveats</h2>
+<p>For monitors that require access to <code>/dev/kvm</code>, we need to ensure that the
+container (and, by extension, the monitor) is a member of the <code>kvm</code> group. This
+is unavoidable. Additionally, it is essential that the <code>kvm</code>
+group has the same ID across all nodes to make sure that all containers,
+regardless of the node, can access <code>/dev/kvm</code>.</p>
+<p>Another caveat of this setup is access to the device mapper snapshot. In some
+cases, <code>urunc</code> uses the device mapper snapshot as a block device for the
+unikernel. However, the snapshot is typically created by root and belongs to the
+<code>disk</code> group. As a result, to use this feature of <code>urunc</code>, we will also need
+to add the container to the <code>disk</code> group, similar to how we handle the <code>kvm</code>
+group. Fortunately, there are options we can explore to address this issue, and
+we are actively working towards a solution.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -883,10 +1144,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "/", "features": [], "search": "/assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

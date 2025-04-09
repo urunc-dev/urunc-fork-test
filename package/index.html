@@ -12,15 +12,15 @@
         <link rel="prev" href="../unikernel-support/">
       
       
-        <link rel="next" href="../design/">
+        <link rel="next" href="pre-built/">
       
       
       <link rel="icon" href="../img/urunc-logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
     
     
       
-        <title>Packaging unikernels - urunc Documentation</title>
+        <title>Building/Packaging unikernels - urunc Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#packaging-unikernels-in-oci-images-for-urunc" class="md-skip">
+        <a href="#annotations" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Packaging unikernels
+              Building/Packaging unikernels
             
           </span>
         </div>
@@ -193,6 +193,7 @@
       <a href=".." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Home
     
@@ -213,6 +214,7 @@
     <li class="md-nav__item">
       <a href="../quickstart/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     Quickstart
@@ -235,6 +237,7 @@
       <a href="../installation/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Installation
     
@@ -255,6 +258,7 @@
     <li class="md-nav__item">
       <a href="../hypervisor-support/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     VMM/Sandbox Support
@@ -277,6 +281,7 @@
       <a href="../unikernel-support/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Unikernel Support
     
@@ -296,151 +301,116 @@
   
   
   
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
           
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
   
   <span class="md-ellipsis">
-    Packaging unikernels
+    Building/Packaging unikernels
     
   </span>
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Building/Packaging unikernels
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pre-built/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    Packaging unikernels
+    Pre-built unikernels
     
   </span>
   
 
       </a>
-      
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+              
+            
+              
+                
   
   
   
+  
+    <li class="md-nav__item">
+      <a href="reuse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reusing unikernels from OCI images
     
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Annotations
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tools-to-construct-oci-images-with-uruncs-annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tools to construct OCI images with urunc's annotations
-    </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Tools to construct OCI images with urunc&#39;s annotations">
-      <ul class="md-nav__list">
+    <li class="md-nav__item">
+      <a href="rootfs/" class="md-nav__link">
         
-          <li class="md-nav__item">
-  <a href="#bima" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bima
-    </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Bima">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#packaging-a-rumprun-unikernel-with-bima" class="md-nav__link">
-    <span class="md-ellipsis">
-      Packaging a rumprun unikernel with bima
-    </span>
-  </a>
   
-</li>
-        
-      </ul>
-    </nav>
+  <span class="md-ellipsis">
+    Creating rootfs for unikernels
+    
+  </span>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pun" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pun
-    </span>
-  </a>
+
+      </a>
+    </li>
   
-    <nav class="md-nav" aria-label="Pun">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#packaging-a-unikraft-unikernel-with-pun" class="md-nav__link">
-    <span class="md-ellipsis">
-      Packaging a Unikraft unikernel with pun
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bimanix" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bimanix
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Bimanix">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#packaging-a-unikernel-with-bimanix" class="md-nav__link">
-    <span class="md-ellipsis">
-      Packaging a unikernel with bimanix
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -456,6 +426,7 @@
     
     
     
+    
     <li class="md-nav__item md-nav__item--nested">
       
         
@@ -463,10 +434,10 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../design/" class="md-nav__link ">
               
+  
   
   <span class="md-ellipsis">
     Design
@@ -500,6 +471,7 @@
       <a href="../design/seccomp/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Seccomp
     
@@ -529,6 +501,7 @@
     
     
     
+    
     <li class="md-nav__item md-nav__item--nested">
       
         
@@ -536,10 +509,10 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../developer-guide/" class="md-nav__link ">
               
+  
   
   <span class="md-ellipsis">
     Developer Guide
@@ -573,6 +546,7 @@
       <a href="../developer-guide/Code-of-Conduct/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Code of Conduct
     
@@ -594,6 +568,7 @@
     <li class="md-nav__item">
       <a href="../developer-guide/contribute/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     Contributing
@@ -617,6 +592,7 @@
       <a href="../developer-guide/development/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Setup a Dev environment
     
@@ -638,6 +614,7 @@
     <li class="md-nav__item">
       <a href="../developer-guide/maintainers/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     Maintainers
@@ -661,6 +638,7 @@
       <a href="../developer-guide/timestamps/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Execution time breakdown
     
@@ -682,6 +660,7 @@
     <li class="md-nav__item">
       <a href="https://pkg.go.dev/github.com/nubificus/urunc@v0.3.0/pkg/unikontainers" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     API Reference
@@ -712,6 +691,7 @@
     
     
     
+    
     <li class="md-nav__item md-nav__item--nested">
       
         
@@ -719,10 +699,10 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../tutorials/" class="md-nav__link ">
               
+  
   
   <span class="md-ellipsis">
     Tutorials
@@ -756,8 +736,78 @@
       <a href="../tutorials/How-to-urunc-on-k8s/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     How to use urunc with k8s
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/Non-root-monitor-execution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Non-root execution of monitor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/eks-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EKS Setup for urunc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/knative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Knative + urunc: Deploying Serverless Unikernels
     
   </span>
   
@@ -792,8 +842,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -821,19 +869,19 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bima" class="md-nav__link">
+  <a href="#bunny" class="md-nav__link">
     <span class="md-ellipsis">
-      Bima
+      bunny
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Bima">
+    <nav class="md-nav" aria-label="bunny">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#packaging-a-rumprun-unikernel-with-bima" class="md-nav__link">
+  <a href="#packaging-a-unikernel-with-bunny" class="md-nav__link">
     <span class="md-ellipsis">
-      Packaging a rumprun unikernel with bima
+      Packaging a unikernel with bunny
     </span>
   </a>
   
@@ -845,43 +893,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pun" class="md-nav__link">
+  <a href="#bunix" class="md-nav__link">
     <span class="md-ellipsis">
-      Pun
+      bunix
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Pun">
+    <nav class="md-nav" aria-label="bunix">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#packaging-a-unikraft-unikernel-with-pun" class="md-nav__link">
+  <a href="#packaging-a-unikernel-with-bunix" class="md-nav__link">
     <span class="md-ellipsis">
-      Packaging a Unikraft unikernel with pun
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bimanix" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bimanix
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Bimanix">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#packaging-a-unikernel-with-bimanix" class="md-nav__link">
-    <span class="md-ellipsis">
-      Packaging a unikernel with bimanix
+      Packaging a unikernel with bunix
     </span>
   </a>
   
@@ -913,31 +937,38 @@
 
 
 
-<h1 id="packaging-unikernels-in-oci-images-for-urunc">Packaging unikernels in OCI images for <code>urunc</code></h1>
+  <h1>Building/Packaging unikernels</h1>
+
 <p>The <a href="https://github.com/opencontainers/image-spec">OCI (Open Container Initiative) image
 format</a> is a standardized
 specification for packaging and distributing containerized applications across
 different platforms and container runtimes. It defines a common structure for
-container images, including their metadata, layers, and filesystem content.
-Since <code>urunc</code> is an OCI-compatible container runtime, it expects the unikernel
-to be placed inside an OCI container image.</p>
-<p>Nevertheless, in order to differentiate between traditional container images
-and unikernel OCI images, <code>urunc</code> makes use of annotations or a metadata file
-(<code>urunc.json</code>) inside the container's rootfs.</p>
-<p>To facilitate the process, we provide various tools that package a unikernel
+container images, including their metadata, layers, and filesystem content.</p>
+<p>Since <code>urunc</code> is an OCI-compatible container runtime, it expects the unikernel
+to be placed inside an OCI container image. Nevertheless, in order to
+differentiate between traditional container images and unikernel OCI images,
+<code>urunc</code> makes use of annotations or a metadata file (<code>urunc.json</code>) inside the
+container's rootfs.</p>
+<p>To facilitate the process, we provide various tools that build and package a unikernel
 binary, along with the application's necessary files in a container image and
 set the respective annotations. In particular, we can produce an OCI image with
-all <code>urunc</code>'s annotations using:
-1. <a href="https://github.com/nubificus/bima">bima</a> a standalone tool that communicates
-   with <a href="https://github.com/containerd/containerd">containerd</a>,
-2. <a href="https://github.com/nubificus/pun">pun</a> a tool that constructs a LLB or acts
-   as a frontend for
-   <a href="https://github.com/moby/buildkit?tab=readme-ov-file#output">buildkit</a> and
-3. <a href="https://github.com/nubificus/bimanix">bimanix</a> which uses <a href="https://github.com/NixOS/nix">Nix
-   packages</a> to build the image.</p>
-<p>In this document, we will first explain all the annotations that <code>urunc</code>
-expects, in order to handle unikernels and describe each one of the three ways
-to build such OCI images for unikernels.</p>
+all <code>urunc</code>'s annotations using:</p>
+<ol>
+<li><a href="https://github.com/nubificus/bunny">bunny</a> a tool that builds and packages unikernels
+    using buildkit's LLB and can also act as a frontend for
+   <a href="https://github.com/moby/buildkit?tab=readme-ov-file#output">buildkit</a>.</li>
+<li><a href="https://github.com/nubificus/bunix">bunix</a> which uses <a href="https://github.com/NixOS/nix">Nix
+   packages</a> to package a unikernel as an OCI image.</li>
+</ol>
+<p>In this section, we will first explain all the annotations that <code>urunc</code>
+expects, in order to handle unikernels and describe how to build and package
+unikernels as OCI images using the aforementioned tools.</p>
+<p><strong>Quick links:</strong></p>
+<ul>
+<li><a href="../package/pre-built">Packaging pre-built unikernels</a></li>
+<li><a href="../package/reuse">Using unikernels from existing OCI images</a></li>
+<li><a href="../package/rootfs">Packaging and creating unikernel's rootfs</a></li>
+</ul>
 <h2 id="annotations">Annotations</h2>
 <p><a href="https://github.com/opencontainers/image-spec/blob/main/annotations.md">OCI
 annotations</a>
@@ -955,7 +986,7 @@ unikernel, the VMM or sandbox mechanism to use and more. For the time being, the
 required annotations are the following:</p>
 <ul>
 <li><code>com.urunc.unikernel.unikernelType</code>: The type of the unikernel. Currently
-  supported values: a) unikraft, b) rumprun.</li>
+  supported values: a) unikraft, b) rumprun, c) mirage.</li>
 <li><code>com.urunc.unikernel.hypervisor</code>: The VMM or sandbox monitor to run the
   unikernel Currently supported values: a) <code>qemu</code>, b) <code>firecracker</code>, c) <code>spt</code>,
   d) <code>hvt</code>.</li>
@@ -968,12 +999,15 @@ required annotations are the following:</p>
 <ul>
 <li><code>com.urunc.unikernel.initrd</code>: The path to the initrd of the unikernel inside
   the container's rootfs.</li>
-<li><code>com.urunc.unikernel.block</code>: The path to a block image, inside container's
+<li><code>com.urunc.unikernel.unikernelVersion</code>: The version of the unikernel framework (e.g.
+  0.17.0).</li>
+<li><code>com.urunc.unikernel.block</code>: The path to a block image inside container's
   rootfs, which will get attached to the unikernel.</li>
 <li><code>com.urunc.unikernel.blkMntPoint</code>: The mount point of the block image to
   attach in the unikernel.</li>
-<li><code>com.urunc.unikernel.unikernelVersion</code>: The version of the unikernel framework (e.g.
-  0.17.0).</li>
+<li><code>com.urunc.unikernel.useDMBlock</code>: A boolean value that if it is <code>true</code>, requests
+  from <code>urunc</code> to mount the container's image rootfs in the unikernel, Requires
+  the <code>devmapper</code> snapshotter.</li>
 </ul>
 <p>Due to the fact that <a href="https://www.docker.com/">Docker</a> and some high-level
 container runtimes do not pass the image annotations to the underlying container
@@ -982,134 +1016,132 @@ container's rootfs. The file should be named <code>urunc.json</code>, it should 
 placed in the root directory of the container's rootfs and it should have a JSON
 format with the above information, where the values are base64 encoded.</p>
 <h2 id="tools-to-construct-oci-images-with-uruncs-annotations">Tools to construct OCI images with <code>urunc</code>'s annotations</h2>
-<p>As previously mentioned we currently provide 3 different tools to package
-unikernels in OCI images with <code>urunc</code>'s annotations.</p>
-<h3 id="bima">Bima</h3>
-<p><a href="https://github.com/nubificus/bima">bima</a> uses
-<a href="https://github.com/containerd/containerd">containerd</a> to build OCI images. In
-particular, <a href="https://github.com/nubificus/bima">bima</a> reads the contents of a
-file with a Dockerfile-like syntax. This file can contain a set of
-<em>instructions</em> that specify how to package an existing unikernel binary as an
-OCI image. The currently supported <em>instructions</em> are:</p>
+<p>As previously mentioned we currently provide 2 different tools to build and
+package unikernels in OCI images with <code>urunc</code>'s annotations.</p>
+<h3 id="bunny">bunny</h3>
+<p>In an effort to simplify the process of building various unikernels, we built
+<a href="https://github.com/nubificus/bunny">bunny</a>. Except of building unikernels <a href="https://github.com/nubificus/bunny">bunny</a>
+can also pack existing unikernels (whether locally or from OCI images) as OCI images
+for <code>urunc</code>. At its core <a href="https://github.com/nubificus/bunny">bunny</a> leverages
+<a href="https://github.com/moby/buildkit?tab=readme-ov-file#exploring-llb">buildkit's LLB</a>,
+allowing us to create OCI images from any type of file. Currently <a href="https://github.com/nubificus/bunny">bunny</a> can
+process two formats of files: a) the typical Dockerfile-like syntax files and b)
+<code>bunnyfile</code>, a specialized YAML-based file.</p>
+<p>When using Dockerfile-like files, <a href="https://github.com/nubificus/bunny">bunny</a>
+can only package pre-built unikernel images; it cannot build them. This format
+is primarily retained for compatibility with pun and bima, which are no longer
+maintained. Currently, <a href="https://github.com/nubificus/bunny">bunny</a>
+can handle the following <em>instructions</em>:</p>
 <ul>
-<li><code>FROM</code>: this is not taken into account at the current implementation, but we
-  plan to add support for.</li>
+<li><code>FROM</code>: Specify an existing OCI image to use as a base.</li>
 <li><code>COPY</code>: this works as in Dockerfiles. At this moment, only a single copy
   operation per <em>instruction</em> (think one copy per line). These files are copied
   inside the container's image rootfs.</li>
-<li><code>LABEL</code>: all LABEL <em>instructions</em> are added as annotations to the Container
+<li><code>LABEL</code>: all LABEL <em>instructions</em> are added as annotations to the container's
   image. They are also added to a special <code>urunc.json</code> inside the container's image
   rootfs.</li>
 </ul>
-<h4 id="packaging-a-rumprun-unikernel-with-bima">Packaging a rumprun unikernel with bima</h4>
-<p>The main benefit of <a href="https://github.com/nubificus/bima">bima</a> is that it is a
-standalone tool which uses
-<a href="https://github.com/containerd/containerd">containerd</a>. Therefore, there are no
-dependencies on using it. For instructions to build and install
-<a href="https://github.com/nubificus/bima">bima</a> please check <a href="https://github.com/nubificus/bima?tab=readme-ov-file#build-from-source">its
-README</a></p>
-<p>As a result, to package a unikernel inside an OCI image and setting <code>urunc</code>'s
-annotations with <a href="https://github.com/nubificus/bima">bima</a>, we simply need to
-construct the Containerfile with all the necessary <em>instructions</em>. For instance,
-to package a Redis unikernel that uses Rumprun and runs on top of Solo5, we can
-construct the Containerfile as:</p>
-<pre><code class="language-Dockerfile"># the FROM instruction will not be parsed
-FROM scratch
+<p>To further extend the functionality and provide a common interface to facilitate
+unikernel building, we defined <code>bunnyfile</code>. It is a YAML-based special file that
+<a href="https://github.com/nubificus/bunny">bunny</a> transforms to LLB with all the
+necessary steps to build the respective unikernel. Except of building
+unikernels, <a href="https://github.com/nubificus/bunny">bunny</a> can also be used to build or append files in the unikernel's
+rootfs.</p>
+<p>The current syntax of <code>bunnyfile</code> is the following one:</p>
+<pre><code>#syntax=harbor.nbfc.io/nubificus/bunny:latest   # [1] Set bunnyfile syntax for automatic recognition from buildkit.
+version: v0.1                                   # [2] Bunnyfile version.
 
-COPY test-redis.hvt /unikernel/test-redis.hvt
-COPY redis.conf /conf/redis.conf
+platforms:                                      # [3] The target platform for building/packaging.
+  framework: unikraft                           # [3a] The unikernel framework.
+  version: v0.15.0                              # [3b] The version of the unikernel framework.
+  monitor: qemu                                 # [3c] The hypervisor/VMM or any other kind of monitor.
+  architecture: x86                             # [3d] The target architecture.
 
-LABEL &quot;com.urunc.unikernel.binary&quot;=/unikernel/test-redis.hvt
-LABEL &quot;com.urunc.unikernel.cmdline&quot;='redis-server /data/conf/redis.conf'
-LABEL &quot;com.urunc.unikernel.unikernelType&quot;=&quot;rumprun&quot;
-LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;hvt&quot;
+rootfs:                                         # [4] (Optional) Specifies the rootfs of the unikernel.
+  from: local                                   # [4a] (Optional) The source of the rootfs.
+  path: initrd                                  # [4b] (Required if from is not scratch) The path in the source, where the prebuilt rootfs file resides.
+  type: initrd                                  # [4c] (optional) The type of rootfs (e.g. initrd, raw, block)
+  include:                                      # [4d] (Optional) A list of local files to include in the rootfs
+    - src:dst
+
+kernel:                                         # [5] Specify a prebuilt kernel to use
+  from: local                                   # [5a] Specify the source of a prebuilt kernel.
+  path: kernel                                  # [5b] The path where the kernel image resides.
+
+cmdline: hello                                  # [6] The cmdline of the app.
+
 </code></pre>
-<blockquote>
-<p>Note: For labels, you can use single quotes, double quotes or no quotes at
-all. Defining multiple label key-value pairs in a single LABEL instruction is
-not supported.</p>
-</blockquote>
-<p>As soon as we create the Containerfile we can build the container with:</p>
-<pre><code class="language-bash">bima build -t nubificus/image:tag .
-</code></pre>
-<p>Please check the <a href="https://github.com/nubificus/bima?tab=readme-ov-file#usage">README
-file</a> of bima for
-more information.</p>
-<h3 id="pun">Pun</h3>
-<p>As an alternative to <a href="https://github.com/nubificus/bima">bima</a>, we built
-<a href="https://github.com/nubificus/pun">pun</a> a tool based on
-<a href="https://github.com/moby/buildkit?tab=readme-ov-file#output">buildkit</a>. The main
-differentiate between <a href="https://github.com/nubificus/bima">bima</a> and
-<a href="https://github.com/nubificus/pun">pun</a> is that
-<a href="https://github.com/nubificus/pun">pun</a> supports using existing OCI images with
-a unikernel inside. An example of such images is <a href="https://github.com/unikraft/catalog">Unikraft's application
-catalog</a>. Therefore, with
-<a href="https://github.com/nubificus/pun">pun</a> a user can simply define an existing
-image to use and <a href="https://github.com/nubificus/pun">pun</a> will add any other
-files inside the container image and of course the necessary annotations.
-Both <a href="https://github.com/nubificus/pun">pun</a> and
-<a href="https://github.com/nubificus/bima">bima</a> support the same set of <em>instructions</em>
-with the difference that <code>FROM</code> is handled properly from
-<a href="https://github.com/nubificus/pun">pun</a>.</p>
-<h4 id="packaging-a-unikraft-unikernel-with-pun">Packaging a Unikraft unikernel with pun</h4>
-<p>Since <a href="https://github.com/nubificus/pun">pun</a> uses
+<p>For more information regarding the <code>bunnyfile</code> please take a look at the
+respective section of <a href="https://github.com/nubificus/bunny?tab=readme-ov-file#the-bunnyfile">bunny's
+README</a>.
+Furthermore, you can find various different examples and use cases for
+<a href="https://github.com/nubificus/bunny">bunny</a> in the <a href="https://github.com/nubificus/bunny/tree/main/examples">examples directory of
+bunny's repository</a>.</p>
+<h4 id="packaging-a-unikernel-with-bunny">Packaging a unikernel with bunny</h4>
+<p>Since <a href="https://github.com/nubificus/bunny">bunny</a> uses
 <a href="https://github.com/moby/buildkit?tab=readme-ov-file#output">buildkit</a> it
 supports two modes of execution. In the first mode it acts as a <a href="https://docs.docker.com/build/buildkit/frontend/">buildkit
 frontend</a> and in the second
 mode it outputs a LLB which can be passed to <code>buildctl</code>.Therefore,
-<a href="https://github.com/nubificus/pun">pun</a> depends on
+<a href="https://github.com/nubificus/bunny">bunny</a> depends on
 <a href="https://github.com/moby/buildkit?tab=readme-ov-file#output">buildkit</a> which
 should be installed. However, if <a href="https://www.docker.com/">docker</a> is already
-installed, the frontend execution mode of <a href="https://github.com/nubificus/pun">pun</a>
-can be used directly without building anything.</p>
-<p>Similarly to <a href="https://github.com/nubificus/bima">bima</a> the first step to build
-the container is to define the Containerfile. It is important to note that if we
-want to use <a href="https://github.com/nubificus/pun">pun</a> as a frontend for buildkit
+installed, the frontend execution mode of <a href="https://github.com/nubificus/bunny">bunny</a>
+can be used directly without building or installing anything.</p>
+<p>It is important to note that if we
+want to use <a href="https://github.com/nubificus/bunny">bunny</a> as a frontend for buildkit
 we need to start the Containerfile with the following line:</p>
-<pre><code class="language-Dockerfile">#syntax=harbor.nbfc.io/nubificus/urunc/pun/llb:latest
+<pre><code class="language-Dockerfile">#syntax=harbor.nbfc.io/nubificus/bunny:&lt;version&gt;
 </code></pre>
-<p>Therefore, if we want to package a locally built Ngnix Unikraft unikernel, we
-can define the Containerfile as:</p>
-<pre><code class="language-Dockerfile">#syntax=harbor.nbfc.io/nubificus/pun:0.1.0
+<p><strong><em>Using a Dockerfile-like syntax file</em></strong></p>
+<p>If we want to package a locally built Nginx Unikraft unikernel, we
+can define the a Dockerfile-like syntax file as:</p>
+<pre><code class="language-Dockerfile">#syntax=harbor.nbfc.io/nubificus/bunny:0.0.2
 FROM scratch
 
-COPY build/app-nginx_qemu-x86_64 /unikernel/kernel
-COPY data.cpio /unikernel/initrd
+COPY nginx-qemu-x86_64-initrd_qemu-x86_64 /unikernel/kernel
+COPY rootfs.cpio /unikernel/initrd
 
-LABEL com.urunc.unikernel.binary=/unikernel/kernel
+LABEL &quot;com.urunc.unikernel.binary&quot;=/unikernel/kernel
 LABEL &quot;com.urunc.unikernel.initrd&quot;=/unikernel/initrd
-LABEL &quot;com.urunc.unikernel.cmdline&quot;='nginx -c /nginx/conf/nginx.conf'
-LABEL &quot;com.urunc.unikernel.unikernelType&quot;=&quot;unikraft&quot;
-LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;qemu&quot;
-</code></pre>
-<p>and we can build it with a docker command:</p>
-<pre><code class="language-bash">docker build -f Containerfile -t nubificus/urunc/nginx-unikraft-qemu:test .
-</code></pre>
-<p>In a similar way, if we want to package an existing Nginx Unikraft unikernel
-form <a href="https://github.com/unikraft/catalog">unikraft's catalog</a>, we should define
-the Containerfile as:</p>
-<pre><code class="language-Dockerfile">#syntax=harbor.nbfc.io/nubificus/pun:0.1.0
-FROM unikraft.org/nginx:1.15
-
-LABEL com.urunc.unikernel.binary=&quot;/unikraft/bin/kernel&quot;
 LABEL &quot;com.urunc.unikernel.cmdline&quot;=&quot;nginx -c /nginx/conf/nginx.conf&quot;
 LABEL &quot;com.urunc.unikernel.unikernelType&quot;=&quot;unikraft&quot;
 LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;qemu&quot;
 </code></pre>
-<p>and we can build it with the same docker command:</p>
-<pre><code class="language-bash">docker build -f Containerfile -t nubificus/urunc/nginx-unikraft-qemu:test .
+<p><strong><em>Using bunnyfile</em></strong></p>
+<p>If we want to package the same unikernel, using <code>bunnyfile</code>, we have to
+define the file as:</p>
+<pre><code>#syntax=harbor.nbfc.io/nubificus/bunny:0.0.2
+version: v0.1
+
+platforms:
+  framework: unikraft
+  monitor: qemu
+  architecture: x86
+
+rootfs:
+  from: local
+  path: rootfs.cpio
+
+kernel:
+  from: local
+  path: nginx-qemu-x86_64-initrd_qemu-x86_64
+
+cmdline: nginx -c /nginx/conf/nginx.conf
+</code></pre>
+<p>and we can build it with a docker command:</p>
+<pre><code class="language-bash">docker build -f bunnyfile -t nubificus/urunc/nginx-unikraft-qemu:test .
 </code></pre>
 <blockquote>
-<p>Note: For labels, you can use single quotes, double quotes or no quotes at
-all. Defining multiple label key-value pairs in a single LABEL instruction is
-not supported.</p>
+<p><strong>NOTE</strong>: We can use the above command and switch form bunnyfile to the
+Dockerfile-like file and build the same unikernel OCI image.</p>
 </blockquote>
-<p>For more information check <a href="https://github.com/nubificus/pun">pun's README</a>.</p>
-<h3 id="bimanix">Bimanix</h3>
+<p>For more information check <a href="https://github.com/nubificus/bunny?tab=readme-ov-file#bunny-build-and-package-unikernels-like-containers">bunny's README</a>.</p>
+<h3 id="bunix">bunix</h3>
 <p>For Nix users, we have created a set of Nix scripts that we maintain in the
-<a href="https://github.com/nubificus/bimanix">bimanix</a> repository to build container
+<a href="https://github.com/nubificus/bunix">bunix</a> repository to build container
 images for <code>urunc</code>. In contrast to the previous tools,
-<a href="https://github.com/nubificus/bimanix">bimanix</a> uses a nix file to define the
+<a href="https://github.com/nubificus/bunix">bunix</a> uses a nix file to define the
 files to package as a container image, along with the <code>urunc</code> annotations. In
 particular, this file is the <code>args.nix</code> file, which expects the same fields:</p>
 <ul>
@@ -1120,26 +1152,27 @@ particular, this file is the <code>args.nix</code> file, which expects the same 
   <code>"&lt;path-based-on-cwd&gt;" = "&lt;path-inside-container&gt;"</code>.</li>
 <li>annotations: a list will all the <code>urunc</code> annotations.</li>
 </ul>
-<h4 id="packaging-a-unikernel-with-bimanix">Packaging a unikernel with bimanix</h4>
-<p>A necessary requirement to use <a href="https://github.com/nubificus/bimanix">bimanix</a>
+<h4 id="packaging-a-unikernel-with-bunix">Packaging a unikernel with bunix</h4>
+<p>A necessary requirement to use <a href="https://github.com/nubificus/bunix">bunix</a>
 is the presence of <a href="https://github.com/NixOS/nix">Nix package manager</a>. Then
-using <a href="https://github.com/nubificus/bimanix">bimanix</a> is as simple as completing
+using <a href="https://github.com/nubificus/bunix">bunix</a> is as simple as completing
 the <code>args.nix</code> file.</p>
 <p>For example to package a locally built Rumprun Hello world unikernel running on
 top of Solo5-hvt, we should set the <code>args.nix</code> file as:</p>
 <pre><code class="language-Nix">{
-  name = &quot;hello-rumprun&quot;;
-  tag = &quot;latest&quot;;
+  name = &quot;nginx-unikraft-qemu&quot;;
+  tag = &quot;test&quot;;
   files = {
-    &quot;./hello.hvt&quot; = &quot;/unikernel/hello.hvt&quot;;
+    &quot;./nginx-qemu-x86_64-initrd_qemu-x86_64&quot; = &quot;/unikernel/kernel&quot;;
+    &quot;./rootfs.cpio&quot; = &quot;/unikernel/initrd&quot;;
   };
   annotations = {
-    unikernelType = &quot;rumprun&quot;;
-    hypervisor = &quot;hvt&quot;;
-    binary = &quot;/unikernel/hello.hvt&quot;;
-    cmdline = &quot;hello&quot;;
+    unikernelType = &quot;unikraft&quot;;
+    hypervisor = &quot;qemu&quot;;
+    binary = &quot;/unikernel/kernel&quot;;
+    cmdline = &quot;nginx -c /nginx/conf/nginx.conf&quot;;
     unikernelVersion = &quot;&quot;;
-    initrd = &quot;&quot;;
+    initrd = &quot;/unikernel/initrd&quot;;
     block = &quot;&quot;;
     blkMntPoint = &quot;&quot;;
   };
@@ -1154,7 +1187,7 @@ easier access of the tar, Nix creates a symlink of the tar file in the CWD. The
 symlink will be named as <code>result</code>. Therefore, we can load the container image with:</p>
 <pre><code class="language-bash">docker load &lt; result
 </code></pre>
-<p>Please check <a href="https://github.com/nubificus/bimanix">bimanix's README</a> for more information.</p>
+<p>Please check <a href="https://github.com/nubificus/bunix">bunix's README</a> for more information.</p>
 
 
 
@@ -1205,7 +1238,9 @@ symlink will be named as <code>result</code>. Therefore, we can load the contain
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>

@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../eks-tutorial/">
       
-      
-        <link rel="next" href="../Non-root-monitor-execution/">
       
       
       <link rel="icon" href="../../img/urunc-logo.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>How to use urunc with k8s - urunc Documentation</title>
+        <title>Knative + urunc: Deploying Serverless Unikernels - urunc Documentation</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-to-use-urunc-with-k8s" class="md-skip">
+        <a href="#knative-urunc-deploying-serverless-unikernels" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              How to use urunc with k8s
+              Knative + urunc: Deploying Serverless Unikernels
             
           </span>
         </div>
@@ -730,32 +728,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    How to use urunc with k8s
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../How-to-urunc-on-k8s/" class="md-nav__link">
         
   
   
@@ -766,110 +742,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#manual-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Manual Installation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Manual Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#install-urunc" class="md-nav__link">
-    <span class="md-ellipsis">
-      Install urunc
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#add-urunc-as-a-runtimeclass" class="md-nav__link">
-    <span class="md-ellipsis">
-      Add urunc as a RuntimeClass
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-a-test-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create a test deployment
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#urunc-deploy" class="md-nav__link">
-    <span class="md-ellipsis">
-      urunc-deploy
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="urunc-deploy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#urunc-deploy-in-k3s" class="md-nav__link">
-    <span class="md-ellipsis">
-      urunc-deploy in k3s
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#urunc-deploy-in-k8s-with-containerd" class="md-nav__link">
-    <span class="md-ellipsis">
-      urunc-deploy in k8s with containerd
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-urunc-deploy-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      How urunc-deploy works
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -925,10 +797,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../knative/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Knative + urunc: Deploying Serverless Unikernels
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -939,6 +833,227 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-go-121" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Go 1.21
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-go-installation-should-be-1215" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify Go installation (Should be 1.21.5)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-ko-version0151" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install ko VERSION=0.15.1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clone-and-build-knative-with-the-queue-proxy-patch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone and Build Knative with the queue-proxy patch
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clone and Build Knative with the queue-proxy patch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-your-container-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set your container registry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone-urunc-enabled-knative-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone urunc-enabled Knative Serving
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply-knatives-manifests-to-the-local-k8s" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apply knative's manifests to the local k8s
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-networking-kourier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Networking (Kourier)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup Networking (Kourier)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-kourier-patch-ingress-and-domain-configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install kourier, patch ingress and domain configs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enable-runtimeclass-and-urunc-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable RuntimeClass and urunc Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enable RuntimeClass and urunc Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-urunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install urunc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-runtimeclass-for-services-nodeselector-and-affinity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable runtimeClass for services, nodeSelector and affinity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-a-sample-urunc-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy a Sample urunc Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy a Sample urunc Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-knative-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check Knative Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-the-service-replace-ip-with-actual-ingress-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test the service (replace IP with actual ingress IP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wrapping Up
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -978,13 +1093,139 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#manual-installation" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Manual Installation
+      Prerequisites
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Manual Installation">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-go-121" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Go 1.21
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-go-installation-should-be-1215" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify Go installation (Should be 1.21.5)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-ko-version0151" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install ko VERSION=0.15.1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clone-and-build-knative-with-the-queue-proxy-patch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone and Build Knative with the queue-proxy patch
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clone and Build Knative with the queue-proxy patch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-your-container-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set your container registry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone-urunc-enabled-knative-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone urunc-enabled Knative Serving
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply-knatives-manifests-to-the-local-k8s" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apply knative's manifests to the local k8s
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-networking-kourier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Networking (Kourier)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup Networking (Kourier)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-kourier-patch-ingress-and-domain-configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install kourier, patch ingress and domain configs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enable-runtimeclass-and-urunc-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable RuntimeClass and urunc Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enable RuntimeClass and urunc Support">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -997,18 +1238,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#add-urunc-as-a-runtimeclass" class="md-nav__link">
+  <a href="#enable-runtimeclass-for-services-nodeselector-and-affinity" class="md-nav__link">
     <span class="md-ellipsis">
-      Add urunc as a RuntimeClass
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-a-test-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create a test deployment
+      Enable runtimeClass for services, nodeSelector and affinity
     </span>
   </a>
   
@@ -1020,37 +1252,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#urunc-deploy" class="md-nav__link">
+  <a href="#deploy-a-sample-urunc-service" class="md-nav__link">
     <span class="md-ellipsis">
-      urunc-deploy
+      Deploy a Sample urunc Service
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="urunc-deploy">
+    <nav class="md-nav" aria-label="Deploy a Sample urunc Service">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#urunc-deploy-in-k3s" class="md-nav__link">
+  <a href="#check-knative-service" class="md-nav__link">
     <span class="md-ellipsis">
-      urunc-deploy in k3s
+      Check Knative Service
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#urunc-deploy-in-k8s-with-containerd" class="md-nav__link">
+  <a href="#test-the-service-replace-ip-with-actual-ingress-ip" class="md-nav__link">
     <span class="md-ellipsis">
-      urunc-deploy in k8s with containerd
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-urunc-deploy-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      How urunc-deploy works
+      Test the service (replace IP with actual ingress IP)
     </span>
   </a>
   
@@ -1058,6 +1281,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wrapping Up
+    </span>
+  </a>
   
 </li>
       
@@ -1077,160 +1309,157 @@
 
 
 
-<h1 id="how-to-use-urunc-with-k8s">How to use urunc with k8s</h1>
-<p>This guide assumes you have a working Kubernetes cluster.</p>
-<p>To use <code>urunc</code> in a k8s cluster there are 2 options:</p>
+<h1 id="knative-urunc-deploying-serverless-unikernels">Knative + urunc: Deploying Serverless Unikernels</h1>
+<p>This guide walks you through deploying <a href="https://knative.dev/">Knative Serving</a>
+using <a href="https://github.com/nubificus/urunc"><code>urunc</code></a>, a unikernel
+container runtime. You’ll build Knative from a custom branch and use
+<a href="https://github.com/ko-build/ko"><code>ko</code></a> for seamless image building and
+deployment.</p>
+<h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li><a href="#manual-installation">Manual installation</a></li>
-<li><a href="#urunc-deploy">Using urunc-deploy</a></li>
+<li>A running Kubernetes cluster</li>
+<li>A Docker-compatible registry (e.g. Harbor, Docker Hub)</li>
+<li>Ubuntu 20.04 or newer</li>
+<li>Basic <code>git</code>, <code>curl</code>, <code>kubectl</code>, and <code>docker</code> installed</li>
 </ul>
-<h2 id="manual-installation">Manual Installation</h2>
-<h3 id="install-urunc">Install urunc</h3>
-<p>Before we start, we need to have working Kubernetes cluster with <a href="../../installation/">urunc installed</a> on one or more nodes.</p>
-<h3 id="add-urunc-as-a-runtimeclass">Add urunc as a RuntimeClass</h3>
-<p>First, we need to add <code>urunc</code> as a runtime class for the k8s cluster:</p>
-<pre><code class="language-bash">$ cat &lt;&lt; EOF | tee urunc-runtimeClass.yaml
-kind: RuntimeClass
-apiVersion: node.k8s.io/v1
-metadata:
-    name: urunc
-handler: urunc
-EOF
-
-$ kubectl apply -f urunc-runtimeClass.yaml
+<h2 id="environment-setup">Environment Setup</h2>
+<p>Install Docker, Go &gt;= 1.21, and <code>ko</code>:</p>
+<h3 id="install-docker">Install Docker</h3>
+<pre><code class="language-console">$ sudo apt-get update
+$ sudo apt-get install -y ca-certificates curl
+$ sudo install -m 0755 -d /etc/apt/keyrings
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo tee /etc/apt/keyrings/docker.asc &gt; /dev/null
+$ sudo chmod a+r /etc/apt/keyrings/docker.asc echo  &quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \ $(. /etc/os-release &amp;&amp; echo &quot;${UBUNTU_CODENAME:-$VERSION_CODENAME}&quot;) stable&quot; | \
+$ sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+$ sudo apt-get update &amp;&amp; sudo apt-get install -y docker-ce docker-ce-cli containerd.io 
 </code></pre>
-<p>To verify the runtimeClass was added:</p>
-<pre><code class="language-bash">$ kubectl get runtimeClass
+<h3 id="install-go-121">Install Go 1.21</h3>
+<pre><code class="language-console">$ sudo mkdir /usr/local/go1.21
+$ wget https://go.dev/dl/go1.21.5.linux-amd64.tar.gz
+$ sudo tar -zxvf go1.21.5.linux-amd64.tar.gz -C /usr/local/go1.21/
+$ rm go1.21.5.linux-amd64.tar.gz
 </code></pre>
-<h3 id="create-a-test-deployment">Create a test deployment</h3>
-<p>To properly test the newly added k8s runtime class, create a test deployment:</p>
-<pre><code class="language-bash">$ cat &lt;&lt;EOF | tee nginx-urunc.yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    run: nginx-urunc
-  name: nginx-urunc
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      run: nginx-urunc
-  template:
-    metadata:
-      labels:
-        run: nginx-urunc
-    spec:
-      runtimeClassName: urunc
-      containers:
-      - image: harbor.nbfc.io/nubificus/urunc/nginx-firecracker-unikraft-initrd:latest
-        imagePullPolicy: Always
-        name: nginx-urunc
-        command: [&quot;sleep&quot;]
-        args: [&quot;infinity&quot;]
-        ports:
-        - containerPort: 80
-          protocol: TCP
-        resources:
-          requests:
-            cpu: 10m
-      restartPolicy: Always
----
-apiVersion: v1
+<h3 id="verify-go-installation-should-be-1215">Verify Go installation (Should be 1.21.5)</h3>
+<pre><code class="language-console">$ export GOROOT=/usr/local/go1.21/go 
+$ export PATH=$GOROOT/bin:$PATH  
+$ export GOPATH=$HOME/go 
+$ go version
+go version go1.21.5 linux/amd64
+</code></pre>
+<h3 id="install-ko-version0151">Install ko VERSION=0.15.1</h3>
+<pre><code class="language-console">$ export OS=Linux
+$ export ARCH=x86_64
+$ curl -sSfL &quot;https://github.com/ko-build/ko/releases/download/v${VERSION}/ko_${VERSION}_${OS}_${ARCH}.tar.gz&quot; -o ko.tar.gz
+$ sudo tar -zxvf ko.tar.gz -C /usr/local/bin` 
+</code></pre>
+<hr />
+<h2 id="clone-and-build-knative-with-the-queue-proxy-patch">Clone and Build Knative with the queue-proxy patch</h2>
+<h3 id="set-your-container-registry">Set your container registry</h3>
+<blockquote>
+<p>Note: You should be able to use dockerhub for this. e.g. `<yourdockerhubid>/knative</p>
+</blockquote>
+<pre><code class="language-console">$ export KO_DOCKER_REPO='harbor.nbfc.io/nubificus/knative-install-urunc'  
+</code></pre>
+<h3 id="clone-urunc-enabled-knative-serving">Clone urunc-enabled Knative Serving</h3>
+<pre><code class="language-console">$ git clone https://github.com/nubificus/serving -b feat_urunc 
+$ cd serving/
+$ ko resolve -Rf ./config/core/ &gt; knative-custom.yaml
+</code></pre>
+<h3 id="apply-knatives-manifests-to-the-local-k8s">Apply knative's manifests to the local k8s</h3>
+<pre><code class="language-console">$ kubectl apply -f knative-custom.yaml`
+</code></pre>
+<p>Alternatively, you could use our latest build:</p>
+<pre><code class="language-console">$ kubectl apply -f https://s3.nbfc.io/knative/knative-v1.17.0-urunc-5220308.yaml
+</code></pre>
+<hr />
+<h2 id="setup-networking-kourier">Setup Networking (Kourier)</h2>
+<h3 id="install-kourier-patch-ingress-and-domain-configs">Install kourier, patch ingress and domain configs</h3>
+<pre><code class="language-console">$ kubectl apply -f https://github.com/knative/net-kourier/releases/latest/download/kourier.yaml 
+$ kubectl patch configmap/config-network -n knative-serving --type merge -p \ 
+  '{&quot;data&quot;:{&quot;ingress.class&quot;:&quot;kourier.ingress.networking.knative.dev&quot;}}' kubectl patch configmap/config-domain -n knative-serving --type merge -p \ 
+  '{&quot;data&quot;:{&quot;127.0.0.1.nip.io&quot;:&quot;&quot;}}'
+</code></pre>
+<hr />
+<h2 id="enable-runtimeclass-and-urunc-support">Enable RuntimeClass and urunc Support</h2>
+<h3 id="install-urunc">Install <code>urunc</code></h3>
+<p>You can follow the documentation to install <code>urunc</code> from: <a href="https://urunc.io/tutorials/How-to-urunc-on-k8s/">Installing</a></p>
+<h3 id="enable-runtimeclass-for-services-nodeselector-and-affinity">Enable runtimeClass for services, nodeSelector and affinity</h3>
+<pre><code class="language-bash">$ kubectl patch configmap/config-features --namespace knative-serving --type merge --patch '{&quot;data&quot;:{
+  &quot;kubernetes.podspec-affinity&quot;:&quot;enabled&quot;,
+  &quot;kubernetes.podspec-runtimeclassname&quot;:&quot;enabled&quot;,
+  &quot;kubernetes.podspec-nodeselector&quot;:&quot;enabled&quot;
+}}'
+</code></pre>
+<hr />
+<h2 id="deploy-a-sample-urunc-service">Deploy a Sample urunc Service</h2>
+<pre><code class="language-bash">$ kubectl get ksvc -A -o wide
+</code></pre>
+<p>Should be empty. Get an example manifest and apply it:</p>
+<pre><code class="language-console">$ wget https://raw.githubusercontent.com/nubificus/openinfradayshu-demos/main/serverless-sandboxes/service-container-hello.yaml
+$ kubectl apply -f service-container-hello.yaml 
+</code></pre>
+<h3 id="check-knative-service">Check Knative Service</h3>
+<pre><code class="language-console">kubectl get ksvc -A -o wide 
+</code></pre>
+<h3 id="test-the-service-replace-ip-with-actual-ingress-ip">Test the service (replace IP with actual ingress IP)</h3>
+<pre><code class="language-bash">curl -v -H &quot;Host: hellocontainer.default.127.0.0.1.nip.io&quot; http://&lt;INGRESS_IP&gt;` 
+</code></pre>
+<p>Now, let's create a <code>urunc</code>-compatible function. Create a file (e.g. <code>urunc-function.yaml</code>) with the following contents:</p>
+<pre><code class="language-yaml">apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: nginx-urunc
+  name: http-c-urunc
+  namespace: default
 spec:
-  ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 80
-  selector:
-    run: nginx-urunc
-  sessionAffinity: None
-  type: ClusterIP
-EOF
-
-$ kubectl apply -f nginx-urunc.yaml
+  template:
+    spec:
+      runtimeClassName: &quot;urunc&quot;
+      containers:
+        - image: harbor.nbfc.io/nubificus/knative/http-c:qemu-urunc
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources:
+            requests:
+              cpu: 10m
 </code></pre>
-<p>Now, we should be able to see the created Pod:</p>
-<pre><code class="language-bash">$ kubectl get pods
+<p>and apply it:</p>
+<pre><code class="language-console">$ kubectl apply -f urunc-function.yaml
 </code></pre>
-<h2 id="urunc-deploy">urunc-deploy</h2>
-<p><a href="https://github.com/nubificus/urunc/tree/main/deployment/urunc-deploy"><code>urunc-deploy</code></a> provides a Dockerfile, which contains all of the binaries
-and artifacts required to run <code>urunc</code>, as well as reference DaemonSets, which can
-be utilized to install <code>urunc</code> runtime  on a running Kubernetes cluster.</p>
-<h3 id="urunc-deploy-in-k3s">urunc-deploy in k3s</h3>
-<p>To install in a k3s cluster, first we need to create the RBAC:</p>
-<pre><code class="language-bash">$ git clone https://github.com/nubificus/urunc.git
-$ cd urunc
-$ kubectl apply -f deployment/urunc-deploy/urunc-rbac/urunc-rbac.yaml
+<p>You should be able to see this being created:</p>
+<pre><code class="language-console">$ kubectl get ksvc -o wide
+NAME             URL                                              LATESTCREATED          LATESTREADY            READY   REASON
+http-c-urunc     http://http-c-urunc.default.127.0.0.1.nip.io     http-c-urunc-00001     http-c-urunc-00001     True
 </code></pre>
-<p>Then, we create the <code>urunc-deploy</code> Daemonset, followed by the k3s customization:</p>
-<pre><code class="language-bash">$ kubectl apply -k deployment/urunc-deploy/urunc-deploy/overlays/k3s
-</code></pre>
-<p>Finally, we need to create the appropriate k8s runtime class:</p>
-<pre><code class="language-bash">$ kubectl apply -f deployment/urunc-deploy/runtimeclasses/runtimeclass.yaml
-</code></pre>
-<p>To uninstall:</p>
-<pre><code class="language-bash">$ kubectl delete -k deployment/urunc-deploy/urunc-deploy/overlays/k3s
-$ kubectl apply -k deployment/urunc-deploy/urunc-cleanup/overlays/k3s
-</code></pre>
-<p>After the cleanup is completed and the <code>urunc-deploy</code> Pod is terminated:</p>
-<pre><code class="language-bash">$ kubectl delete -k deployment/urunc-deploy/urunc-cleanup/overlays/k3s
-$ kubectl delete -f deployment/urunc-deploy/urunc-rbac/urunc-rbac.yaml
-$ kubectl delete -f deployment/urunc-deploy/runtimeclasses/runtimeclass.yaml
-</code></pre>
-<h3 id="urunc-deploy-in-k8s-with-containerd">urunc-deploy in k8s with containerd</h3>
-<p>To install in a k8s cluster, first we need to create the RBAC:</p>
-<pre><code class="language-bash">$ git clone https://github.com/nubificus/urunc.git
-$ cd urunc
-$ kubectl apply -f deployment/urunc-deploy/urunc-rbac/urunc-rbac.yaml
-</code></pre>
-<p>Then, we create the <code>urunc-deploy</code> Daemonset:</p>
-<pre><code class="language-bash">$ kubectl apply -f deployment/urunc-deploy/urunc-deploy/base/urunc-deploy.yaml
-</code></pre>
-<p>Finally, we need to create the appropriate k8s runtime class:</p>
-<pre><code class="language-bash">$ kubectl apply -f deployment/urunc-deploy/runtimeclasses/runtimeclass.yaml
-</code></pre>
-<p>To uninstall:</p>
-<pre><code class="language-bash">$ kubectl delete -f deployment/urunc-deploy/urunc-deploy/base/urunc-deploy.yaml
-$ kubectl apply -f deployment/urunc-deploy/urunc-cleanup/base/urunc-cleanup.yaml
-</code></pre>
-<p>After the cleanup is completed:</p>
-<pre><code class="language-bash">$ kubectl delete -f deployment/urunc-deploy/urunc-cleanup/base/urunc-cleanup.yaml
-$ kubectl delete -f deployment/urunc-deploy/urunc-rbac/urunc-rbac.yaml
-$ kubectl delete -f deployment/urunc-deploy/runtimeclasses/runtimeclass.yaml
-</code></pre>
-<p>Now, we can create new <code>urunc</code> deployments using the <a href="#create-a-test-deployment">instruction provided in manual installation</a>.</p>
-<h3 id="how-urunc-deploy-works">How urunc-deploy works</h3>
-<p><code>urunc-deploy</code> consists of several components and steps that install <code>urunc</code> along with the supported hypervisors,
-configure <code>containerd</code> and Kubernetes (k8s) to use <code>urunc</code>, and provide a simple way to remove those components from the cluster.</p>
-<p>During installation, the following steps take place:</p>
-<ul>
-<li>A RBAC role is created to allow <code>urunc-deploy</code> to run with privileged access.</li>
-<li>The <code>urunc-deploy</code> Pod is deployed with privileges on the host, and the <code>containerd</code> configuration is mounted inside the Pod.</li>
-<li><code>urunc-deploy</code> performs the following tasks:<ul>
-<li>Copies <code>urunc</code> and hypervisor binaries to the host under <code>usr/local/bin</code>.</li>
-<li>Creates a backup of the current <code>containerd</code> configuration file.</li>
-<li>Edits the <code>containerd</code> configuration file to add <code>urunc</code> as a supported runtime.</li>
-<li>Restarts <code>containerd</code>, if necessary.</li>
-<li>Labels the Node with label <code>urunc.io/urunc-runtime=true</code>.</li>
-</ul>
-</li>
-<li>Finally, <code>urunc</code> is added as a runtime class in k8s.</li>
-</ul>
+<p>and once it's on a <code>Ready</code> state, you could issue a request:</p>
 <blockquote>
-<p>Note: <code>urunc-deploy</code> will install a static version of QEMU along with the QEMU BIOS files, if QEMU is not installed in PATH. The QEMU BIOS files are placed
-under the <code>/usr/local/share</code> directory. If the host system already had installed the BIOS files in this directory, they might get overwritten.</p>
+<p>Note: 10.244.9.220 is the IP of the <code>kourier-internal</code> svc. You can check your own from:
+<code>kubectl get svc -n kourier-system |grep kourier-internal</code></p>
 </blockquote>
-<p>During cleanup, these changes are reverted:</p>
-<ul>
-<li>The <code>urunc</code> and hypervisor binaries are deleted.</li>
-<li>The <code>containerd</code> configuration file is restored to the pre-<code>urunc-deploy</code> state.</li>
-<li>The <code>urunc.io/urunc-runtime=true</code> label is removed from the Node.</li>
-<li>The RBAC role, the <code>urunc-deploy</code> Pod and the runtime class are removed.</li>
-</ul>
+<pre><code class="language-console">$ curl -v -H &quot;Host: http-c-urunc.default.127.0.0.1.nip.io&quot; http://10.244.9.220:80
+*   Trying 10.244.9.220:80...
+* Connected to 10.244.9.220 (10.244.9.220) port 80 (#0)
+&gt; GET / HTTP/1.1
+&gt; Host: http-c-urunc.default.127.0.0.1.nip.io
+&gt; User-Agent: curl/7.81.0
+&gt; Accept: */*
+&gt;
+* Mark bundle as not supporting multiuse
+&lt; HTTP/1.1 200 OK
+&lt; content-length: 14
+&lt; content-type: text/html; charset=UTF-8
+&lt; date: Tue, 08 Apr 2025 15:47:45 GMT
+&lt; x-envoy-upstream-service-time: 774
+&lt; server: envoy
+&lt;
+Hello, World!
+* Connection #0 to host 10.244.9.220 left intact
+</code></pre>
+<h2 id="wrapping-up">Wrapping Up</h2>
+<p>You're now running unikernel-based workloads via Knative and <code>urunc</code>! With this
+setup, you can push the boundaries of lightweight, secure, and high-performance
+serverless deployments — all within a Kubernetes-native environment.</p>
 
 
 
