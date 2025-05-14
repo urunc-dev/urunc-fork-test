@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../img/urunc-logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -962,7 +962,7 @@ file formats, <code>bunnyfile</code> and Dockerfile-like syntax files, can be us
 <h2 id="using-a-bunnyfile">Using a <code>bunnyfile</code></h2>
 <p>In order to append <code>urunc</code> annotations in an existing <a href="https://unikraft.org">Unikraft</a> OCI image,
 we can define the <code>bunnyfile</code> as:</p>
-<pre><code>#syntax=harbor.nbfc.io/nubificus/bunny:0.0.2
+<pre><code>#syntax=harbor.nbfc.io/nubificus/bunny:latest
 version: v0.1
 
 platforms:
@@ -992,7 +992,7 @@ annotations. We can build the OCI image with the following command:</p>
 <p>In the case of the Dockerfile-like syntax file, we need to manually specify the
 <code>urunc</code> annotations, using the respective labels. Therefore, to transform the
 above <code>bunnyfile</code> to the equivalent <code>Containerfile</code>:</p>
-<pre><code>#syntax=harbor.nbfc.io/nubificus/bunny:0.0.2
+<pre><code>#syntax=harbor.nbfc.io/nubificus/bunny:latest
 FROM unikraft.org/nginx:1.15
 
 LABEL com.urunc.unikernel.binary=&quot;/unikraft/bin/kernel&quot;
@@ -1063,10 +1063,10 @@ LABEL &quot;com.urunc.unikernel.hypervisor&quot;=&quot;qemu&quot;
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>

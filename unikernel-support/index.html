@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../img/urunc-logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -416,6 +416,39 @@
   <a href="#rumprun-and-urunc" class="md-nav__link">
     <span class="md-ellipsis">
       Rumprun and urunc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mewz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mewz
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mewz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmms-and-other-sandbox-monitors_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      VMMs and other sandbox monitors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mewz-and-urunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mewz and urunc
     </span>
   </a>
   
@@ -1099,6 +1132,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mewz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mewz
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mewz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmms-and-other-sandbox-monitors_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      VMMs and other sandbox monitors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mewz-and-urunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mewz and urunc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#future-unikernels-and-frameworks" class="md-nav__link">
     <span class="md-ellipsis">
       Future unikernels and frameworks:
@@ -1164,7 +1230,7 @@ shared-fs option is Work-In-Progress and we will soon provide an update about
 this.</p>
 <p><a href="https://unikraft.org/">Unikraft</a> maintains a
 <a href="https://github.com/unikraft/catalog">catalog</a> with available applications as
-unikernel images. Check out our <a href="../image-building">packaging</a> page on how to
+unikernel images. Check out our <a href="../package">packaging</a> page on how to
 get these images and run them on top of <code>urunc</code>.</p>
 <p>An example of <a href="https://unikraft.org/">Unikraft</a> on top of Qemu with <code>urunc</code>:</p>
 <pre><code class="language-bash">$ sudo nerdctl run --rm -ti --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/nginx-qemu-unikraft-initrd:latest unikernel
@@ -1215,7 +1281,7 @@ through Solo5's I/O interface and for Qemu through virtio-net and virtio-block.<
 execution should be placed inside the container image.</p>
 <p>For more information on packaging
 <a href="https://github.com/mirage/mirage">MirageOS</a> unikernels for <code>urunc</code> take
-a look at our <a href="../image-building/">packaging</a> page.</p>
+a look at our <a href="../package/">packaging</a> page.</p>
 <p>An example of <a href="https://github.com/mirage/mirage">MirageOS</a> on top of
 Solo5-hvt using a block image inside the container's rootfs with 'urunc':</p>
 <pre><code class="language-bash">$ sudo nerdctl run --rm -ti --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/net-mirage-hvt:latest unikernel
@@ -1270,7 +1336,7 @@ inside the container image and attaching it to
 <a href="https://github.com/cloudkernels/rumprun">Rumprun</a>.</p>
 <p>For more information on packaging
 <a href="https://github.com/cloudkernels/rumprun">Rumprun</a> unikernels for <code>urunc</code> take
-a look at our <a href="../image-building/">packaging</a> page.</p>
+a look at our <a href="../package/">packaging</a> page.</p>
 <p>An example of <a href="https://github.com/cloudkernels/rumprun">Rumprun</a> on top of
 Solo5-hvt using a block image inside the container's rootfs with 'urunc':</p>
 <pre><code class="language-bash">$ sudo nerdctl run --rm -ti --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/redis-hvt-rumprun-block:latest unikernel
@@ -1279,10 +1345,51 @@ Solo5-hvt using a block image inside the container's rootfs with 'urunc':</p>
 Solo5-spt using devmapper with 'urunc':</p>
 <pre><code class="language-bash">$ sudo nerdctl run --rm -ti --snapshotter devmapper --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/redis-spt-rumprun:latest unikernel
 </code></pre>
+<h2 id="mewz">Mewz</h2>
+<p><a href="https://github.com/Mewz-project/Mewz">Mewz</a> is a unikernel framework written
+from scratch in Zig, targeting WASM workloads. In contrast to other WASM
+runtimes that execute on top of general purpose operating systems,
+<a href="https://github.com/Mewz-project/Mewz">Mewz</a> is designed as a specialized
+kernel where WASM applications can execute. In this way,
+<a href="https://github.com/Mewz-project/Mewz">Mewz</a> provides the minimal required
+features and environment for executing WASM workloads. In addition, every WASM
+application executes on a separate <a href="https://github.com/Mewz-project/Mewz">Mewz</a>
+instance, maintaining the single-purpose notion of unikernels.</p>
+<p>According to the design of <a href="https://github.com/Mewz-project/Mewz">Mewz</a>, the
+WASM application is transformed to an object file which is directly linked
+against the <a href="https://github.com/Mewz-project/Mewz">Mewz</a> kernel. Therefore,
+when the <a href="https://github.com/Mewz-project/Mewz">Mewz</a> kernel boots, it executes
+the linked WASM application. <a href="https://github.com/Mewz-project/Mewz">Mewz</a> has
+partial support for <a href="https://github.com/WebAssembly/WASI">WASI</a> and it provides
+support for networking and an in-memory, read-only filesystem. In addition,
+<a href="https://github.com/Mewz-project/Mewz">Mewz</a> has socket compatibility with
+<a href="https://github.com/WasmEdge/WasmEdge">WasmEdge</a>,</p>
+<p>A few examples of <a href="https://github.com/Mewz-project/Mewz">Mewz</a> unikernels can
+be found in the <a href="https://github.com/mewz-project/mewz/tree/main/examples">examples directory of Mewz's
+repository</a>.</p>
+<h3 id="vmms-and-other-sandbox-monitors_3">VMMs and other sandbox monitors</h3>
+<p><a href="https://github.com/Mewz-project/Mewz">Mewz</a> can execute only on top of
+<a href="https://www.qemu.org/">Qemu</a>.  It can access the network through a virtio-net
+PCI device. In the case of storage,
+<a href="https://github.com/Mewz-project/Mewz">Mewz</a> only supports an in-memory
+read-only filesystem, which is directly linked along with the kernel.</p>
+<h3 id="mewz-and-urunc">Mewz and <code>urunc</code></h3>
+<p>In the case of <a href="https://github.com/Mewz-project/Mewz">Mewz</a>, <code>urunc</code> provides
+support for <a href="https://www.qemu.org/">Qemu</a>. If the container is configured with
+network access, then <code>urunc</code> will use a virtio-net PCI device to provide
+network access to <a href="https://github.com/Mewz-project/Mewz">Mewz</a> unikernels.</p>
+<p>For more information on packaging
+<a href="https://github.com/Mewz-project/Mewz">Mewz</a> unikernels for <code>urunc</code> take
+a look at our <a href="../package/">packaging</a> page.</p>
+<p>An example of <a href="https://github.com/Mewz-project/Mewz">Mewz</a> on top of
+Qemu using with 'urunc':</p>
+<pre><code class="language-bash">$ sudo nerdctl run -m 512M --rm -ti --runtime io.containerd.urunc.v2 harbor.nbfc.io/nubificus/urunc/hello-server-qemu-mewz:latest
+</code></pre>
+<blockquote>
+<p>Note: As far as we understand, Mewz requires at least 512M of memory to properly boot.</p>
+</blockquote>
 <h2 id="future-unikernels-and-frameworks">Future unikernels and frameworks:</h2>
 <p>In the near future, we plan to add support for the following frameworks:</p>
-<p><a href="https://github.com/mewz-project/mewz">Mewz</a>: A unikernel designed
-specifically for running Wasm applications and compatible with WASI.</p>
 <p><a href="https://github.com/mewz-project/mewz">Linux</a>: The widely known kernel that runs
 almost everywhere. In the case of <code>urunc</code> we will support minimal Linux
 configurations where the init process is the application.</p>
@@ -1342,10 +1449,10 @@ including Java, Node.js, and Python.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>
